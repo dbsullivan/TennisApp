@@ -16,10 +16,9 @@
     </div>
       <div id="logo">
       <div id="logo_text">
-      <a href="#">Dave Sullivan Java112 Home</a>
+      <a href="#">"Add-In" Tennis League Administration</a>
       <br/><br/>
-      "Add In"
-      Tennis League Administration
+      Development by Dave Sullivan
 	</div>
     </div>
 <!--end header -->

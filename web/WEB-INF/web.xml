@@ -6,6 +6,8 @@
 
     <security-role>
         <role-name>admin</role-name>
+    </security-role>
+    <security-role>
         <role-name>appuser</role-name>
     </security-role>
 
