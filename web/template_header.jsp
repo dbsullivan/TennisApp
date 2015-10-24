@@ -16,7 +16,7 @@
     </div>
       <div id="logo">
       <div id="logo_text">
-      <a href="#">"Add-In" Tennis League Administration</a>
+      <a href="#">"Add-In" Tennis League Application</a>
       <br/><br/>
       Development by Dave Sullivan
 	</div>

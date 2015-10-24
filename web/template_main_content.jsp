@@ -8,7 +8,7 @@
 
           <div id="text" >
                 <h1><strong>Tennis League</strong></h1>
-                <p><strong>Login</strong> Login to the Add-in Application.</p>
+                <p><strong>Login</strong> to the Add-in Application.</p>
                 <ul>
                       <li><a href="login.jsp">Login</a></li>  <%-- This comment will not be visible in the page source --%>
                 </ul>
