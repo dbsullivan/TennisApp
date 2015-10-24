@@ -42,14 +42,13 @@
 <user username="tomcat" password="tomcat" roles="manager-gui"/>
 
 <!-- remove these hardcoded tomcat users. Instead, will be handled by a mySQL db JDBC Realm, in 'sample' database -->
-  <!--
-  <role rolename="admin"/>
-  <user username="admin1" password="admin1" roles="admin"/>
-  <user username="admin2" password="admin2" roles="admin,appuser"/>
+<!--
+<role rolename="admin"/>
+<user username="admin1" password="admin1" roles="admin"/>
+<user username="admin2" password="admin2" roles="admin,appuser"/>
 
-  <role rolename="appuser"/>
-  <user username="appuser1" password="appuser1" roles="appuser"/>
-  -->
-
+<role rolename="appuser"/>
+<user username="appuser1" password="appuser1" roles="appuser"/>
+-->
 
 </tomcat-users>
