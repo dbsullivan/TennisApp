@@ -8,9 +8,9 @@
 
           <div id="text" >
                 <h1><strong>Tennis League</strong></h1>
-                <p><strong>Login</strong> to the Add-in Application.</p>
+                <p><strong>Welcome</strong> to the Add-in Application.</p>
                 <ul>
-                      <li><a href="login.jsp">Login</a></li>  <%-- This comment will not be visible in the page source --%>
+                    <li></li><a href="index.jsp">Take me to the Add-In Home page</a></li>  <%-- This comment will not be visible in the page source --%>
                 </ul>
               <!--
                 <p><strong>Players</strong> Manage Players.</p>

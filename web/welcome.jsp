@@ -1,10 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
   User: Dave
-  Date: 10/19/2015
-  Time: 3:41 PM
-  This is the login-error.jsp to use Form Based Authentication if the login fails.
+  Date: 10/24/2015
+  Time: 7:56 PM
+  This is the Welcome jsp if login succeeds.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -38,16 +39,16 @@
 
   <div id="text"  >
 
-    <h2>Login Error Page</h2>
+    <h2>Welcome Page</h2>
     <h4>Messages: ${loginMessage}</h4>
 
-      Invalid name or password entered.
-      <ul>
-        <li><a href="login.jsp">Take me back to the Login page</a></li>
-      <%--  <li><a href="index.jsp">Take me to the Add-In Home page</a></li>  --%>
-      </ul>
+    Welcome to Add-In
+    <ul>
+     <%-- <li><a href="login.jsp">Take me back to the Login page</a></li>  --%>
+      <li><a href="index.jsp">Take me to the Add-In Home page</a></li>
+    </ul>
 
-      <br />
+    <br />
 
   </div>
 </div>
@@ -59,4 +60,5 @@
 
 </body>
 </html>
+
 

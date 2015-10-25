@@ -39,7 +39,7 @@
   <div id="text"  >
 
     <h2>Login Page</h2>
-    <h4>Messages: ${project4AddMessage}</h4>
+    <h4>Messages: ${loginMessage}</h4>
 
     <FORM ACTION="j_security_check" METHOD="POST">
       <table>
@@ -57,7 +57,7 @@
       <input type="submit" name="" value="Enter" />
     </form>
 
-    <a href="index.jsp">Take me to Add-In Home page</a>
+    <a href="index.jsp">Take me to the Add-In Home page</a>
   </div>
 </div>
 <!-- end main -->
