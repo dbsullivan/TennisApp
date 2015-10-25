@@ -42,9 +42,10 @@ public class ApplicationStartup extends HttpServlet {
 
         System.out.println("ApplicationStartup.init()" + "Uname: " + properties.getProperty("username") +
                 "  Pswd: " + properties.getProperty("password") +
-                "  Props URL: " + properties.getProperty("url") ); // test
+                "  Props URL: " + properties.getProperty("url")); // test
 
-        System.out.println("ApplicationStartup.init()...end" );  // in Catalina, we want to see it ran       
+        System.out.println("ApplicationStartup.init()...end" );  // in Catalina, we want to see it ran
+
     }
 
     /**
@@ -84,9 +85,10 @@ public class ApplicationStartup extends HttpServlet {
                 getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
 
-        PrintWriter out = response.getWriter();
-        out.print("<a href=\'/'>Add-In Home</a>");
-        out.close();
+
+//        PrintWriter out = response.getWriter();
+//        out.print("<a href=\'/'>Add-In Home</a>");
+//        out.close();
 
         System.out.println("Application Startup.doGet()...end");
 
@@ -115,4 +117,6 @@ public class ApplicationStartup extends HttpServlet {
 //        ApplicationStartup startApp = new ApplicationStartup();
 //
 //    }
+
+
 }
