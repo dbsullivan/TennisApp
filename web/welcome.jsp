@@ -42,7 +42,7 @@
     <h2>Welcome Page</h2>
     <h4>Messages: ${loginMessage}</h4>
 
-    Welcome to Add-In
+    Welcome ${userName} to Add-In
     <ul>
      <%-- <li><a href="login.jsp">Take me back to the Login page</a></li>  --%>
       <li><a href="index.jsp">Take me to the Add-In Home page</a></li>

@@ -14,7 +14,7 @@
 <c:import url="template_head_tag.jsp" />
 <%-- <c:set var="textAreaColor" value="#ffffff" scope="session" />  --%>
 
-  <%!
+<%!
     private String textAreaWhite = "#ffffff";
     private String textAreaHighlight = "#fffd48";
     private String textAreaColor = "";
@@ -29,36 +29,34 @@
 <!-- main -->
 <div id="main">
 
-  <!--begin sidebar -->
-  <div id="sidebar">
-    <!--      <a href="/java112"><img src="images/clover.jpg" alt="Dave Sullivan Java112 Home" align="left" width=200 height=150 /></a>
-      -->
+    <!--begin sidebar -->
+    <div id="sidebar">
+        <!--      <a href="/java112"><img src="images/clover.jpg" alt="Dave Sullivan Java112 Home" align="left" width=200 height=150 /></a>
+          -->
 
-  </div>
+    </div>
 
-  <div id="text"  >
+    <div id="text"  >
 
-    <h2>Login Page</h2>
-    <h4>Messages: ${loginMessage}</h4>
+        <h2>Login Page</h2>
+        <h4>Messages: ${loginMessage}</h4>
 
-    <FORM ACTION="j_security_check" METHOD="POST">
-      <table>
-        <tr><td align="left">Please Enter your UserId and Password:</td></tr>
-        <tr>
-            <td align="left">UserID: <input type="text" name="j_username" maxlength="25" size="30" value="${userName}" style="background-color:<%= textAreaColor %> ;" />
-            </td>
-        </tr>
-        <tr>
-            <td align="left">Password: <input type="PASSWORD" name="j_password" maxlength="25" size="30" value="${userPassword}" style="background-color:<%= textAreaColor %> ;" />
-            </td>
-        </tr>
-      </table>
-      <br />
-      <input type="submit" name="" value="Enter" />
-    </form>
-
-    <a href="index.jsp">Take me to the Add-In Home page</a>
-  </div>
+        <FORM ACTION="j_security_check" METHOD="POST">
+            <table>
+                <tr><td align="left">Please Enter your UserId and Password:</td></tr>
+                <tr>
+                    <td align="left">UserID: <input type="text" name="j_username" maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left">Password: <input type="PASSWORD" name="j_password" maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" />
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" name="" value="Enter" />
+        </form>
+    </div>
 </div>
 <!-- end main -->
 

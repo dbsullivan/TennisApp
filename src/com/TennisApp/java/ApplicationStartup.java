@@ -30,15 +30,11 @@ public class ApplicationStartup extends HttpServlet {
 
         ServletContext  context = getServletContext();
 
-//        String propsPath = "/tennisApp.properties";
         String propsPath = "tennisApp.properties";
 
         loadProperties(propsPath);
 
         context.setAttribute("appProperties", properties); // load in context so any servlet can get this
-
-//        employees = new EmployeeDirectory(properties);
-//        context.setAttribute("employeeDirectory", employees); // load context with employees for any servlet to get this       
 
         System.out.println("ApplicationStartup.init()" + "Uname: " + properties.getProperty("username") +
                 "  Pswd: " + properties.getProperty("password") +
@@ -62,36 +58,33 @@ public class ApplicationStartup extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        // ask - why again here?  this one is for local test
-//        EmployeeDirectory employeeDirectory =
-//                (EmployeeDirectory) getServletContext().getAttribute("employeeDirectory");
-
-        //Search search = null;    
-        //search = employeeDirectory.searchForEmployee("id","123");// test connection simple search
-
-//        Search search = new Search();
-//        search.setSearchType("id");
-//        search.setSearchTerm("123");
-//
-//        // ask
-//        search = employeeDirectory.searchForEmployee(search);  // test connection simple search         
-
-//        session.setAttribute("project4StatusSearch", search);    // getAttribute in the result display jsp from this.               
         session.setAttribute("appProperties", properties);  // load in context so any servlet can get this
 
-        String url = "/login.jsp"; // forward to JSP page
+        String userLoggedIn = (String) session.getAttribute("userLoggedIn"); // initially empty, will get from login.jsp, else to to index.jsp with name
+        String url;
+
+        if (userLoggedIn == null || userLoggedIn.equals("")) {
+            session.setAttribute("userLoggedIn", "");
+            url = "/login.jsp";
+        } else {
+            session.setAttribute("userLoggedIn", request.getParameter("j_username"));
+            url = "/index.jsp";
+        }
 
         RequestDispatcher  dispatcher =
                 getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
-
-
-//        PrintWriter out = response.getWriter();
-//        out.print("<a href=\'/'>Add-In Home</a>");
-//        out.close();
+        // ASK - forward doesn't behave right, browser stays with login.jsp ???
 
         System.out.println("Application Startup.doGet()...end");
 
+    }
+
+    // may need the do Post to call the doGet since FormBasedAuth uses method=post
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException
+    {
+        doGet(request, response);
     }
 
     public void loadProperties(String propertiesFilePath) {
