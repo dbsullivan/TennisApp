@@ -23,7 +23,7 @@ public class ApplicationStartup extends HttpServlet {
     /**
      *  Initialize this servlet
      *
-     *@exception  ServletException  Description of the Exception
+     *@exception  ServletException  if there is  Servlet failure
      */
     public void init() throws ServletException {
         System.out.println("ApplicationStartup.init()...begin" );  // in Catalina, we want to see it ran
@@ -55,6 +55,7 @@ public class ApplicationStartup extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("Application Startup.doGet()...begin");
+        // Ask, we never get here. POST Action overrides to FBA, how can I come back here to go from login.jsp to index.jsp?
 
         HttpSession session = request.getSession();
 
@@ -71,21 +72,24 @@ public class ApplicationStartup extends HttpServlet {
             url = "/index.jsp";
         }
 
+        // ASK - Instead, use EL in template_main_content.jsp to chose between login.jsp
+//        String url =  "/login.jsp";
+
         RequestDispatcher  dispatcher =
                 getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
-        // ASK - forward doesn't behave right, browser stays with login.jsp ???
+        // ASK - forward doesn't work as expected, browser stays with login.jsp, and not seeing doGet (doPost) execute ???
 
         System.out.println("Application Startup.doGet()...end");
 
     }
 
-    // may need the do Post to call the doGet since FormBasedAuth uses method=post
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException
-    {
-        doGet(request, response);
-    }
+//    //ASK - POST not handled here either, may need the do Post to call the doGet since FormBasedAuth uses method=post
+//    public void doPost(HttpServletRequest request, HttpServletResponse response)
+//            throws IOException, ServletException
+//    {
+//        doGet(request, response);
+//    }
 
     public void loadProperties(String propertiesFilePath) {
         properties = new Properties();

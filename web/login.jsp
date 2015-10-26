@@ -45,7 +45,7 @@
             <table>
                 <tr><td align="left">Please Enter your UserId and Password:</td></tr>
                 <tr>
-                    <td align="left">UserID: <input type="text" name="j_username" maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" />
+                    <td align="left">UserID: <input type="text" name="j_username" value="${userLoggedIn}" maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" />
                     </td>
                 </tr>
                 <tr>
@@ -58,6 +58,7 @@
         </form>
     </div>
 </div>
+
 <!-- end main -->
 
 <!-- footer -->

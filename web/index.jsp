@@ -25,6 +25,12 @@ which means you can use it in any way you want provided you keep the link to the
 <!--end header -->
 
 <!-- main -->
+<%--
+   <c:if test="${userLoggedIn == ''} ">
+      <jsp:forward page="login.jsp" />
+   </c:if>
+--%>
+
 <c:import url="template_main_content.jsp" />
 <!-- end main -->
 

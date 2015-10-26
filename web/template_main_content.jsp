@@ -8,6 +8,9 @@
 
           <div id="text" >
                 <h1><strong>Tennis League</strong></h1>
+
+              <%-- use custom tag for this message? --%>
+
                 <p> Welcome ${userLoggedIn} to the Add-in Application.</p>
                 <ul>
                     <li></li><a href="index.jsp">Take me to the Add-In Home page</a></li>  <%-- This comment will not be visible in the page source --%>
