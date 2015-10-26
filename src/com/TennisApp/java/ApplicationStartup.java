@@ -5,6 +5,7 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import org.apache.log4j.Logger;
 
 /**
  * @author Dave Sullivan
@@ -18,7 +19,7 @@ import javax.servlet.annotation.*;
 public class ApplicationStartup extends HttpServlet {
 
     private Properties  properties;
-//    private EmployeeDirectory  employees;
+    private final Logger logger = Logger.getLogger(ApplicationStartup.class);
 
     /**
      *  Initialize this servlet
@@ -26,6 +27,8 @@ public class ApplicationStartup extends HttpServlet {
      *@exception  ServletException  if there is  Servlet failure
      */
     public void init() throws ServletException {
+
+        logger.info("ApplicationStartup.init()...begin");
         System.out.println("ApplicationStartup.init()...begin" );  // in Catalina, we want to see it ran
 
         ServletContext  context = getServletContext();
@@ -36,11 +39,17 @@ public class ApplicationStartup extends HttpServlet {
 
         context.setAttribute("appProperties", properties); // load in context so any servlet can get this
 
+        logger.info("ApplicationStartup.init()" + "Uname: " + properties.getProperty("username") +
+                "  Pswd: " + properties.getProperty("password") +
+                "  Props URL: " + properties.getProperty("url"));
+
         System.out.println("ApplicationStartup.init()" + "Uname: " + properties.getProperty("username") +
                 "  Pswd: " + properties.getProperty("password") +
                 "  Props URL: " + properties.getProperty("url")); // test
 
+        logger.info("ApplicationStartup.init()...end" );
         System.out.println("ApplicationStartup.init()...end" );  // in Catalina, we want to see it ran
+
 
     }
 
@@ -54,7 +63,10 @@ public class ApplicationStartup extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Application Startup.doGet()...begin");
+
+        logger.info("Application Startup.doGet()...begin");
+      System.out.println("Application Startup.doGet()...begin");
+
         // Ask, we never get here. POST Action overrides to FBA, how can I come back here to go from login.jsp to index.jsp?
 
         HttpSession session = request.getSession();
@@ -80,6 +92,7 @@ public class ApplicationStartup extends HttpServlet {
         dispatcher.forward(request, response);
         // ASK - forward doesn't work as expected, browser stays with login.jsp, and not seeing doGet (doPost) execute ???
 
+        logger.info("Application Startup.doGet()...end");
         System.out.println("Application Startup.doGet()...end");
 
     }
@@ -95,10 +108,12 @@ public class ApplicationStartup extends HttpServlet {
         properties = new Properties();
         try {
             properties.load (this.getClass().getResourceAsStream(propertiesFilePath));
-        } catch (IOException ioe) {
+        } catch (IOException e) {
+            logger.error("Can't load the properties file: ", e);
             System.out.println("Can't load the properties file");
-            ioe.printStackTrace();
+            e.printStackTrace();
         } catch (Exception e) {
+            logger.error("Problem: ", e);
             System.out.println("Problem: " + e);
             e.printStackTrace();
         }
