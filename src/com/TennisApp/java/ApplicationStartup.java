@@ -61,41 +61,41 @@ public class ApplicationStartup extends HttpServlet {
      *@exception ServletException  if there is a Servlet failure
      *@exception IOException       if there is an IO failure
      */
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        logger.info("Application Startup.doGet()...begin");
-      System.out.println("Application Startup.doGet()...begin");
-
-        // Ask, we never get here. POST Action overrides to FBA, how can I come back here to go from login.jsp to index.jsp?
-
-        HttpSession session = request.getSession();
-
-        session.setAttribute("appProperties", properties);  // load in context so any servlet can get this
-
-        String userLoggedIn = (String) session.getAttribute("userLoggedIn"); // initially empty, will get from login.jsp, else to to index.jsp with name
-        String url;
-
-        if (userLoggedIn == null || userLoggedIn.equals("")) {
-            session.setAttribute("userLoggedIn", "");
-            url = "/login.jsp";
-        } else {
-            session.setAttribute("userLoggedIn", request.getParameter("j_username"));
-            url = "/index.jsp";
-        }
-
-        // ASK - Instead, use EL in template_main_content.jsp to chose between login.jsp
-//        String url =  "/login.jsp";
-
-        RequestDispatcher  dispatcher =
-                getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
-        // ASK - forward doesn't work as expected, browser stays with login.jsp, and not seeing doGet (doPost) execute ???
-
-        logger.info("Application Startup.doGet()...end");
-        System.out.println("Application Startup.doGet()...end");
-
-    }
+//    public void doGet(HttpServletRequest request, HttpServletResponse response)
+//            throws ServletException, IOException {
+//
+//        logger.info("Application Startup.doGet()...begin");
+//      System.out.println("Application Startup.doGet()...begin");
+//
+//        // Ask, we never get here. POST Action overrides to FBA, how can I come back here to go from login.jsp to index.jsp?
+//
+//        HttpSession session = request.getSession();
+//
+//        session.setAttribute("appProperties", properties);  // load in context so any servlet can get this
+//
+//        String userLoggedIn = (String) session.getAttribute("userLoggedIn"); // initially empty, will get from login.jsp, else to to index.jsp with name
+//        String url;
+//
+//        if (userLoggedIn == null || userLoggedIn.equals("")) {
+//            session.setAttribute("userLoggedIn", "");
+//            url = "/login.jsp";
+//        } else {
+//            session.setAttribute("userLoggedIn", request.getParameter("j_username"));
+//            url = "/index.jsp";
+//        }
+//
+//        // ASK - Instead, use EL in template_main_content.jsp to chose between login.jsp
+////        String url =  "/login.jsp";
+//
+//        RequestDispatcher  dispatcher =
+//                getServletContext().getRequestDispatcher(url);
+//        dispatcher.forward(request, response);
+//        // ASK - forward doesn't work as expected, browser stays with login.jsp, and not seeing doGet (doPost) execute ???
+//
+//        logger.info("Application Startup.doGet()...end");
+//        System.out.println("Application Startup.doGet()...end");
+//
+//    }
 
 //    //ASK - POST not handled here either, may need the do Post to call the doGet since FormBasedAuth uses method=post
 //    public void doPost(HttpServletRequest request, HttpServletResponse response)
