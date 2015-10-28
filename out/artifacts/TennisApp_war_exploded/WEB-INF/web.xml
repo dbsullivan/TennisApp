@@ -4,6 +4,23 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <!-- Define the com.TennisApp.javaservlet class, giving it the name welcome -->
+    <servlet>
+        <servlet-name>WelcomeServlet</servlet-name>
+        <servlet-class>com.TennisApp.java.Welcome</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WelcomeServlet</servlet-name>
+        <url-pattern>/Welcome</url-pattern>
+    </servlet-mapping>
+
+    <!-- The main page for the site will be the welcome servlet (http://website/welcome) -->
+    <welcome-file-list>
+        <!--welcome-file>index.jsp</welcome-file -->
+        <welcome-file>Welcome</welcome-file>
+    </welcome-file-list>
+
     <security-role>
         <role-name>admin</role-name>
     </security-role>
