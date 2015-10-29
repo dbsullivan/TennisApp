@@ -27,20 +27,19 @@ public class Welcome  extends HttpServlet {
      * @exception ServletException  if there is a Servlet failure
      * @exception IOException       if there is an IO failure
      */
-    private final Logger logger = Logger.getLogger(ApplicationStartup.class);
+    private final Logger logger = Logger.getLogger(Welcome.class);
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         logger.info("Welcome.doGet()...begin");
-        System.out.println("Welcome.doGet()...begin");
-
-        // Ask, we never get here. POST Action overrides to FBA, how can I come back here to go from login.jsp to index.jsp?
 
         HttpSession session = request.getSession();
 
         String userLoggedIn = (String) session.getAttribute("userLoggedIn"); // initially empty, will get from login.jsp, else to to index.jsp with name
         String url;
+
+        // create userLoggedInBean store - id for now, present in the welcome servlet, and available if needed.
 
 //        if (userLoggedIn == null || userLoggedIn.equals("")) {
 //            session.setAttribute("userLoggedIn", "");
@@ -56,7 +55,6 @@ public class Welcome  extends HttpServlet {
         dispatcher.forward(request, response);
 
         logger.info("Welcome.doGet()...end");
-        System.out.println("Welcome.doGet()...end");
 
     }
 }
