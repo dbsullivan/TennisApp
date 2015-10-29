@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="39b268c9-3fbc-4e6d-a1eb-479bbd278810" name="Default" comment="initial">
-      <change type="DELETED" beforePath="C:\Users\Dave\IdeaProjects\TennisApp\out\artifacts\TennisApp_war_exploded\images\MadJavaTeamBeta Group Project Plan.xlsx" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dave\IdeaProjects\TennisApp\web\images\MadJavaTeamBeta Group Project Plan (1).xlsx" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Dave\IdeaProjects\TennisApp\web\images\MadJavaTeamBeta Group Project Plan.xlsx" afterPath="" />
+    <list default="true" id="39b268c9-3fbc-4e6d-a1eb-479bbd278810" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/WEB-INF/classes/com/TennisApp/java/ApplicationStartup.class" afterPath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/WEB-INF/classes/com/TennisApp/java/ApplicationStartup.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TennisApp/com/TennisApp/java/ApplicationStartup.class" afterPath="$PROJECT_DIR$/out/production/TennisApp/com/TennisApp/java/ApplicationStartup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/TennisApp_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/TennisApp_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -747,7 +743,7 @@
       <workItem from="1445872879317" duration="12426000" />
       <workItem from="1445889196287" duration="341000" />
       <workItem from="1446073468643" duration="677000" />
-      <workItem from="1446075987611" duration="799000" />
+      <workItem from="1446075987611" duration="821000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1445315005712</created>
@@ -827,11 +823,17 @@
       <option name="project" value="LOCAL" />
       <updated>1445889439030</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="initial">
+      <created>1446076795926</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1446076795926</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81981000" />
+    <option name="totallyTimeSpent" value="82003000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
