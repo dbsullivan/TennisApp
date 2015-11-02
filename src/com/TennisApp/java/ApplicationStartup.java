@@ -1,11 +1,12 @@
 package com.TennisApp.java;
 
+import org.apache.log4j.Logger;
 import java.io.*;
 import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import org.apache.log4j.Logger;
+
 
 /**
  * @author Dave Sullivan
@@ -17,15 +18,14 @@ import org.apache.log4j.Logger;
         loadOnStartup = 1
 )
 public class ApplicationStartup extends HttpServlet {
-
-    private Properties  properties;
-    private final Logger logger = Logger.getLogger(ApplicationStartup.class);
-
     /**
      *  Initialize this servlet
      *
      *@exception  ServletException  if there is  Servlet failure
      */
+    private Properties  properties;
+    private final Logger logger = Logger.getLogger(ApplicationStartup.class);
+
     public void init() throws ServletException {
 
         logger.info("ApplicationStartup.init()...begin");
