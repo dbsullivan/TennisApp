@@ -45,7 +45,8 @@
             <table>
                 <tr><td align="left">Please Enter your UserId and Password:</td></tr>
                 <tr>
-                    <td align="left">UserID: <input type="text" name="j_username" value="${userLoggedIn}" maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" />
+                <%--    <td align="left">UserID: <input type="text" name="j_username" value="${parameterUserNameValue}" maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" /> --%>
+                     <td align="left">UserID: <input type="text" name="j_username" value="${username}" f maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" />
                     </td>
                 </tr>
                 <tr>
@@ -54,6 +55,8 @@
                 </tr>
             </table>
             <br />
+            <!--input type="submit" name="submitLogin" value="Enter" / -->
+            <!-- org.apache.tomcat.util.http.Parameters.processParameters Invalid chunk starting at byte [36] and ending at byte [42] with a value of [=Enter] ignored -->
             <input type="submit" name="" value="Enter" />
         </form>
     </div>

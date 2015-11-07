@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - tennis@localhost" uuid="fa5f2b99-2bd0-4645-8f65-af80064fcf51">
+    <database-info product="MySQL" version="5.6.20" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="tennis"/>
+    <table name="league" schema="" catalog="tennis" type="TABLE">
+      <column name="league_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="league_name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="num_player_slots" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="num_courts_needed" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="num_events" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="type_singles_doubles" sqlType="VARCHAR" precision="15" scale="0" nullable="true" jdbcType="12"/>
+      <column name="level" sqlType="VARCHAR" precision="5" scale="0" nullable="true" jdbcType="12"/>
+      <column name="start_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="end_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="status" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="league_id"/>
+    </table>
+    <table name="league_assignment" schema="" catalog="tennis" type="TABLE">
+      <column name="league_assign_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="league_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="player_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="player_slot_num" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="league_assign_id"/>
+    </table>
+    <table name="player" schema="" catalog="tennis" type="TABLE">
+      <column name="player_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="first_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="last_name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="gender" sqlType="VARCHAR" precision="1" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NTRP_level" sqlType="VARCHAR" precision="5" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="player_id"/>
+    </table>
+    <table name="player_matches" schema="" catalog="tennis" type="TABLE">
+      <column name="match_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="league_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="match_player_1" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="match_player_2" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="match_player_3" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="match_player_4" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="match_event_num" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="match_event_date" sqlType="DATE" precision="10" scale="0" nullable="true" jdbcType="91"/>
+      <column name="match_court_num" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="match_id"/>
+    </table>
+    <table name="user_roles" schema="" catalog="tennis" type="TABLE">
+      <column name="user_name" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="role_name" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="users" schema="" catalog="tennis" type="TABLE">
+      <column name="user_name" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_pass" sqlType="VARCHAR" precision="15" scale="0" nullable="false" jdbcType="12"/>
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+  </data-source>
+</component>
