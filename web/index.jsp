@@ -7,6 +7,7 @@
 --%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="mycustomtags" uri="/WEB-INF/tlds/custom.tld" %>
 
 <!--
 Author: Reality Software

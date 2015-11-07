@@ -1,4 +1,6 @@
     <!-- main -->
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="mycustomtags" uri="/WEB-INF/tlds/custom.tld" %>
     <div id="main">
 	    <!--begin sidebar -->
           <div id="sidebar">
@@ -10,10 +12,15 @@
                 <h1><strong>Tennis League</strong></h1>
 
               <%-- use custom tag for this message? --%>
+                <p>
+                   <mycustomtags:AM_PM_Greeting username="Dave" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting>
+                    <mycustomtags:AM_PM_Greeting username="${parameterUserNameValue}" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting>
 
-                <p> Welcome ${parameterUserNameValue} to the Add-in Application.</p>
+                </p>
+                <%-- <p> Welcome ${parameterUserNameValue} to the Add-in Application.</p> --%>
+
                 <ul>
-                    <li></li><a href="index.jsp">Take me to the Add-In Home page</a></li>  <%-- This comment will not be visible in the page source --%>
+                    <li><a href="index.jsp">Take me to the Add-In Home page</a></li>  <%-- This comment will not be visible in the page source --%>
                 </ul>
               <!--
                 <p><strong>Players</strong> Manage Players.</p>

@@ -11,6 +11,7 @@
           <element id="file-copy" path="$APPLICATION_HOME_DIR$/lib/log4j.jar" />
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.26/lib/mysql-connector-java-5.1.36-bin.jar" />
           <element id="library" level="module" name="JUnit4" module-name="TennisApp" />
+          <element id="file-copy" path="$PROJECT_DIR$/../myCustomTags/out/artifacts/myCustomTags/myCustomTags.jar" />
         </element>
       </element>
     </root>
