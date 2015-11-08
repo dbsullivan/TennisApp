@@ -4,13 +4,8 @@
     <list default="true" id="39b268c9-3fbc-4e6d-a1eb-479bbd278810" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/WEB-INF/classes/com/TennisApp/java/Welcome.class" afterPath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/WEB-INF/classes/com/TennisApp/java/Welcome.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TennisApp/com/TennisApp/java/Welcome.class" afterPath="$PROJECT_DIR$/out/production/TennisApp/com/TennisApp/java/Welcome.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TennisApp.iml" afterPath="$PROJECT_DIR$/TennisApp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/TennisApp/java/Welcome.java" afterPath="$PROJECT_DIR$/src/com/TennisApp/java/Welcome.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/login.jsp" afterPath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/login.jsp" afterPath="$PROJECT_DIR$/web/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/template_main_content.jsp" afterPath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/template_main_content.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/template_main_content.jsp" afterPath="$PROJECT_DIR$/web/template_main_content.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TennisApp.iws" />
@@ -775,7 +770,7 @@
       <workItem from="1446746376169" duration="1910000" />
       <workItem from="1446748302851" duration="808000" />
       <workItem from="1446770912207" duration="3513000" />
-      <workItem from="1446848020987" duration="51937000" />
+      <workItem from="1446848020987" duration="51945000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1445315005712</created>
@@ -909,11 +904,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446914999067</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="update 20151105">
+      <created>1446952372805</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1446952372805</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164498000" />
+    <option name="totallyTimeSpent" value="164506000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
