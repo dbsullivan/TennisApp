@@ -1,5 +1,6 @@
 package com.TennisApp.java;
 
+import com.TennisApp.java.entity.User;
 import org.apache.log4j.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,21 +39,25 @@ public class Welcome  extends HttpServlet {
 
         HttpSession session = request.getSession(true);
 
-        // just want the user name to include in custom tag for an am_pm_greeting:
-
-//        String  j_username  = String.valueOf(session.getAttribute("username"));
-//        session.setAttribute("parameterUserNameValue", j_username);
-        String  j_username  = request.getParameter("j_username");
-        request.setAttribute("parameterUserNameValue",j_username);
-        System.out.println("User Logged in is: " + j_username);
+//        String  j_username  = String.valueOf(session.getAttribute("username"));  //session Attribute
+//        session.setAttribute("username", j_username);
+//        logger.info("User Logged in is: " + j_username);
+//
+//        String  j_username2  = request.getParameter("j_username");  // request parameter Attribute
+//        request.setAttribute("username",j_username2);
+//        logger.info("User Logged in is: " + j_username2);
 
         // try another approach, since no parameter seems to be available above
-        Principal principal = request.getUserPrincipal(); // is null
-//        if (principal != null) {
-            String username= principal.getName(); // Find User by j_username.
-            request.setAttribute("parameterUserNameValue",username);
-            System.out.println("User Logged in is: " + username);
-//        }
+//        Principal principal = request.getUserPrincipal(); // is null
+////        if (principal != null) {
+//            String j_username3= principal.getName(); // Find User by j_username.
+//            request.setAttribute("username",j_username3);
+//            logger.info("User Logged in is: " + j_username3);
+////        }
+
+        // User bean to hold the user name logged in. Set bean here, or using EL in login.jsp??? ASK
+//        User user = new User();
+//        user.setName(j_username);
 
         String url;
         url = "/index.jsp";

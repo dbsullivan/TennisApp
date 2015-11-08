@@ -22,6 +22,15 @@
 
 <body>
 
+
+<jsp:useBean id="User" class="com.TennisApp.java.entity.User" scope="session" />
+<%-- <jsp:setProperty name="User" property="name" value="${param.j_username}"/> --%>
+<%-- <jsp:setProperty name="User" property="name"  value='<%= request.getParameter("j_username") %>' />  --%>
+<%-- <c:set target="${User}" property="name" value='<%= request.getParameter("j_username") %>' /> --%>
+<c:set target="${User}" property="name" value="${ param.j_username }" />
+
+
+
 <!-- header -->
 <c:import url="template_header.jsp" />
 <!--end header -->
@@ -31,9 +40,6 @@
 
     <!--begin sidebar -->
     <div id="sidebar">
-        <!--      <a href="/java112"><img src="images/clover.jpg" alt="Dave Sullivan Java112 Home" align="left" width=200 height=150 /></a>
-          -->
-
     </div>
 
     <div id="text"  >
@@ -45,9 +51,8 @@
             <table>
                 <tr><td align="left">Please Enter your UserId and Password:</td></tr>
                 <tr>
-                <%--    <td align="left">UserID: <input type="text" name="j_username" value="${parameterUserNameValue}" maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" /> --%>
-                     <td align="left">UserID: <input type="text" name="j_username" value="${username}" f maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" />
-                    </td>
+                     <%-- <td align="left">UserID: <input type="text" name="j_username" value="${username}"  maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" /> --%>
+                     <td align="left">UserID: <input type="text" name="j_username" value="${username}"  maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" /></td>
                 </tr>
                 <tr>
                     <td align="left">Password: <input type="PASSWORD" name="j_password" maxlength="15" size="15" style="background-color:<%= textAreaColor %> ;" />
@@ -55,9 +60,8 @@
                 </tr>
             </table>
             <br />
-            <!--input type="submit" name="submitLogin" value="Enter" / -->
-            <!-- org.apache.tomcat.util.http.Parameters.processParameters Invalid chunk starting at byte [36] and ending at byte [42] with a value of [=Enter] ignored -->
-            <input type="submit" name="" value="Enter" />
+            <input type="submit" value="Enter" />
+            <!-- <input type="submit" name="submitLogin" value="Enter" /> -->
         </form>
     </div>
 </div>

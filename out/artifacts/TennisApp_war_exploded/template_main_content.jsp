@@ -1,39 +1,45 @@
-    <!-- main -->
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="mycustomtags" uri="/WEB-INF/tlds/custom.tld" %>
-    <div id="main">
-	    <!--begin sidebar -->
-          <div id="sidebar">
-          <!--      <a href="/java112"><img src="images/clover.jpg" alt="Dave Sullivan Java112 Home" align="left" width=200 height=150 /></a>
-            -->
-          </div>
+<!-- main -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="mycustomtags" uri="/WEB-INF/tlds/custom.tld" %>
 
-          <div id="text" >
-                <h1><strong>Tennis League</strong></h1>
+<jsp:useBean id="User" class="com.TennisApp.java.entity.User" scope="session" />
+<jsp:getProperty name="User" property="name" />
 
-              <%-- use custom tag for this message? --%>
-                <p>
-                   <mycustomtags:AM_PM_Greeting username="Dave" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting>
-                    <mycustomtags:AM_PM_Greeting username="${parameterUserNameValue}" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting>
 
-                </p>
-                <%-- <p> Welcome ${parameterUserNameValue} to the Add-in Application.</p> --%>
+<div id="main">
+    <!--begin sidebar -->
+      <div id="sidebar">
+      </div>
 
-                <ul>
-                    <li><a href="index.jsp">Take me to the Add-In Home page</a></li>  <%-- This comment will not be visible in the page source --%>
-                </ul>
-              <!--
-                <p><strong>Players</strong> Manage Players.</p>
-                <ul>
-                   <li><a href="/java112/project4-add">Add Player</a></li> <%-- Above link to jsp, here these are Servlets --%>
-                   <li><a href="/java112/project4-search">Search Player</a></li>
-                </ul>
-                <p><strong>Leagues</strong> Manage Leagues.</p>
-                <ul>
-                   <li><a href="/java112/project3-properties">Add League</a></li>
-                   <li><a href="/java112/request-servlet">Search League</a></li>
-                </ul>
-              -->
-          </div>
-    </div>
-    <!-- end main -->
+      <div id="text" >
+            <h1><strong>Tennis League</strong></h1>
+
+          <%-- use custom tag for this message? --%>
+            <p>
+                <%-- <mycustomtags:AM_PM_Greeting username="Dave" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting> --%>
+                <%--  <mycustomtags:AM_PM_Greeting username="${username}" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting> --%>
+                <mycustomtags:AM_PM_Greeting username="<%= User.getName() %>" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting>
+
+            </p>
+            <%-- <p> Welcome ${parameterUserNameValue} to the Add-in Application.</p> --%>
+
+            <p><h3><strong>Manage Players</strong></h3></p>
+            <ul>
+               <li><a href="/player-search">Player Search</a></li> <%-- links to Servlets --%>
+               <%-- <li><a href="/java112/project4-add">Player Add</a></li> --%>
+            </ul>
+          <!--
+            <p><h3><strong>Manage Leagues</strong></h3></p>
+            <ul>
+               <li><a href="/java112/project3-properties">League Search</a></li>
+               <li><a href="/java112/request-servlet">League Add</a></li>
+            </ul>
+          -->
+
+            <ul>
+              <li><a href="index.jsp">Take me to the Add-In Home page</a></li>  <%-- link to jsp, above link to Servlets --%>
+            </ul>
+
+      </div>
+</div>
+<!-- end main -->
