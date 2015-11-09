@@ -1,6 +1,7 @@
 package com.TennisApp.java.entity;
 
 /**
+ * This is the Player entity bean. Getters/Setters don't require javadoc.
  * Created by Dave on 11/5/2015.
  */
 public class Player {

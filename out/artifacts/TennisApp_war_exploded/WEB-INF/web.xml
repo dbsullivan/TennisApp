@@ -36,11 +36,12 @@
             <url-pattern>/login.jsp</url-pattern>
             <url-pattern>/login-error.jsp</url-pattern>
             <url-pattern>/index.jsp</url-pattern>
-            <url-pattern>/welcome.jsp</url-pattern>
             <url-pattern>/template_footer.jsp</url-pattern>
             <url-pattern>/template_head_tag.jsp</url-pattern>
             <url-pattern>/template_header.jsp</url-pattern>
             <url-pattern>/template_main_content.jsp</url-pattern>
+            <url-pattern>/playerSearch.jsp</url-pattern>
+            <url-pattern>/playerSearchResults.jsp</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
@@ -55,11 +56,12 @@
             <url-pattern>/login.jsp</url-pattern>
             <url-pattern>/login-error.jsp</url-pattern>
             <url-pattern>/index.jsp</url-pattern>
-            <url-pattern>/welcome.jsp</url-pattern>
             <url-pattern>/template_footer.jsp</url-pattern>
             <url-pattern>/template_head_tag.jsp</url-pattern>
             <url-pattern>/template_header.jsp</url-pattern>
             <url-pattern>/template_main_content.jsp</url-pattern>
+            <url-pattern>/playerSearch.jsp</url-pattern>
+            <url-pattern>/playerSearchResults.jsp</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
