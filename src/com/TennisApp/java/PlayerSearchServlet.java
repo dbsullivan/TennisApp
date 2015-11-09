@@ -48,8 +48,6 @@ public class PlayerSearchServlet extends HttpServlet {
         String searchTerm = request.getParameter("searchTerm");
         String searchType = request.getParameter("searchType");
 
-        //TODO ARE WE GETTING THIS INSTANTIATED?  Does the PlayerSearch object bean need to be in persistance?  PlayerDao needs PlayerSearch object.
-        // after passing all the search page value edits, last else (good tests for this module)
         PlayerDao playerDao = new PlayerDao();
 
         PlayerSearch playerSearch = new PlayerSearch();
@@ -93,7 +91,6 @@ public class PlayerSearchServlet extends HttpServlet {
                 session.setAttribute("playerSearchMessage", SearchMessage);
             }
 
-         // TODO need results
             url = "/playerSearchResults.jsp";
         }
 

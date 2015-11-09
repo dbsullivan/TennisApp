@@ -22,18 +22,14 @@ public class Player {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.phone = phone;
         this.gender = gender;
         this.NTRPlevel = NTRPlevel;
-        this.phone = phone;
     }
 
-    public int getPlayerId() {
-        return playerId;
-    }
+    public int getPlayerId() {return playerId; }
 
-    public void setPlayerId(int employeeId) {
-        this.playerId = playerId;
-    }
+    public void setPlayerId(int playerId) { this.playerId = playerId; }
 
     public String getFirstName() {
         return firstName;
@@ -57,29 +53,20 @@ public class Player {
 
     public void setEmail(String email) {this.email = email; }
 
+    public String getPhone() { return phone; }
+
+    public void setPhone(String phone) { this.phone = phone;  }
+
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+    public void setGender(String gender) { this.gender = gender; }
 
-    public String getNTRPlevel() {
-        return NTRPlevel;
-    }
+    public String getNTRPlevel() { return NTRPlevel; }
 
-    public void setNTRPlevel(String NTRPlevel) {
-        this.NTRPlevel = NTRPlevel;
-    }
+    public void setNTRPlevel(String NTRPlevel) { this.NTRPlevel = NTRPlevel; }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public String toString() {
         return  System.lineSeparator() +
@@ -88,8 +75,8 @@ public class Player {
                 + firstName + " "
                 + lastName + " "
                 + email + " "
-                + NTRPlevel + " "
+                + phone + " "
                 + gender + " "
-                + phone;
+                + NTRPlevel;
     }
 }

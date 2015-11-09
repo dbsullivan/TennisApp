@@ -14,8 +14,8 @@ import javax.servlet.annotation.*;
 
 @WebServlet(
         name = "applicationStartup",
-        urlPatterns = { "/application-startup" } ,
-        loadOnStartup = 1
+        urlPatterns = { "/application-startup" }
+        ,loadOnStartup = 1
 )
 public class ApplicationStartup extends HttpServlet {
     /**
