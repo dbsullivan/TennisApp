@@ -37,6 +37,7 @@ public class PlayerDao {
 
         logger.info("method searchForPlayer() in PlayerDao, with type: " + playerSearch.getSearchType());
 
+        //TODO enum?
         if (playerSearch.getSearchType().toLowerCase().equals("id")) {
             searchForPlayerID(playerSearch); // should return player
         }  else

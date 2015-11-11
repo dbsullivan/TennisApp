@@ -17,6 +17,7 @@ public class PlayerSearchServletTest {
     @Before
     public void setUp() throws Exception {
         PlayerSearchServlet pss = new PlayerSearchServlet();
+        //todo http://stackoverflow.com/questions/12945907/how-to-mock-the-httpservletrequest
 //        pss.doGet(HttpServletRequest request,
 //                HttpServletResponse response );
     }
