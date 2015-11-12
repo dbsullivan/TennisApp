@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39b268c9-3fbc-4e6d-a1eb-479bbd278810" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/template_main_content.jsp" afterPath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/template_main_content.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/TennisApp_war_exploded/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TennisApp.iws" />
@@ -767,7 +765,7 @@
       <workItem from="1447204202851" duration="156000" />
       <workItem from="1447204941666" duration="26000" />
       <workItem from="1447247026292" duration="76000" />
-      <workItem from="1447288972044" duration="9732000" />
+      <workItem from="1447288972044" duration="9874000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1445315005712</created>
@@ -949,11 +947,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447301259223</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="update 20151111">
+      <created>1447301272907</created>
+      <option name="number" value="00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1447301272907</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225381000" />
+    <option name="totallyTimeSpent" value="225523000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -976,7 +980,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4310559" sideWeight="0.27015558" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3266583" sideWeight="0.48442677" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3266583" sideWeight="0.4075547" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32546583" sideWeight="0.4075547" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4310559" sideWeight="0.7298444" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916147" sideWeight="0.44532803" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -1020,7 +1024,8 @@
     <MESSAGE value="update 20151108" />
     <MESSAGE value="update 20151109" />
     <MESSAGE value="update 20151110" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 20151110" />
+    <MESSAGE value="update 20151111" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 20151111" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
