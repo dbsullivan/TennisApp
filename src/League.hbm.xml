@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.TennisApp.java.entity.League" table="league">
+        <meta attribute="class-description">
+            This class contains the league detail.
+        </meta>
+        <id name="leagueId" type="int" column="league_id">
+            <generator class="native"/>
+        </id>
+        <property name="leagueName" column="league_name" type="string"/>
+        <property name="numPlayerSlots" column="num_player_slots" type="int"/>
+        <property name="numCourtsNeeded" column="num_courts_needed" type="int"/>
+        <property name="numEvents" column="num_events" type="int"/>
+        <property name="typeSinglesDoubles" column="type_singles_doubles" type="string"/>
+        <property name="level" column="level" type="string"/>
+        <property name="startDate" column="start_date" type="date"/>
+        <property name="endDate" column="end_date" type="date"/>
+        <property name="status" column="status" type="string"/>
+    </class>
+</hibernate-mapping>

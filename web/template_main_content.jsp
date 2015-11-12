@@ -28,16 +28,16 @@
                <li><a href="/player-search">Player Search</a></li> <%-- links to Servlets, use urlPatterns for Servlet controller forward to jsp --%>
                <%-- <li><a href="/java112/project4-add">Player Add</a></li> --%>
             </ul>
-          <!--
+
             <p><h3><strong>Manage Leagues</strong></h3></p>
             <ul>
-               <li><a href="/java112/project3-properties">League Search</a></li>
-               <li><a href="/java112/request-servlet">League Add</a></li>
-            </ul>
-          -->
+                <li><a href="/league-search">League Search</a></li>
+                <%-- <li><a href="/java112/request-servlet">League Add</a></li> --%>
+             </ul>
 
-            <ul>
-              <li><a href="index.jsp">Take me to the Add-In Home page</a></li>  <%-- link to jsp, above link to Servlets --%>
+
+             <ul>
+               <li><a href="index.jsp">Take me to the Add-In Home page</a></li>  <%-- link to jsp, above link to Servlets --%>
             </ul>
 
       </div>

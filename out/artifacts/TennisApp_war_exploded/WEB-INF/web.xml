@@ -42,6 +42,8 @@
             <url-pattern>/template_main_content.jsp</url-pattern>
             <url-pattern>/playerSearch.jsp</url-pattern>
             <url-pattern>/playerSearchResults.jsp</url-pattern>
+            <url-pattern>/leagueSearch.jsp</url-pattern>
+            <url-pattern>/leagueSearchResults.jsp</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
@@ -62,6 +64,8 @@
             <url-pattern>/template_main_content.jsp</url-pattern>
             <url-pattern>/playerSearch.jsp</url-pattern>
             <url-pattern>/playerSearchResults.jsp</url-pattern>
+            <url-pattern>/leagueSearch.jsp</url-pattern>
+            <url-pattern>/leagueSearchResults.jsp</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
