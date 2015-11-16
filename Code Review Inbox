@@ -1,1 +1,19 @@
+Execution.
 
+Much of the project components are in place and are working. The code is packaged
+well and coded neatly. The PlayerSearchServlet has a pretty crazy 'else if' block.
+There might be a better way to guide your search.
+
+The code is commented well and documented well in most places. This made it easier
+to follow and read. Some of the code exceeded the max length (mostly queries). The
+code is bracketed well and pretty consistent in terms of spacing.
+
+Variable and method names are very good, descriptive, not abbreviated, and not
+redundant. Getters and setters used (encapsulation). Logging is used at the info
+level. I did not see any error handling but maybe it is hiding. There would be an
+opportunity to log at the error level there.
+
+J-Units started.
+
+A well organized project. It is evident you have spent lots of time on this.
+nw 11/16
