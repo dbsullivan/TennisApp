@@ -18,6 +18,7 @@ public class PlayerSearchServletTest {
     public void setUp() throws Exception {
         PlayerSearchServlet pss = new PlayerSearchServlet();
         //todo http://stackoverflow.com/questions/12945907/how-to-mock-the-httpservletrequest
+        // this is not considered a unit test, but an integration test, see Mockito, others.
 //        pss.doGet(HttpServletRequest request,
 //                HttpServletResponse response );
     }

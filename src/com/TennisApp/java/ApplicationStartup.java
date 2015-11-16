@@ -48,7 +48,9 @@ public class ApplicationStartup extends HttpServlet {
     public void loadProperties(String propertiesFilePath) {
         properties = new Properties();
         try {
-            properties.load (this.getClass().getResourceAsStream(propertiesFilePath));
+            //Dave changed for Intellij properties in resources\ folder
+//            properties.load (this.getClass().getResourceAsStream(propertiesFilePath));
+            properties.load(this.getClass().getClassLoader().getResourceAsStream(propertiesFilePath));
         } catch (IOException e) {
             logger.error("Can't load the properties file: ", e);
         } catch (Exception e) {

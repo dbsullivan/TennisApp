@@ -26,7 +26,7 @@
             <p><h3><strong>Manage Players</strong></h3></p>
             <ul>
                <li><a href="/player-search">Player Search</a></li> <%-- links to Servlets, use urlPatterns for Servlet controller forward to jsp --%>
-               <%-- <li><a href="/java112/project4-add">Player Add</a></li> --%>
+               <li><a href="/player-add">Player Add</a></li>
             </ul>
 
             <p><h3><strong>Manage Leagues</strong></h3></p>

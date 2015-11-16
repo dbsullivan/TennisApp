@@ -47,13 +47,13 @@ public class Welcome  extends HttpServlet {
 //        request.setAttribute("username",j_username2);
 //        logger.info("User Logged in is: " + j_username2);
 
-        // try another approach, since no parameter seems to be available above
+        // try another approach, since no parameter seems to be available above // see also GenericPrincipal[] name attribute
 //        Principal principal = request.getUserPrincipal(); // is null
 ////        if (principal != null) {
 //            String j_username3= principal.getName(); // Find User by j_username.
 //            request.setAttribute("username",j_username3);
 //            logger.info("User Logged in is: " + j_username3);
-////        }
+//        }
 
         // User bean to hold the user name logged in. Set bean here, or using EL in login.jsp??? ASK
 //        User user = new User();

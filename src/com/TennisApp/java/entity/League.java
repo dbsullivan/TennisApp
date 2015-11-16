@@ -37,7 +37,7 @@ public class League {
 
     public int getLeagueId() {return leagueId; }
 
-    public void setLeagueId(int playerId) { this.leagueId = leagueId; }
+    public void setLeagueId(int leagueId) { this.leagueId = leagueId; }
 
     public String getLeagueName() {return leagueName; }
 
@@ -78,12 +78,12 @@ public class League {
 
     public String toString() {
         return  System.lineSeparator() +
-                "League: " + " "
+                "Id: " + " "
                 + leagueId + " "
                 + leagueName + " "
-                + numPlayerSlots + " "
-                + numCourtsNeeded + " "
-                + numEvents + " "
+                + "slots="  +numPlayerSlots + " "
+                + "courts=" + numCourtsNeeded + " "
+                + "events=" + numEvents + " "
                 + typeSinglesDoubles + " "
                 + level + " "
                 + startDate + " "
