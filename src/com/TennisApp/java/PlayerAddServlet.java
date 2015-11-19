@@ -4,6 +4,8 @@ import com.TennisApp.java.entity.Player;
 import com.TennisApp.java.persistance.PlayerDao;
 import org.apache.log4j.Logger;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URI;
+import java.util.Map;
+
+
 
 /**
  *  This class gets the entry form parameters and upon submit will Insert a new Player record.
@@ -74,7 +80,9 @@ public class PlayerAddServlet extends HttpServlet {
         boolean ntrpLevelErr = false;
         boolean phoneNumberErr = false;
 
+
         // Validate that all fields have valid data, prior to .Add()
+        WebServiceEmailValidation webServiceEmailValidation = new WebServiceEmailValidation();
 
         if (firstName == null || firstName.equals("") ) {
             AddMessage = "Please enter missing First Name.";
@@ -85,7 +93,11 @@ public class PlayerAddServlet extends HttpServlet {
         } else if (email == null || email.equals("")) {
             AddMessage = "Please enter missing email.";
             emailErr = true;
-            //TODO validate using WebService call
+            //Now validate using WebService call, since email has passed as Not NULL or blank, call method passing email string
+//        } else if ( testEmailWebService(email) == false ) {
+        } else if ( !webServiceEmailValidation.isValidEmail(email) ) {
+            AddMessage = "Please enter valid email.";
+            emailErr = true;
         } else if (gender == null || gender.equals("")) {
             AddMessage = "Please enter missing Gender.";
             genderErr = true;
@@ -96,17 +108,21 @@ public class PlayerAddServlet extends HttpServlet {
             AddMessage = "Please enter missing Phone Number.";
             phoneNumberErr = true;
         } else {
-            // player_id should be an attribute set after insert, to allow decision to update existing player, else set 0
-            if ( session.getAttribute("playerIdAdded") == "0") {
                 Player player = new Player(playerIdAdded, firstName, lastName, email, gender, ntrpLevel, phoneNumber);
                 playerIdAdded = playerDao.addPlayer(player);
-                session.setAttribute("playerIdAdded", playerIdAdded);  // override the original 0
-                AddMessage = "Player added.";
-            } else {
-                Player player = new Player(playerIdAdded, firstName, lastName, email, gender, ntrpLevel, phoneNumber);
-                playerDao.addOrUpdatePlayer(player);
-                AddMessage = "Player updated.";
-            }
+                session.setAttribute("playerIdAdded", playerIdAdded);
+                AddMessage = "Player added. Id: " + playerIdAdded ;
+            // player_id should be an attribute set after insert, to allow decision to update existing player, else set 0
+//            if ( session.getAttribute("playerIdAdded") == "0") {
+//                Player player = new Player(playerIdAdded, firstName, lastName, email, gender, ntrpLevel, phoneNumber);
+//                playerIdAdded = playerDao.addPlayer(player);
+//                session.setAttribute("playerIdAdded", playerIdAdded);  // override the original 0
+//                AddMessage = "Player added.";
+//            } else {
+//                Player player = new Player(playerIdAdded, firstName, lastName, email, gender, ntrpLevel, phoneNumber);
+//                playerDao.addOrUpdatePlayer(player);
+//                AddMessage = "Player updated.";
+//            }
         }
 
         session.setAttribute("playerAddMessage", AddMessage);
@@ -120,4 +136,5 @@ public class PlayerAddServlet extends HttpServlet {
         url = "/playerAdd.jsp";  // do a redirect using url back to PlayerAdd.jsp page.
         response.sendRedirect(url);
     }
+
 }    
