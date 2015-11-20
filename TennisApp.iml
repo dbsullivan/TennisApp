@@ -110,6 +110,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Hibernate 4.2.2-4.2.2" level="project" />
-    <orderEntry type="library" name="Jersey-2.2" level="project" />
+    <orderEntry type="library" name="javax.ws.rs-api-2.0.1" level="project" />
   </component>
 </module>

@@ -18,7 +18,7 @@
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.28/lib/taglibs-standard-jstlel-1.2.5.jar" />
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.28/lib/taglibs-standard-spec-1.2.5.jar" />
           <element id="library" level="project" name="Hibernate 4.2.2-4.2.2" />
-          <element id="library" level="project" name="Jersey-2.2" />
+          <element id="library" level="project" name="javax.ws.rs-api-2.0.1" />
         </element>
       </element>
     </root>

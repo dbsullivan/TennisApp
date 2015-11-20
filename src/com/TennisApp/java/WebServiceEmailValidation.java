@@ -1,12 +1,14 @@
 package com.TennisApp.java;
 
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
+//import javax.ws.rs.client.Client;
+//import javax.ws.rs.client.ClientBuilder;
+//import javax.ws.rs.core.MediaType;
+//import javax.ws.rs.client.WebTarget;
+
+import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.client.WebTarget;
-
-
+import java.util.Objects;
 
 
 /**
@@ -35,12 +37,12 @@ public class WebServiceEmailValidation {
 
         String callResponse = client
                 .target(REST_SERVICE_URL)
-                .path("isEmailValid/{emailtest}")
+                .path("/isEmailValid/{emailtest}")
                 .resolveTemplate("emailtest", emailToTest)
-                        .request(MediaType.TEXT_PLAIN)
-                        .get(String.class);
+                .request(MediaType.TEXT_PLAIN)
+                .get(String.class);
 
-        if (callResponse == "true") {
+        if (Objects.equals(callResponse, "true")) {
             returnValue = true;
         } else {
             returnValue = false;
