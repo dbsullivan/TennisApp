@@ -93,8 +93,7 @@ public class PlayerAddServlet extends HttpServlet {
         } else if (email == null || email.equals("")) {
             AddMessage = "Please enter missing email.";
             emailErr = true;
-            //Now validate using WebService call, since email has passed as Not NULL or blank, call method passing email string
-//        } else if ( testEmailWebService(email) == false ) {
+        //Now validate using WebService call, since email has passed as Not NULL or blank, call method passing email string
         } else if ( !webServiceEmailValidation.isValidEmail(email) ) {
             AddMessage = "Please enter valid email.";
             emailErr = true;
@@ -112,17 +111,6 @@ public class PlayerAddServlet extends HttpServlet {
                 playerIdAdded = playerDao.addPlayer(player);
                 session.setAttribute("playerIdAdded", playerIdAdded);
                 AddMessage = "Player added. Id: " + playerIdAdded ;
-            // player_id should be an attribute set after insert, to allow decision to update existing player, else set 0
-//            if ( session.getAttribute("playerIdAdded") == "0") {
-//                Player player = new Player(playerIdAdded, firstName, lastName, email, gender, ntrpLevel, phoneNumber);
-//                playerIdAdded = playerDao.addPlayer(player);
-//                session.setAttribute("playerIdAdded", playerIdAdded);  // override the original 0
-//                AddMessage = "Player added.";
-//            } else {
-//                Player player = new Player(playerIdAdded, firstName, lastName, email, gender, ntrpLevel, phoneNumber);
-//                playerDao.addOrUpdatePlayer(player);
-//                AddMessage = "Player updated.";
-//            }
         }
 
         session.setAttribute("playerAddMessage", AddMessage);
