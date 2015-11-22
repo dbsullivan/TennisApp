@@ -117,27 +117,27 @@
           </td>
         </tr>
         <tr>
-          <td align="left">League Start Date:</td>
+          <td align="left">League Start Date (mm/dd/yyyy): </td>
           <td align="left"><%-- <input type="text" name="leagueStartDate" maxlength="10" size="10" value="${leagueStartDate}" /></td> --%>
             <c:choose>
               <c:when test="${leagueStartDateErr == true}" >
-                <input type="text" name="leagueStartDate" maxlength="10" size="10" value="${leagueStartDate}" style="background-color:<%= textAreaHighlight %> ;" />
+                <input type="text" id="leagueStartDate" name="leagueStartDate" maxlength="10" size="10" value="${leagueStartDate}" style="background-color:<%= textAreaHighlight %> ;" />
               </c:when>
               <c:otherwise>
-                <input type="text" name="leagueStartDate" maxlength="10" size="10" value="${leagueStartDate}" style="background-color:<%= textAreaColor %> ;" />
+                <input type="text" id="leagueStartDate"  name="leagueStartDate" maxlength="10" size="10" value="${leagueStartDate}" style="background-color:<%= textAreaColor %> ;" />
               </c:otherwise>
             </c:choose>
           </td>
         </tr>
         <tr>
-          <td align="left">League End Date:</td>
+          <td align="left">League End Date (mm/dd/yyyy):</td>
           <td align="left"><%-- <input type="text" name="leagueEndDate" maxlength="10" size="10" value="${leagueEndDate}" /></td> --%>
             <c:choose>
               <c:when test="${leagueEndDateErr == true}" >
-                <input type="text" name="leagueEndDate" maxlength="10" size="10" value="${leagueEndDate}" style="background-color:<%= textAreaHighlight %> ;" />
+                <input type="text" id="leagueEndDate"  name="leagueEndDate" maxlength="10" size="10" value="${leagueEndDate}" style="background-color:<%= textAreaHighlight %> ;" />
               </c:when>
               <c:otherwise>
-                <input type="text" name="leagueEndDate" maxlength="10" size="10" value="${leagueEndDate}" style="background-color:<%= textAreaColor %> ;" />
+                <input type="text" id="leagueEndDate"  name="leagueEndDate" maxlength="10" size="10" value="${leagueEndDate}" style="background-color:<%= textAreaColor %> ;" />
               </c:otherwise>
             </c:choose>
           </td>

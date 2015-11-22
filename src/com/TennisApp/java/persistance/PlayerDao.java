@@ -68,7 +68,8 @@ public class PlayerDao {
                 playerSearch.setPlayersFound(false);
             }
         } catch (HibernateException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            logger.error("Exception: ", e);
         } finally {
             session.close();
         }
@@ -98,7 +99,8 @@ public class PlayerDao {
             }
 //            return players;
         } catch (HibernateException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            logger.error("Exception: ", e);
         } finally {
             session.close();
         }
@@ -120,7 +122,8 @@ public class PlayerDao {
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
-            e.printStackTrace();
+//            e.printStackTrace();
+            logger.error("Exception: ", e);
         } finally {
             session.close();
         }
@@ -143,7 +146,8 @@ public class PlayerDao {
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
-            e.printStackTrace();
+//            e.printStackTrace();
+            logger.error("Exception: ", e);
         } finally {
             session.close();
         }
@@ -163,7 +167,8 @@ public class PlayerDao {
                 return player;
             }
         } catch (HibernateException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            logger.error("Exception: ", e);
         } finally {
             session.close();
         }
@@ -183,7 +188,8 @@ public class PlayerDao {
         try {
             players = criteria.list();
         } catch (HibernateException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            logger.error("Exception: ", e);
         } finally {
             session.close();
         }
@@ -206,7 +212,8 @@ public class PlayerDao {
             }
             tx.commit();
         }catch (HibernateException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            logger.error("Exception: ", e);
         }finally {
             session.close();
         }
@@ -229,6 +236,7 @@ public class PlayerDao {
 //            }
 //        } catch (HibernateException e) {
 //            e.printStackTrace();
+//    logger.error("Exception: ", e);
 //        } finally {
 //            session.close();
 //        }
