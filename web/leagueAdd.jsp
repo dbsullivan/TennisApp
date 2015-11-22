@@ -40,7 +40,7 @@
       <table>
         <tr>
           <td align="left">League Name:</td>
-          <td align="left"><%-- input type="text" name="leagueName" maxlength="25" size="30" value="${leagueName}" style="background-color:#ffffff;"/ --%>
+          <td align="left"><%-- input type="text" name="leagueName" maxlength="50" size="50" value="${leagueName}" style="background-color:#ffffff;"/ --%>
             <c:choose>
               <c:when test="${leagueNameErr == true}" >
                 <input type="text" name="leagueName" maxlength="50" size="50" value="${leagueName}" style="background-color:<%= textAreaHighlight %> ;" />
@@ -53,7 +53,7 @@
         </tr>
         <tr>
           <td align="left">League Number of Player Slots:</td>
-          <td align="left"><%-- <input type="text" name="leaguePlayerSlots" maxlength="30" size="30" value="${leaguePlayerSlots}" /></td> --%>
+          <td align="left"><%-- <input type="text" name="leaguePlayerSlots" maxlength="2" size="2" value="${leaguePlayerSlots}" /></td> --%>
             <c:choose>
               <c:when test="${leaguePlayerSlotsErr == true}" >
                 <input type="text" name="leaguePlayerSlots" maxlength="2" size="2" value="${leaguePlayerSlots}" style="background-color:<%= textAreaHighlight %> ;" />
@@ -66,7 +66,7 @@
         </tr>
         <tr>
           <td align="left">League Number of Courts Needed:</td>
-          <td align="left"><%-- <input type="text" name="courtsNeeded" maxlength="20" size="30" value="${courtsNeeded}" /></td> --%>
+          <td align="left"><%-- <input type="text" name="leagueCourtsNeeded" maxlength="2" size="2" value="${leagueCourtsNeeded}" /></td> --%>
             <c:choose>
               <c:when test="${leagueCourtsNeededErr == true}" >
                 <input type="text" name="leagueCourtsNeeded" maxlength="2" size="2" value="${leagueCourtsNeeded}" style="background-color:<%= textAreaHighlight %> ;" />
@@ -79,7 +79,7 @@
         </tr>
         <tr>
           <td align="left">League Number of Events:</td>
-          <td align="left"><%-- <input type="text" name="gender" maxlength="10" size="30" value="${gender}" /></td> --%>
+          <td align="left"><%-- <input type="text" name="leagueEvents" maxlength="2" size="2" value="${leagueEvents}" /></td> --%>
             <c:choose>
               <c:when test="${leagueEventsErr == true}" >
                 <input type="text" name="leagueEvents" maxlength="2" size="2" value="${leagueEvents}" style="background-color:<%= textAreaHighlight %> ;" />
@@ -91,28 +91,66 @@
           </td>
         </tr>
         <tr>
-            //TODO START HERE WITH LEAGUE_TYPE_SNGL_DBL
-          <td align="left">League s NTRP Level:</td>
-          <td align="left"><%-- <input type="text" name="ntrpLevel" maxlength="5" size="5" value="${ntrpLevel}" /></td> --%>
+          <td align="left">League Type Singles or Doubles:</td>
+          <td align="left"><%-- <input type="text" name="leagueTypeSnglDbls" maxlength="15" size="15" value="${leagueTypeSnglDbls}" /></td> --%>
             <c:choose>
-              <c:when test="${leaguentrpLevelErr == true}" >
-                <input type="text" name="ntrpLevel" maxlength="5" size="5" value="${ntrpLevel}" style="background-color:<%= textAreaHighlight %> ;" />
+              <c:when test="${leagueTypeSnglDblsErr == true}" >
+                <input type="text" name="leagueTypeSnglDbls" maxlength="15" size="15" value="${leagueTypeSnglDbls}" style="background-color:<%= textAreaHighlight %> ;" />
               </c:when>
               <c:otherwise>
-                <input type="text" name="ntrpLevel" maxlength="5" size="5" value="${ntrpLevel}" style="background-color:<%= textAreaColor %> ;" />
+                <input type="text" name="leagueTypeSnglDbls" maxlength="15" size="15" value="${leagueTypeSnglDbls}" style="background-color:<%= textAreaColor %> ;" />
               </c:otherwise>
             </c:choose>
           </td>
         </tr>
         <tr>
-          <td align="left">League Phone Number:</td>
-          <td align="left"><%-- <input type="text" name="phoneNumber" maxlength="15" size="15" value="${phoneNumber}" /></td> --%>
+          <td align="left">League NTRP Level:</td>
+          <td align="left"><%-- <input type="text" name="leagueNTRPLevel" maxlength="5" size="5" value="${leagueNTRPLevel}" /></td> --%>
             <c:choose>
-              <c:when test="${leaguephoneNumberErr == true}" >
-                <input type="text" name="phoneNumber" maxlength="15" size="15" value="${phoneNumber}" style="background-color:<%= textAreaHighlight %> ;" />
+              <c:when test="${leagueNTRPLevelErr == true}" >
+                <input type="text" name="leagueNTRPLevel" maxlength="5" size="5" value="${leagueNTRPLevel}" style="background-color:<%= textAreaHighlight %> ;" />
               </c:when>
               <c:otherwise>
-                <input type="text" name="phoneNumber" maxlength="15" size="15" value="${phoneNumber}" style="background-color:<%= textAreaColor %> ;" />
+                <input type="text" name="leagueNTRPLevel" maxlength="5" size="5" value="${leagueNTRPLevel}" style="background-color:<%= textAreaColor %> ;" />
+              </c:otherwise>
+            </c:choose>
+          </td>
+        </tr>
+        <tr>
+          <td align="left">League Start Date:</td>
+          <td align="left"><%-- <input type="text" name="leagueStartDate" maxlength="10" size="10" value="${leagueStartDate}" /></td> --%>
+            <c:choose>
+              <c:when test="${leagueStartDateErr == true}" >
+                <input type="text" name="leagueStartDate" maxlength="10" size="10" value="${leagueStartDate}" style="background-color:<%= textAreaHighlight %> ;" />
+              </c:when>
+              <c:otherwise>
+                <input type="text" name="leagueStartDate" maxlength="10" size="10" value="${leagueStartDate}" style="background-color:<%= textAreaColor %> ;" />
+              </c:otherwise>
+            </c:choose>
+          </td>
+        </tr>
+        <tr>
+          <td align="left">League End Date:</td>
+          <td align="left"><%-- <input type="text" name="leagueEndDate" maxlength="10" size="10" value="${leagueEndDate}" /></td> --%>
+            <c:choose>
+              <c:when test="${leagueEndDateErr == true}" >
+                <input type="text" name="leagueEndDate" maxlength="10" size="10" value="${leagueEndDate}" style="background-color:<%= textAreaHighlight %> ;" />
+              </c:when>
+              <c:otherwise>
+                <input type="text" name="leagueEndDate" maxlength="10" size="10" value="${leagueEndDate}" style="background-color:<%= textAreaColor %> ;" />
+              </c:otherwise>
+            </c:choose>
+          </td>
+        </tr>
+        <tr>
+          <td align="left">League Status:</td>
+          <td align="left"><%-- <input type="text" name="leagueStatus" maxlength="1" size="1" value="${leagueStatus}" /></td> --%>
+            <c:choose>
+              <c:when test="${leagueStatusErr == true}" >
+                <input type="text" name="leagueStatus" maxlength="1" size="1" value="${leagueStatus}" style="background-color:<%= textAreaHighlight %> ;" />
+              </c:when>
+              <c:otherwise>
+                <input type="text" name="leagueStatus" maxlength="1" size="1" value="${leagueStatus}" style="background-color:<%= textAreaColor %> ;" />
               </c:otherwise>
             </c:choose>
           </td>

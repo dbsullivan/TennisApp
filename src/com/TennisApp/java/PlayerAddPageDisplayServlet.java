@@ -34,9 +34,9 @@ public class PlayerAddPageDisplayServlet extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-        logger.info("In PlayerAddPageDisplayServlet servlet, will forward to PlayerAdd.jsp");
+        logger.info("In PlayerAddPageDisplayServlet servlet, will forward to playerAdd.jsp");
 
-        // Forward to a JSP page named PlayerAdd.jsp.
+        // Forward to a JSP page named playerAdd.jsp.
         String url = "/playerAdd.jsp";
 
         RequestDispatcher  dispatcher =

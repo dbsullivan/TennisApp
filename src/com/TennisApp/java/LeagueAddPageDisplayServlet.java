@@ -39,9 +39,9 @@ public class LeagueAddPageDisplayServlet extends HttpServlet {
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-        logger.info("In LeagueAddPageDisplayServlet servlet, will forward to LeagueAdd.jsp");
+        logger.info("In LeagueAddPageDisplayServlet servlet, will forward to leagueAdd.jsp");
 
-        // Forward to a JSP page named LeagueAdd.jsp.
+        // Forward to a JSP page named leagueAdd.jsp.
         String url = "/leagueAdd.jsp";
 
         RequestDispatcher dispatcher =

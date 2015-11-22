@@ -32,7 +32,7 @@
             <p><h3><strong>Manage Leagues</strong></h3></p>
             <ul>
                 <li><a href="/league-search">League Search</a></li>
-                <%-- <li><a href="/java112/request-servlet">League Add</a></li> --%>
+                <li><a href="/league-add">League Add</a></li>
              </ul>
 
 
