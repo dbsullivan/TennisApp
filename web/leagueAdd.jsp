@@ -52,6 +52,27 @@
           </td>
         </tr>
         <tr>
+          <td align="left">League Type Singles or Doubles:</td>
+          <td align="left">
+            <c:choose>
+              <c:when test="${leagueTypeSnglDblsErr == true}" >
+                <input type="radio" name="leagueTypeSnglDbls" id="Singles" value="Singles"
+                       style="background-color:<%= textAreaHighlight %> ;" ${leagueTypeSnglDbls == 'Singles' ? 'checked' : ''}/> Singles
+                <br>
+                <input type="radio" name="leagueTypeSnglDbls" id="Doubles" value="Doubles"
+                       style="background-color:<%= textAreaHighlight %> ;" ${leagueTypeSnglDbls == 'Doubles' ? 'checked' : ''}/> Doubles
+              </c:when>
+              <c:otherwise>
+               <input type="radio" name="leagueTypeSnglDbls" id="Singles" value="Singles"
+                      style="background-color:<%= textAreaColor %> ;" ${leagueTypeSnglDbls == 'Singles' ? 'checked' : ''}/> Singles
+                <br>
+               <input type="radio" name="leagueTypeSnglDbls" id="Doubles" value="Doubles"
+                      style="background-color:<%= textAreaColor %> ;" ${leagueTypeSnglDbls == 'Doubles' ? 'checked' : ''}/> Doubles
+              </c:otherwise>
+            </c:choose>
+          </td>
+        </tr>
+        <tr>
           <td align="left">League Number of Player Slots:</td>
           <td align="left"><%-- <input type="text" name="leaguePlayerSlots" maxlength="2" size="2" value="${leaguePlayerSlots}" /></td> --%>
             <c:choose>
@@ -91,20 +112,7 @@
           </td>
         </tr>
         <tr>
-          <td align="left">League Type Singles or Doubles:</td>
-          <td align="left"><%-- <input type="text" name="leagueTypeSnglDbls" maxlength="15" size="15" value="${leagueTypeSnglDbls}" /></td> --%>
-            <c:choose>
-              <c:when test="${leagueTypeSnglDblsErr == true}" >
-                <input type="text" name="leagueTypeSnglDbls" maxlength="15" size="15" value="${leagueTypeSnglDbls}" style="background-color:<%= textAreaHighlight %> ;" />
-              </c:when>
-              <c:otherwise>
-                <input type="text" name="leagueTypeSnglDbls" maxlength="15" size="15" value="${leagueTypeSnglDbls}" style="background-color:<%= textAreaColor %> ;" />
-              </c:otherwise>
-            </c:choose>
-          </td>
-        </tr>
-        <tr>
-          <td align="left">League NTRP Level:</td>
+        <td align="left">League NTRP Level:</td>
           <td align="left"><%-- <input type="text" name="leagueNTRPLevel" maxlength="5" size="5" value="${leagueNTRPLevel}" /></td> --%>
             <c:choose>
               <c:when test="${leagueNTRPLevelErr == true}" >

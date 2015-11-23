@@ -43,6 +43,7 @@
       Search Type: <br />
       <input type="radio" name="searchType" value="id" />League ID<br />
       <input type="radio" name="searchType" value="name" />League Name<br />
+      <input type="radio" name="searchType" value="all" />All Leagues<br />
       <br />
       <input type="submit" value="Enter" />
     </form>

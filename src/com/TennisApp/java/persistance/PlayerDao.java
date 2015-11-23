@@ -28,7 +28,7 @@ public class PlayerDao {
     private final Logger logger = Logger.getLogger(PlayerDao.class);
 
     /**
-     * Create a method that will search for an Player using a PlayerSearch object by either id or Lastname.
+     * Create a method that will search for an Player using a PlayerSearch object by either id or Lastname or all.
      *
      *@param playerSearch  The search Player method returns a PlayerSearch object. Can search by ID or Lastname.
      *@return The playerSearch value
@@ -37,24 +37,24 @@ public class PlayerDao {
 
         logger.info("method searchForPlayer() in PlayerDao, with type: " + playerSearch.getSearchType());
 
-        //TODO enum?
         if (playerSearch.getSearchType().toLowerCase().equals("id")) {
-            searchForPlayerID(playerSearch); // should return player
+            searchForPlayerID(playerSearch); // return void, but addFoundPlayer to PlayerSearch object
         }  else
         if (playerSearch.getSearchType().toLowerCase().equals("name")) {
-            searchForPlayerName(playerSearch);  // returns an array players from like match
+            searchForPlayerName(playerSearch);  // return void, but addFoundPlayer to PlayerSearch object
+        }
+        if (playerSearch.getSearchType().toLowerCase().equals("all")) {
+            searchForAllPlayers(playerSearch);  // return void, but addFoundPlayer to PlayerSearch object
         }
 
         return playerSearch;
     }
 
     /**
-     * Create a method that will search for an Player in the database by player id.
+     * Create a method that will search for an Player by Id and return the player to the playerSearch object
      *
      *@param playerSearch  The new playerSearch object holds search type, term, results.
      */
-
-
     public void searchForPlayerID(PlayerSearch playerSearch) {
         Session session = SessionFactoryProvider.getSessionFactory().openSession();
         Player player = null;
@@ -68,7 +68,6 @@ public class PlayerDao {
                 playerSearch.setPlayersFound(false);
             }
         } catch (HibernateException e) {
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
@@ -76,13 +75,10 @@ public class PlayerDao {
     }
 
     /**
-     *  method to search by Player LastName. Similar to search by Employee ID, differs by SQL.
+     *  method to search by Player LastName and return the player to the playerSearch object
      *
      *@param playerSearch  The new playerSearch object holds search type, term, results.
      */
-
-//    private void searchForPlayerName(PlayerSearch playerSearch) {
-//    public List searchForPlayerName(PlayerSearch playerSearch) {
     public void searchForPlayerName(PlayerSearch playerSearch) {
         String lastNameToFind = playerSearch.getSearchTerm();
         Session session = SessionFactoryProvider.getSessionFactory().openSession();
@@ -97,14 +93,36 @@ public class PlayerDao {
                 }
                 playerSearch.setPlayersFound(true);
             }
-//            return players;
         } catch (HibernateException e) {
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
         }
-//        return players;
+    }
+
+    /**
+     *  method to search for all players return the players to the playerSearch object
+     *
+     *@param playerSearch  The new playerSearch object holds search type, term, results.
+     */
+    public void searchForAllPlayers(PlayerSearch playerSearch) {
+        List<Player> players = new ArrayList<Player>();
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Player.class);
+        Transaction tx = null;
+        try {
+            players = criteria.list();
+            if ( !players.isEmpty() ) {
+                for (Player player : players) {
+                    playerSearch.addFoundPlayer(player);
+                }
+                playerSearch.setPlayersFound(true);
+            }
+        } catch (HibernateException e) {
+            logger.error("Exception: ", e);
+        } finally {
+            session.close();
+        }
     }
 
 
@@ -122,7 +140,6 @@ public class PlayerDao {
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
@@ -146,7 +163,6 @@ public class PlayerDao {
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
@@ -167,7 +183,6 @@ public class PlayerDao {
                 return player;
             }
         } catch (HibernateException e) {
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
@@ -188,7 +203,6 @@ public class PlayerDao {
         try {
             players = criteria.list();
         } catch (HibernateException e) {
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();

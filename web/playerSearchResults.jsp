@@ -44,6 +44,9 @@
             <c:forEach var="player" items="${playerStatusSearch.playersList}">
                 <tr>
                     <td> Player </td>
+<%-- add anchor to tr tag, href on the player rows <tr href=...> so, when selected go to PlayerMaint.java, playerMaint.jsp --%>
+<%-- just show player ID,  names with row as a link, passing the selected ID, to PlayerMaint.java to populate playerMaint.jsp --%>
+
                     <td> ${player.toString()}</td>
                 </tr>
             </c:forEach>

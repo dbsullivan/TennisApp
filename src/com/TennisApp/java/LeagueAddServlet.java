@@ -102,6 +102,9 @@ public class LeagueAddServlet extends HttpServlet {
         if (leagueName == null || leagueName.equals("") ) {
             AddMessage = "Please enter missing League Name.";
             leagueNameErr = true;
+        } else if (leagueTypeSnglDbls == null || leagueTypeSnglDbls.equals("")) {
+            AddMessage = "Please enter missing League Type Singles or Doubles.";
+            leagueTypeSnglDblsErr = true;
         } else if (leaguePlayerSlots == null || leaguePlayerSlots.equals("")) {
             AddMessage = "Please enter missing Number of League Player Slots.";
             leaguePlayerSlotsErr = true;
@@ -120,9 +123,6 @@ public class LeagueAddServlet extends HttpServlet {
         } else if ( !userInputTypeCheck.isValidInt(leagueEvents) ) {
             AddMessage = "Please enter valid number.";
             leagueEventsErr = true;
-        } else if (leagueTypeSnglDbls == null || leagueTypeSnglDbls.equals("")) {
-            AddMessage = "Please enter missing League Type Singles or Doubles.";
-            leagueTypeSnglDblsErr = true;
         } else if (leagueNTRPLevel == null || leagueNTRPLevel.equals("")) {
             AddMessage = "Please enter missing League NTRP Level.";
             leagueNTRPLevelErr = true;
@@ -148,14 +148,13 @@ public class LeagueAddServlet extends HttpServlet {
                 leagueCourtsNeededInteger = Integer.parseInt(leagueCourtsNeeded);
                 leagueEventsInteger = Integer.parseInt(leagueEvents);
             } catch (Exception e) {
-                e.printStackTrace();
+                logger.error("Exception: ", e);
             }
 
             try {
                 leagueStartDateDATE = dateFormat.parse(leagueStartDate.trim());
                 leagueEndDateDATE = dateFormat.parse(leagueEndDate.trim());
             } catch (ParseException pe) {
-//                pe.printStackTrace();
                 logger.error("This date could not be parsed, not fatal error", pe);
             }
 

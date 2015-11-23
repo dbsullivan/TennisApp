@@ -28,7 +28,7 @@ public class LeagueDao {
     private final Logger logger = Logger.getLogger(LeagueDao.class);
 
     /**
-     * Create a method that will search for an League using a LeagueSearch object by either id or name.
+     * Create a method that will search for an League using a LeagueSearch object by either id or name or all.
      *
      *@param leagueSearch  The search League method returns a LeagueSearch object. Can search by ID or name.
      *@return The leagueSearch value
@@ -38,11 +38,15 @@ public class LeagueDao {
         logger.info("method searchForLeague() in LeagueDao, with type: " + leagueSearch.getSearchType());
         
         if (leagueSearch.getSearchType().toLowerCase().equals("id")) {
-            searchForLeagueID(leagueSearch); // should return league
+            searchForLeagueID(leagueSearch); // return void, but addFoundLeague to LeagueSearch object
         }  else
         if (leagueSearch.getSearchType().toLowerCase().equals("name")) {
-            searchForLeagueName(leagueSearch);  // returns an array leagues from like match
+            searchForLeagueName(leagueSearch);  // return void, but addFoundLeague to LeagueSearch object
+        }  else
+        if (leagueSearch.getSearchType().toLowerCase().equals("all")) {
+            searchForAllLeagues(leagueSearch);  // return void, but addFoundLeague to LeagueSearch object
         }
+
 
         return leagueSearch;
     }
@@ -52,8 +56,6 @@ public class LeagueDao {
      *
      *@param leagueSearch  The new leagueSearch object holds search type, term, results.
      */
-
-
     public void searchForLeagueID(LeagueSearch leagueSearch) {
         Session session = SessionFactoryProvider.getSessionFactory().openSession();
         League league = null;
@@ -67,7 +69,6 @@ public class LeagueDao {
                 leagueSearch.setLeaguesFound(false);
             }
         } catch (HibernateException e) {
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
@@ -79,9 +80,6 @@ public class LeagueDao {
      *
      *@param leagueSearch  The new leagueSearch object holds search type, term, results.
      */
-
-//    private void searchForLeagueName(LeagueSearch leagueSearch) {
-//    public List searchForLeagueName(LeagueSearch leagueSearch) {
     public void searchForLeagueName(LeagueSearch leagueSearch) {
         String nameToFind = leagueSearch.getSearchTerm();
         Session session = SessionFactoryProvider.getSessionFactory().openSession();
@@ -96,15 +94,38 @@ public class LeagueDao {
                 }
                 leagueSearch.setLeaguesFound(true);
             }
-//            return leagues;
         } catch (HibernateException e) {
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
         }
-//        return leagues;
     }
+
+    /**
+     *  method to search for all leagues return the leagues to the leagueSearch object
+     *
+     *@param leagueSearch  The new leagueSearch object holds search type, term, results.
+     */
+    public void searchForAllLeagues(LeagueSearch leagueSearch) {
+        List<League> leagues = new ArrayList<League>();
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(League.class);
+        Transaction tx = null;
+        try {
+            leagues = criteria.list();
+            if ( !leagues.isEmpty() ) {
+                for (League league : leagues) {
+                    leagueSearch.addFoundLeague(league);
+                }
+                leagueSearch.setLeaguesFound(true);
+            }
+        } catch (HibernateException e) {
+            logger.error("Exception: ", e);
+        } finally {
+            session.close();
+        }
+    }
+
 
 
     /** Method to CREATE a league in the database
@@ -121,7 +142,6 @@ public class LeagueDao {
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
@@ -145,7 +165,6 @@ public class LeagueDao {
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null) tx.rollback();
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
@@ -166,7 +185,6 @@ public class LeagueDao {
                 return league;
             }
         } catch (HibernateException e) {
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         } finally {
             session.close();
@@ -211,7 +229,6 @@ public class LeagueDao {
             }
             tx.commit();
         }catch (HibernateException e) {
-//            e.printStackTrace();
             logger.error("Exception: ", e);
         }finally {
             session.close();

@@ -27,12 +27,12 @@ import java.io.IOException;
 public class PlayerSearchServlet extends HttpServlet {
 
     /**
-     *  Handles HTTP GET requests.
+     * Handles HTTP GET requests.
      *
-     *@param  request               Description of the Parameter
-     *@param  response              Description of the Parameter
-     *@exception ServletException  if there is a Servlet failure
-     *@exception IOException       if there is an IO failure
+     * @param request               Description of the Parameter
+     * @param response              Description of the Parameter
+     * @exception ServletException  if there is a Servlet failure
+     * @exception IOException       if there is an IO failure
      */
     private final Logger logger = Logger.getLogger(PlayerSearchServlet.class);
 
@@ -59,40 +59,53 @@ public class PlayerSearchServlet extends HttpServlet {
         session.setAttribute("playerSearchMessage", SearchMessage);
 
         //set message on page use EL request or session.getAttribute(playerSearchMessage); fill if errors.
-        if ((playerSearch.getSearchTerm() == null || playerSearch.getSearchTerm().equals("") )
-                &
-                (playerSearch.getSearchType() == null || playerSearch.getSearchType().equals("") )
-                ) {
-            // Forward back to a JSP page named playerSearch.jsp
-            logger.info("return to playerSearch JSP, incomplete parms..." + playerSearch.getSearchType() + " " + playerSearch.getSearchTerm());
-            SearchMessage = "Please enter missing Search Term and Search Type.";
-            session.setAttribute("playerSearchMessage", SearchMessage);
-            url = "/playerSearch.jsp";
-        } else if (playerSearch.getSearchTerm() == null || playerSearch.getSearchTerm().equals("") ) {
-            // Forward back to a JSP page named playerSearch.jsp
-            logger.info("return to playerSearch JSP, incomplete parms..." + playerSearch.getSearchType() + " " + playerSearch.getSearchTerm());
-            SearchMessage = "Please enter missing Search Term.";
-            session.setAttribute("playerSearchMessage", SearchMessage);
-            url = "/playerSearch.jsp";
-        } else if (playerSearch.getSearchType() == null || playerSearch.getSearchType().equals("") ) {
-            // Forward back to a JSP page named playerSearch.jsp
-            logger.info("return to playerSearch JSP, incomplete parms..." + playerSearch.getSearchType() + " " + playerSearch.getSearchTerm());
-            SearchMessage = "Please enter missing Search Type.";
-            session.setAttribute("playerSearchMessage", SearchMessage);
-            url = "/playerSearch.jsp";
-        } else {
-            // Forward to a JSP page named playerSearchResults.jsp
-            logger.info("forward to playerSearchResults.jsp, with PlayerDao.searchForPlayer(playerSearch)") ;
-            playerSearch = playerDao.searchForPlayer(playerSearch);
-            session.setAttribute("playerStatusSearch", playerSearch);
-
-            if ( !playerSearch.isFound() ) {
-                SearchMessage = "No Player found.";
+            // edits needed for Search Term and Type, if ALL was not selected:
+            if ((playerSearch.getSearchTerm() == null || playerSearch.getSearchTerm().equals(""))
+                    &
+                (playerSearch.getSearchType() == null || playerSearch.getSearchType().equals(""))
+                    ) {
+                // Forward back to a JSP page named playerSearch.jsp
+                logger.info("return to playerSearch JSP, incomplete parms..." + playerSearch.getSearchType() + " " + playerSearch.getSearchTerm());
+                SearchMessage = "Please enter missing Search Term and Search Type, or chose All Players.";
                 session.setAttribute("playerSearchMessage", SearchMessage);
-            }
+                url = "/playerSearch.jsp";
+            } else if (playerSearch.getSearchType() == null || playerSearch.getSearchType().equals("")) {
+                // Forward back to a JSP page named playerSearch.jsp
+                logger.info("return to playerSearch JSP, incomplete parms..." + playerSearch.getSearchType() + " " + playerSearch.getSearchTerm());
+                SearchMessage = "Please enter missing Search Type.";
+                session.setAttribute("playerSearchMessage", SearchMessage);
+                url = "/playerSearch.jsp";
+            } else if (playerSearch.getSearchType().equals("all") ) {
+                // Forward to a JSP page named playerSearchResults.jsp
+                logger.info("forward to playerSearchResults.jsp, with PlayerDao.searchForPlayer()");
+                playerSearch = playerDao.searchForPlayer(playerSearch);
+                session.setAttribute("playerStatusSearch", playerSearch);
 
-            url = "/playerSearchResults.jsp";
-        }
+                if (!playerSearch.isFound()) {
+                    SearchMessage = "No Player found.";
+                    session.setAttribute("playerSearchMessage", SearchMessage);
+                }
+                url = "/playerSearchResults.jsp";
+            } else if (playerSearch.getSearchTerm() == null || playerSearch.getSearchTerm().equals("")) {
+                // Forward back to a JSP page named playerSearch.jsp
+                logger.info("return to playerSearch JSP, incomplete parms..." + playerSearch.getSearchType() + " " + playerSearch.getSearchTerm());
+                SearchMessage = "Please enter missing Search Term.";
+                session.setAttribute("playerSearchMessage", SearchMessage);
+                url = "/playerSearch.jsp";
+
+            } else {
+                // Forward to a JSP page named playerSearchResults.jsp
+                logger.info("forward to playerSearchResults.jsp, with PlayerDao.searchForPlayer(playerSearch)");
+                playerSearch = playerDao.searchForPlayer(playerSearch);
+                session.setAttribute("playerStatusSearch", playerSearch);
+
+                if (!playerSearch.isFound()) {
+                    SearchMessage = "No Player found.";
+                    session.setAttribute("playerSearchMessage", SearchMessage);
+                }
+                url = "/playerSearchResults.jsp";
+            }
+//        }
 
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);

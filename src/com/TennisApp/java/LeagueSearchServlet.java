@@ -66,19 +66,30 @@ public class LeagueSearchServlet extends HttpServlet {
                 ) {
             // Forward back to a JSP page named leagueSearch.jsp
             logger.info("return to leagueSearch JSP, incomplete parms..." + leagueSearch.getSearchType() + " " + leagueSearch.getSearchTerm());
-            SearchMessage = "Please enter missing Search Term and Search Type.";
-            session.setAttribute("leagueSearchMessage", SearchMessage);
-            url = "/leagueSearch.jsp";
-        } else if (leagueSearch.getSearchTerm() == null || leagueSearch.getSearchTerm().equals("") ) {
-            // Forward back to a JSP page named leagueSearch.jsp
-            logger.info("return to leagueSearch JSP, incomplete parms..." + leagueSearch.getSearchType() + " " + leagueSearch.getSearchTerm());
-            SearchMessage = "Please enter missing Search Term.";
+            SearchMessage = "Please enter missing Search Term and Search Type, or chose All Leagues.";
             session.setAttribute("leagueSearchMessage", SearchMessage);
             url = "/leagueSearch.jsp";
         } else if (leagueSearch.getSearchType() == null || leagueSearch.getSearchType().equals("") ) {
             // Forward back to a JSP page named leagueSearch.jsp
             logger.info("return to leagueSearch JSP, incomplete parms..." + leagueSearch.getSearchType() + " " + leagueSearch.getSearchTerm());
             SearchMessage = "Please enter missing Search Type.";
+            session.setAttribute("leagueSearchMessage", SearchMessage);
+            url = "/leagueSearch.jsp";
+        } else if (leagueSearch.getSearchType().equals("all") ) {
+            // Forward to a JSP page named leagueSearchResults.jsp
+            logger.info("forward to leagueSearchResults.jsp, with LeagueDao.searchForLeague(leagueSearch)");
+            leagueSearch = leagueDao.searchForLeague(leagueSearch);
+            session.setAttribute("leagueStatusSearch", leagueSearch);
+
+            if ( !leagueSearch.isFound() ) {
+                SearchMessage = "No League found.";
+                session.setAttribute("leagueSearchMessage", SearchMessage);
+            }
+            url = "/leagueSearchResults.jsp";
+        } else if (leagueSearch.getSearchTerm() == null || leagueSearch.getSearchTerm().equals("") ) {
+            // Forward back to a JSP page named leagueSearch.jsp
+            logger.info("return to leagueSearch JSP, incomplete parms..." + leagueSearch.getSearchType() + " " + leagueSearch.getSearchTerm());
+            SearchMessage = "Please enter missing Search Term.";
             session.setAttribute("leagueSearchMessage", SearchMessage);
             url = "/leagueSearch.jsp";
         } else {
@@ -91,7 +102,6 @@ public class LeagueSearchServlet extends HttpServlet {
                 SearchMessage = "No League found.";
                 session.setAttribute("leagueSearchMessage", SearchMessage);
             }
-
             url = "/leagueSearchResults.jsp";
         }
 

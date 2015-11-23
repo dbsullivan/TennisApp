@@ -43,6 +43,7 @@
               Search Type: <br />
               <input type="radio" name="searchType" value="id" />Player ID<br />
               <input type="radio" name="searchType" value="name" />Player Last Name<br />
+              <input type="radio" name="searchType" value="all" />All Players<br />
               <br />
               <input type="submit" value="Enter" />
             </form>
