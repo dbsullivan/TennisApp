@@ -1,96 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f1284ea-9cd3-4ee8-acdf-c473c5a5d6b6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/.img/arrowDown.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/.img/arrowUp.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/.classes/ApplicationStartup.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/.classes/DateValidator.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/.classes/League.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/.classes/LeagueAddPageDisplayServlet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/.classes/LeagueAddServlet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/.classes/LeagueDao.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/.classes/LeagueSearch.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/.classes/LeagueSearchPageDisplayServlet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/.classes/LeagueSearchServlet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/.classes/LeagueValidation.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/.classes/Player.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/.classes/PlayerAddPageDisplayServlet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/.classes/PlayerAddServlet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/.classes/PlayerDao.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/.classes/PlayerSearch.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/.classes/PlayerSearchPageDisplayServlet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/.classes/PlayerSearchServlet.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/.classes/PlayerValidation.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/.classes/SessionFactoryProvider.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/.classes/User.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/.classes/UserInputTypeCheck.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/.classes/WebServiceEmailValidation.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/.classes/Welcome.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/.css/coverage.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index_SORT_BY_BLOCK.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index_SORT_BY_BLOCK.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index_SORT_BY_BLOCK.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index_SORT_BY_BLOCK.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index_SORT_BY_BLOCK.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index_SORT_BY_BLOCK.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index_SORT_BY_BLOCK_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index_SORT_BY_BLOCK_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index_SORT_BY_BLOCK_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index_SORT_BY_BLOCK_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index_SORT_BY_BLOCK_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index_SORT_BY_BLOCK_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index_SORT_BY_CLASS.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index_SORT_BY_CLASS.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index_SORT_BY_CLASS.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index_SORT_BY_CLASS.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index_SORT_BY_CLASS.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index_SORT_BY_CLASS.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index_SORT_BY_CLASS_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index_SORT_BY_CLASS_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index_SORT_BY_CLASS_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index_SORT_BY_CLASS_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index_SORT_BY_CLASS_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index_SORT_BY_CLASS_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index_SORT_BY_LINE.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index_SORT_BY_LINE.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index_SORT_BY_LINE.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index_SORT_BY_LINE.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index_SORT_BY_LINE.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index_SORT_BY_LINE.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index_SORT_BY_LINE_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index_SORT_BY_LINE_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index_SORT_BY_LINE_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index_SORT_BY_LINE_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index_SORT_BY_LINE_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index_SORT_BY_LINE_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index_SORT_BY_METHOD.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index_SORT_BY_METHOD.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index_SORT_BY_METHOD.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index_SORT_BY_METHOD.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index_SORT_BY_METHOD.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index_SORT_BY_METHOD.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index_SORT_BY_METHOD_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index_SORT_BY_METHOD_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index_SORT_BY_METHOD_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index_SORT_BY_METHOD_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index_SORT_BY_METHOD_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index_SORT_BY_METHOD_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/index_SORT_BY_NAME_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java/index_SORT_BY_NAME_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.controllers/index_SORT_BY_NAME_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.entity/index_SORT_BY_NAME_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.persistance/index_SORT_BY_NAME_DESC.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/coverage/com.TennisApp.java.utilities/index_SORT_BY_NAME_DESC.html" />
-      <change type="DELETED" beforePath="C:\Users\Dave\IdeaProjects\TennisApp\tests\com\TennisApp\java\PlayerSearchServletTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/TennisApp/java/LeagueValidationTest.java" afterPath="$PROJECT_DIR$/tests/com/TennisApp/java/LeagueValidationTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/TennisApp/java/PlayerValidationTest.java" afterPath="$PROJECT_DIR$/tests/com/TennisApp/java/PlayerValidationTest.java" />
+    <list default="true" id="4f1284ea-9cd3-4ee8-acdf-c473c5a5d6b6" name="Default" comment="20151127">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TennisApp.iws" />
@@ -779,7 +690,7 @@
       <workItem from="1448587858404" duration="578000" />
       <workItem from="1448631632490" duration="35206000" />
       <workItem from="1448674475698" duration="230000" />
-      <workItem from="1448720331388" duration="12147000" />
+      <workItem from="1448720331388" duration="12211000" />
     </task>
     <task id="LOCAL-00001" summary="20151117">
       <created>1447809851696</created>
@@ -841,11 +752,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448674583679</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="20151127">
+      <created>1448732515179</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1448732515179</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="141206000" />
+    <option name="totallyTimeSpent" value="141270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
