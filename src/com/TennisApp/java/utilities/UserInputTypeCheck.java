@@ -1,4 +1,4 @@
-package com.TennisApp.java;
+package com.TennisApp.java.utilities;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.log4j.Logger;

@@ -7,7 +7,7 @@
     <!-- Define the com.TennisApp.javaservlet class, giving it the name welcome -->
     <servlet>
         <servlet-name>WelcomeServlet</servlet-name>
-        <servlet-class>com.TennisApp.java.Welcome</servlet-class>
+        <servlet-class>com.TennisApp.java.controllers.Welcome</servlet-class>
     </servlet>
 
     <servlet-mapping>

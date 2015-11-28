@@ -4,6 +4,7 @@
   Date: 10/24/2015
   Time: 7:56 PM
   This is the Welcome jsp if login succeeds.
+  CURRENTLY, THIS HAS BEEN IMPLEMENTED IN THE index.jsp PAGE.
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

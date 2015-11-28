@@ -1,4 +1,4 @@
-package com.TennisApp.java;
+package com.TennisApp.java.utilities;
 
 /**
  * Created by Dave on 11/21/2015.

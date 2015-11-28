@@ -1,6 +1,5 @@
-package com.TennisApp.java;
+package com.TennisApp.java.controllers;
 
-import com.TennisApp.java.entity.User;
 import org.apache.log4j.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,11 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.security.Principal;
 
 
 /**
- * Created by Student on 10/26/2015.
+ * Created by Dave on 10/26/2015.
+ *
+ * This servlet is the entry-point for the site (in the web.xml   <welcome-file>Welcome</welcome-file> )
+ * this servlet will forward to index.jsp, to provide the main menu and welcome (custom tag user greeting).
  */
 
 @WebServlet(
@@ -35,16 +36,17 @@ public class Welcome  extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        logger.info("Welcome.doGet()...begin");
+        logger.info("Welcome...begin");
 
-        HttpSession session = request.getSession(true);
+//        response.setContentType("text/html");  // this was missing originally.
+        HttpSession session = request.getSession();
 
 //        String  j_username  = String.valueOf(session.getAttribute("username"));  //session Attribute
 //        session.setAttribute("username", j_username);
 //        logger.info("User Logged in is: " + j_username);
 //
 //        String  j_username2  = request.getParameter("j_username");  // request parameter Attribute
-//        request.setAttribute("username",j_username2);
+//        session.setAttribute("username",j_username2);
 //        logger.info("User Logged in is: " + j_username2);
 
         // try another approach, since no parameter seems to be available above // see also GenericPrincipal[] name attribute
@@ -66,15 +68,15 @@ public class Welcome  extends HttpServlet {
                 getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
 
-        logger.info("Welcome.doGet()...end");
+        logger.info("Welcome...end");
 
     }
 
     // Method to handle POST method request.
-//    public void doPost(HttpServletRequest request,
-//                       HttpServletResponse response)
-//            throws ServletException, IOException {
-//        doGet(request, response);
-//    }
+    public void doPost(HttpServletRequest request,
+                       HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 }
 

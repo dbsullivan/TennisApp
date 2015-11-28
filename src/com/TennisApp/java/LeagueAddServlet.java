@@ -2,7 +2,8 @@ package com.TennisApp.java;
 
 import com.TennisApp.java.entity.League;
 import com.TennisApp.java.persistance.LeagueDao;
-import javafx.util.converter.DateStringConverter;
+import com.TennisApp.java.utilities.DateValidator;
+import com.TennisApp.java.utilities.UserInputTypeCheck;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -21,7 +22,7 @@ import java.util.Date;
  *  Input data getParameters from the leagueAdd.jsp HTML Form, action to the annotation (league-add-action) to this Servlet.
  *  following SQL Insert, this servlet is redirected back to the page leagueAdd.jsp.
  *
- *@author    Dave Sullivan
+ *@author    Dave Sullivann
  */
 @WebServlet(
         name = "LeagueAddAction",
@@ -49,6 +50,7 @@ public class LeagueAddServlet extends HttpServlet {
         logger.info("In AddServlet...get form parms of League, set into INSERT sql, return to add.");
         String url = null;
 
+        // get values from form parameters
         String leagueName = request.getParameter("leagueName");
         String leaguePlayerSlots = request.getParameter("leaguePlayerSlots");
         String leagueCourtsNeeded = request.getParameter("leagueCourtsNeeded");
@@ -58,6 +60,8 @@ public class LeagueAddServlet extends HttpServlet {
         String leagueStartDate = request.getParameter("leagueStartDate");
         String leagueEndDate = request.getParameter("leagueEndDate");
         String leagueStatus = request.getParameter("leagueStatus");
+
+        // database equivalent data types validated as String, need conversion to db type here.
         int leaguePlayerSlotsInteger = 0;
         int leagueCourtsNeededInteger = 0;
         int leagueEventsInteger = 0;
@@ -65,7 +69,6 @@ public class LeagueAddServlet extends HttpServlet {
         Date leagueEndDateDATE = null;
 
         int leagueIdAdded = 0;  // default will add new league as 0, else set upon league add
-//        session.setAttribute("leagueIdAdded", leagueIdAdded);
 
         // These session properties will persist between validations, in the JSP, input tag, text value="${EL item}".
         session.setAttribute("leagueName", leagueName);
@@ -78,10 +81,10 @@ public class LeagueAddServlet extends HttpServlet {
         session.setAttribute("leagueEndDate", leagueEndDate);
         session.setAttribute("leagueStatus", leagueStatus);
 
-        LeagueDao leagueDao = new LeagueDao();
 
         // associate the Message with the request, and clear it before forwarding to JSP page
         String AddMessage = "";
+        String ErrorType = "";
         boolean leagueNameErr = false;
         boolean leaguePlayerSlotsErr = false;
         boolean leagueCourtsNeededErr = false;
@@ -92,56 +95,36 @@ public class LeagueAddServlet extends HttpServlet {
         boolean leagueEndDateErr = false;
         boolean leagueStatusErr = false;
 
+        /** Validation logic for JUNIT testing is contained in LeagueValidate.java object
+         * send in the Strings, test or any AddMessage <> "", then we can't create a Player object of validated data and types.
+         */
+        LeagueValidation leagueValidation = new LeagueValidation();
+        leagueValidation.performValidations( leagueName,  leagueTypeSnglDbls,  leaguePlayerSlots,  leagueCourtsNeeded,
+                 leagueEvents,  leagueNTRPLevel,  leagueStartDate,  leagueEndDate,  leagueStatus);
+        AddMessage = leagueValidation.getErrorMessage();
+        ErrorType = leagueValidation.getErrorType();
 
         // Validate that all fields have valid data, prior to .Add()
-        UserInputTypeCheck userInputTypeCheck = new UserInputTypeCheck();
-        DateValidator dateValidator = new DateValidator();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        dateFormat.setLenient(false);
-
-        if (leagueName == null || leagueName.equals("") ) {
-            AddMessage = "Please enter missing League Name.";
+        if (ErrorType == "leagueNameErr") {
             leagueNameErr = true;
-        } else if (leagueTypeSnglDbls == null || leagueTypeSnglDbls.equals("")) {
-            AddMessage = "Please enter missing League Type Singles or Doubles.";
+        } else if (ErrorType == "leagueTypeSnglDblsErr") {
             leagueTypeSnglDblsErr = true;
-        } else if (leaguePlayerSlots == null || leaguePlayerSlots.equals("")) {
-            AddMessage = "Please enter missing Number of League Player Slots.";
+        } else if (ErrorType == "leaguePlayerSlotsErr") {
             leaguePlayerSlotsErr = true;
-        } else if ( !userInputTypeCheck.isValidInt(leaguePlayerSlots) ) {
-            AddMessage = "Please enter valid number.";
-            leaguePlayerSlotsErr = true;
-        } else if (leagueCourtsNeeded == null || leagueCourtsNeeded.equals("")) {
-            AddMessage = "Please enter missing Number of League Courts Needed.";
+        } else if (ErrorType == "leagueCourtsNeededErr") {
             leagueCourtsNeededErr = true;
-        } else if ( !userInputTypeCheck.isValidInt(leagueCourtsNeeded) ) {
-            AddMessage = "Please enter valid number.";
-            leagueCourtsNeededErr = true;
-        } else if (leagueEvents == null || leagueEvents.equals("")) {
-            AddMessage = "Please enter missing Number of League Events.";
+        } else if (ErrorType == "leagueEventsErr") {
             leagueEventsErr = true;
-        } else if ( !userInputTypeCheck.isValidInt(leagueEvents) ) {
-            AddMessage = "Please enter valid number.";
-            leagueEventsErr = true;
-        } else if (leagueNTRPLevel == null || leagueNTRPLevel.equals("")) {
-            AddMessage = "Please enter missing League NTRP Level.";
+        } else if (ErrorType == "leagueNTRPLevelErr") {
             leagueNTRPLevelErr = true;
-        } else if (leagueStartDate == null || leagueStartDate.equals("")) {
-            AddMessage = "Please enter missing League Start Date.";
+        } else if (ErrorType == "leagueStartDateErr") {
             leagueStartDateErr = true;
-        } else if ( !dateValidator.isDateValid(leagueStartDate, "MM/dd/yyyy") ) {
-            AddMessage = "Please enter valid date.";
-            leagueStartDateErr = true;
-        } else if (leagueEndDate == null || leagueEndDate.equals("")) {
-            AddMessage = "Please enter missing League End Date.";
+        } else if (ErrorType == "leagueEndDateErr") {
             leagueEndDateErr = true;
-        } else if ( !dateValidator.isDateValid(leagueEndDate, "MM/dd/yyyy") ) {
-            AddMessage = "Please enter valid date.";
-            leagueEndDateErr = true;
-        } else if (leagueStatus == null || leagueStatus.equals("")) {
-            AddMessage = "Please enter missing League Status.";
+        } else if (ErrorType == "leagueStatusErr") {
             leagueStatusErr = true;
-        } else {
+        // You've passed the audition to be a League if you return without an ErrorType here
+        } else if (ErrorType == "") {
             // convert any String form inputs to their db types here, i.e.) INT or DATE
             try {
                 leaguePlayerSlotsInteger = Integer.parseInt(leaguePlayerSlots);
@@ -152,13 +135,15 @@ public class LeagueAddServlet extends HttpServlet {
             }
 
             try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                dateFormat.setLenient(false);
                 leagueStartDateDATE = dateFormat.parse(leagueStartDate.trim());
                 leagueEndDateDATE = dateFormat.parse(leagueEndDate.trim());
             } catch (ParseException pe) {
                 logger.error("This date could not be parsed, not fatal error", pe);
             }
 
-
+            LeagueDao leagueDao = new LeagueDao();
             League league = new League(leagueIdAdded, leagueName, leaguePlayerSlotsInteger,
                     leagueCourtsNeededInteger, leagueEventsInteger,
                     leagueTypeSnglDbls, leagueNTRPLevel, leagueStartDateDATE, leagueEndDateDATE, leagueStatus);
@@ -166,6 +151,7 @@ public class LeagueAddServlet extends HttpServlet {
             session.setAttribute("leagueIdAdded", leagueIdAdded);
             AddMessage = "League added. Id: " + leagueIdAdded ;
         }
+
 
         session.setAttribute("leagueAddMessage", AddMessage);
         session.setAttribute("leagueNameErr", leagueNameErr);

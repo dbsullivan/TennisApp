@@ -12,13 +12,13 @@
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.26/lib/mysql-connector-java-5.1.36-bin.jar" />
           <element id="library" level="module" name="JUnit4" module-name="TennisApp" />
           <element id="file-copy" path="$PROJECT_DIR$/../myCustomTags/out/artifacts/myCustomTags/myCustomTags.jar" />
-          <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.28/lib/mysql-connector-java-5.1.36-bin.jar" />
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.28/lib/taglibs-standard-compat-1.2.5.jar" />
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.28/lib/taglibs-standard-impl-1.2.5.jar" />
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.28/lib/taglibs-standard-jstlel-1.2.5.jar" />
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.28/lib/taglibs-standard-spec-1.2.5.jar" />
           <element id="library" level="project" name="Hibernate 4.2.2-4.2.2" />
           <element id="library" level="project" name="javax.ws.rs-api-2.0.1" />
+          <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.28/lib/mysql-connector-java-5.1.36-bin.jar" />
         </element>
       </element>
     </root>

@@ -1,5 +1,5 @@
 
-package com.TennisApp.java;
+package com.TennisApp.java.controllers;
 
 import org.apache.log4j.Logger;
 

@@ -1,4 +1,4 @@
-package com.TennisApp.java;
+package com.TennisApp.java.controllers;
 
 import com.TennisApp.java.entity.Player;
 import org.apache.log4j.Logger;

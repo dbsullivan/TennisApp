@@ -1,4 +1,4 @@
-package com.TennisApp.java;
+package com.TennisApp.java.utilities;
 
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;

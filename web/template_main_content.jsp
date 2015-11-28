@@ -14,11 +14,14 @@
       <div id="text" >
             <h1><strong>Tennis League</strong></h1>
 
+          <%-- <p>"TEST: "<c:out value="${username}"/> --%>   <%-- TODO remove this --%>
+
           <%-- use custom tag for this message? --%>
             <p>
                 <%-- <mycustomtags:AM_PM_Greeting username="Dave" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting> --%>
-                <%--  <mycustomtags:AM_PM_Greeting username="${username}" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting> --%>
-                <mycustomtags:AM_PM_Greeting username="<%= User.getName() %>" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting>
+                <%-- <mycustomtags:AM_PM_Greeting username="<%= User.getName() %>" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting> --%>
+                <%--    <mycustomtags:AM_PM_Greeting username="${username}" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting> --%>
+                    <mycustomtags:AM_PM_Greeting username="<c:out value='${username}'/>" >Welcome to the Add-in Application.</mycustomtags:AM_PM_Greeting>
 
             </p>
             <%-- <p> Welcome ${parameterUserNameValue} to the Add-in Application.</p> --%>

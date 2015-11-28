@@ -1,4 +1,4 @@
-package com.TennisApp.java;
+package com.TennisApp.java.controllers;
 
 import org.apache.log4j.Logger;
 
@@ -11,16 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- *  This class provides a forward to a JSP for Player search (inside PlayerSearch.jsp).
+ * Created by Dave on 11/19/2015.
+ */
+
+/**
+ *  This class provides a forward to a JSP for League Add entry (inside LeagueAdd.jsp).
  *
  *@author    Dave Sullivan
  */
-
 @WebServlet(
-        name = "PlayerSearch",
-        urlPatterns = { "/player-search" }
+        name = "LeagueAdd",
+        urlPatterns = { "/league-add" }
 )
-public class PlayerSearchPageDisplayServlet extends HttpServlet {
+public class LeagueAddPageDisplayServlet extends HttpServlet {
 
     /**
      *  Handles HTTP GET requests.
@@ -30,16 +33,16 @@ public class PlayerSearchPageDisplayServlet extends HttpServlet {
      *@exception ServletException  if there is a Servlet failure
      *@exception IOException       if there is an IO failure
      */
-    private final Logger logger = Logger.getLogger(PlayerSearchPageDisplayServlet.class);
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response)
             throws ServletException, IOException {
 
-        logger.info("In PlayerSearchPageDisplayServlet servlet, will forward to playerSearch.jsp");
+        logger.info("In LeagueAddPageDisplayServlet servlet, will forward to leagueAdd.jsp");
 
-        // Forward to a JSP page named playerSearch.jsp.
-        String url = "/playerSearch.jsp";
+        // Forward to a JSP page named leagueAdd.jsp.
+        String url = "/leagueAdd.jsp";
 
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);

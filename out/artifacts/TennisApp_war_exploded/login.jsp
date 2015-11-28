@@ -3,7 +3,7 @@
   User: Dave
   Date: 9/26/2015
   Time: 9:10 AM
-  This is the login.jsp to use Form Based Authentication
+  This is the login.jsp to use Form Based Authentication, in web.xml have login.jsp, else login-error.jsp
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -23,12 +23,11 @@
 <body>
 
 
-<jsp:useBean id="User" class="com.TennisApp.java.entity.User" scope="session" />
+<%-- <jsp:useBean id="User" class="com.TennisApp.java.entity.User" scope="session" /> --%>
 <%-- <jsp:setProperty name="User" property="name" value="${param.j_username}"/> --%>
 <%-- <jsp:setProperty name="User" property="name"  value='<%= request.getParameter("j_username") %>' />  --%>
 <%-- <c:set target="${User}" property="name" value='<%= request.getParameter("j_username") %>' /> --%>
-<c:set target="${User}" property="name" value="${ param.j_username }" />
-
+<c:set var="username" value="${param.j_username}"  scope="session" />
 
 
 <!-- header -->

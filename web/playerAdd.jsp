@@ -80,13 +80,21 @@
         </tr>
         <tr>
           <td align="left">Player Gender:</td>
-          <td align="left"><%-- <input type="text" name="gender" maxlength="10" size="30" value="${gender}" /></td> --%>
+          <td align="left">
             <c:choose>
               <c:when test="${playergenderErr == true}" >
-                <input type="text" name="gender" maxlength="1" size="1" value="${gender}" style="background-color:<%= textAreaHighlight %> ;" />
+                <input type="radio" name="gender" id="Female" value="F"
+                       style="background-color:<%= textAreaHighlight %> ;" ${gender == 'F' ? 'checked' : ''}/> Female
+                <br>
+                <input type="radio" name="gender" id="Male" value="M"
+                       style="background-color:<%= textAreaHighlight %> ;" ${gender == 'M' ? 'checked' : ''}/> Male
               </c:when>
               <c:otherwise>
-                <input type="text" name="gender" maxlength="1" size="1" value="${gender}" style="background-color:<%= textAreaColor %> ;" />
+                <input type="radio" name="gender" id="Female" value="F"
+                       style="background-color:<%= textAreaColor %> ;" ${gender == 'F' ? 'checked' : ''}/> Female
+                <br>
+                <input type="radio" name="gender" id="Male" value="M"
+                       style="background-color:<%= textAreaColor %> ;" ${gender == 'M' ? 'checked' : ''}/> Male
               </c:otherwise>
             </c:choose>
           </td>
