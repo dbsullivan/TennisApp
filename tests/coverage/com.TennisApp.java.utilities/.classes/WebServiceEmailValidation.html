@@ -1,0 +1,131 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: WebServiceEmailValidation</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.TennisApp.java.utilities</a> ]
+</div>
+
+<h1>Coverage Summary for Class: WebServiceEmailValidation (com.TennisApp.java.utilities)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WebServiceEmailValidation</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/ 15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.TennisApp.java.utilities;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import javax.ws.rs.client.*;
+<i>4</i>&nbsp;import javax.ws.rs.core.MediaType;
+<i>5</i>&nbsp;import java.util.Objects;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;/**
+<i>9</i>&nbsp; * Created by Dave on 11/19/2015.
+<i>10</i>&nbsp; */
+<b class="fc"><i>11</i>&nbsp;public class WebServiceEmailValidation {</b>
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    private Client client;
+<b class="fc"><i>14</i>&nbsp;    private String REST_SERVICE_URL = &quot;http://localhost:9998/test&quot;;</b>
+<i>15</i>&nbsp;//    private static final String SUCCESS_RESULT=&quot;&lt;result&gt;success&lt;/result&gt;&quot;;
+<i>16</i>&nbsp;//    private static final String PASS = &quot;true&quot;;
+<i>17</i>&nbsp;//    private static final String FAIL = &quot;false&quot;;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    private void init(){
+<b class="fc"><i>20</i>&nbsp;        this.client = ClientBuilder.newClient();</b>
+<b class="fc"><i>21</i>&nbsp;    }</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    /**
+<i>24</i>&nbsp;     * @param emailToTest
+<i>25</i>&nbsp;     * @return
+<i>26</i>&nbsp;     */
+<i>27</i>&nbsp;    public Boolean isValidEmail(String emailToTest) {
+<i>28</i>&nbsp;
+<b class="fc"><i>29</i>&nbsp;        init();</b>
+<i>30</i>&nbsp;        Boolean returnValue;
+<i>31</i>&nbsp;
+<b class="fc"><i>32</i>&nbsp;        String callResponse = client</b>
+<b class="fc"><i>33</i>&nbsp;                .target(REST_SERVICE_URL)</b>
+<b class="fc"><i>34</i>&nbsp;                .path(&quot;/isEmailValid/{emailtest}&quot;)</b>
+<b class="fc"><i>35</i>&nbsp;                .resolveTemplate(&quot;emailtest&quot;, emailToTest)</b>
+<b class="fc"><i>36</i>&nbsp;                .request(MediaType.TEXT_PLAIN)</b>
+<b class="fc"><i>37</i>&nbsp;                .get(String.class);</b>
+<i>38</i>&nbsp;
+<b class="fc"><i>39</i>&nbsp;        if (Objects.equals(callResponse, &quot;true&quot;)) {</b>
+<b class="fc"><i>40</i>&nbsp;            returnValue = true;</b>
+<i>41</i>&nbsp;        } else {
+<b class="fc"><i>42</i>&nbsp;            returnValue = false;</b>
+<i>43</i>&nbsp;        };
+<i>44</i>&nbsp;
+<b class="fc"><i>45</i>&nbsp;        return returnValue;</b>
+<i>46</i>&nbsp;    }
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2015-11-28 11:40</div>
+</div>
+</body>
+</html>

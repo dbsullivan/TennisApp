@@ -1,0 +1,196 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LeagueSearchServlet</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.TennisApp.java</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LeagueSearchServlet (com.TennisApp.java)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LeagueSearchServlet</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (40/ 48)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;
+<i>2</i>&nbsp;package com.TennisApp.java;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import com.TennisApp.java.persistance.LeagueDao;
+<i>5</i>&nbsp;import org.apache.log4j.Logger;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import javax.servlet.RequestDispatcher;
+<i>8</i>&nbsp;import javax.servlet.ServletException;
+<i>9</i>&nbsp;import javax.servlet.annotation.WebServlet;
+<i>10</i>&nbsp;import javax.servlet.http.HttpServlet;
+<i>11</i>&nbsp;import javax.servlet.http.HttpServletRequest;
+<i>12</i>&nbsp;import javax.servlet.http.HttpServletResponse;
+<i>13</i>&nbsp;import javax.servlet.http.HttpSession;
+<i>14</i>&nbsp;import java.io.IOException;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;/**
+<i>17</i>&nbsp; *  This class provides controller following submit of League search- form action in leagueSearch.jsp)
+<i>18</i>&nbsp; *  Here, LeagueSearchServlet.java (league-search-results)- decides if League found using Search object boolean search.isFound()
+<i>19</i>&nbsp; *  if found, display League.jsp, else return with message to leagueSearch.jsp
+<i>20</i>&nbsp; *
+<i>21</i>&nbsp; *@author    Dave Sullivan
+<i>22</i>&nbsp; */
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;@WebServlet(
+<i>25</i>&nbsp;        name = &quot;LeagueSearchResults&quot;,
+<i>26</i>&nbsp;        urlPatterns = { &quot;/league-search-results&quot; }
+<i>27</i>&nbsp;)
+<b class="fc"><i>28</i>&nbsp;public class LeagueSearchServlet extends HttpServlet {</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    /**
+<i>31</i>&nbsp;     *  Handles HTTP GET requests.
+<i>32</i>&nbsp;     *
+<i>33</i>&nbsp;     *@param  request               Description of the Parameter
+<i>34</i>&nbsp;     *@param  response              Description of the Parameter
+<i>35</i>&nbsp;     *@exception ServletException  if there is a Servlet failure
+<i>36</i>&nbsp;     *@exception IOException       if there is an IO failure
+<i>37</i>&nbsp;     */
+<b class="fc"><i>38</i>&nbsp;    private final Logger logger = Logger.getLogger(LeagueSearchServlet.class);</b>
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    public void doGet(HttpServletRequest request,
+<i>41</i>&nbsp;                      HttpServletResponse response)
+<i>42</i>&nbsp;            throws ServletException, IOException {
+<i>43</i>&nbsp;
+<b class="fc"><i>44</i>&nbsp;        HttpSession session = request.getSession();</b>
+<i>45</i>&nbsp;
+<b class="fc"><i>46</i>&nbsp;        logger.info(&quot;In LeagueSearchServlet...get form parms Term/Type set into search object, forward or return&quot;);</b>
+<b class="fc"><i>47</i>&nbsp;        String url = null;</b>
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;        String searchTerm = request.getParameter(&quot;searchTerm&quot;);</b>
+<b class="fc"><i>50</i>&nbsp;        String searchType = request.getParameter(&quot;searchType&quot;);</b>
+<i>51</i>&nbsp;
+<b class="fc"><i>52</i>&nbsp;        LeagueDao leagueDao = new LeagueDao();</b>
+<i>53</i>&nbsp;
+<b class="fc"><i>54</i>&nbsp;        LeagueSearch leagueSearch = new LeagueSearch();</b>
+<b class="fc"><i>55</i>&nbsp;        leagueSearch.setSearchTerm(searchTerm);</b>
+<b class="fc"><i>56</i>&nbsp;        leagueSearch.setSearchType(searchType);</b>
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;        // associate the Message with the request, and clear it before forwarding to JSP page
+<b class="fc"><i>59</i>&nbsp;        String SearchMessage = &quot;&quot;;</b>
+<b class="fc"><i>60</i>&nbsp;        session.setAttribute(&quot;leagueSearchMessage&quot;, SearchMessage);</b>
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;        //set message on page use EL request or session.getAttribute(leagueSearchMessage); fill if errors.
+<b class="fc"><i>63</i>&nbsp;        if ((leagueSearch.getSearchTerm() == null || leagueSearch.getSearchTerm().equals(&quot;&quot;) )</b>
+<i>64</i>&nbsp;                &amp;
+<b class="fc"><i>65</i>&nbsp;                (leagueSearch.getSearchType() == null || leagueSearch.getSearchType().equals(&quot;&quot;) )</b>
+<i>66</i>&nbsp;                ) {
+<i>67</i>&nbsp;            // Forward back to a JSP page named leagueSearch.jsp
+<b class="fc"><i>68</i>&nbsp;            logger.info(&quot;return to leagueSearch JSP, incomplete parms...&quot; + leagueSearch.getSearchType() + &quot; &quot; + leagueSearch.getSearchTerm());</b>
+<b class="fc"><i>69</i>&nbsp;            SearchMessage = &quot;Please enter missing Search Term and Search Type, or chose All Leagues.&quot;;</b>
+<b class="fc"><i>70</i>&nbsp;            session.setAttribute(&quot;leagueSearchMessage&quot;, SearchMessage);</b>
+<b class="fc"><i>71</i>&nbsp;            url = &quot;/leagueSearch.jsp&quot;;</b>
+<b class="fc"><i>72</i>&nbsp;        } else if (leagueSearch.getSearchType() == null || leagueSearch.getSearchType().equals(&quot;&quot;) ) {</b>
+<i>73</i>&nbsp;            // Forward back to a JSP page named leagueSearch.jsp
+<b class="nc"><i>74</i>&nbsp;            logger.info(&quot;return to leagueSearch JSP, incomplete parms...&quot; + leagueSearch.getSearchType() + &quot; &quot; + leagueSearch.getSearchTerm());</b>
+<b class="nc"><i>75</i>&nbsp;            SearchMessage = &quot;Please enter missing Search Type.&quot;;</b>
+<b class="nc"><i>76</i>&nbsp;            session.setAttribute(&quot;leagueSearchMessage&quot;, SearchMessage);</b>
+<b class="nc"><i>77</i>&nbsp;            url = &quot;/leagueSearch.jsp&quot;;</b>
+<b class="fc"><i>78</i>&nbsp;        } else if (leagueSearch.getSearchType().equals(&quot;all&quot;) ) {</b>
+<i>79</i>&nbsp;            // Forward to a JSP page named leagueSearchResults.jsp
+<b class="fc"><i>80</i>&nbsp;            logger.info(&quot;forward to leagueSearchResults.jsp, with LeagueDao.searchForLeague(leagueSearch)&quot;);</b>
+<b class="fc"><i>81</i>&nbsp;            leagueSearch = leagueDao.searchForLeague(leagueSearch);</b>
+<b class="fc"><i>82</i>&nbsp;            session.setAttribute(&quot;leagueStatusSearch&quot;, leagueSearch);</b>
+<i>83</i>&nbsp;
+<b class="fc"><i>84</i>&nbsp;            if ( !leagueSearch.isFound() ) {</b>
+<b class="nc"><i>85</i>&nbsp;                SearchMessage = &quot;No League found.&quot;;</b>
+<b class="nc"><i>86</i>&nbsp;                session.setAttribute(&quot;leagueSearchMessage&quot;, SearchMessage);</b>
+<i>87</i>&nbsp;            }
+<b class="fc"><i>88</i>&nbsp;            url = &quot;/leagueSearchResults.jsp&quot;;</b>
+<b class="fc"><i>89</i>&nbsp;        } else if (leagueSearch.getSearchTerm() == null || leagueSearch.getSearchTerm().equals(&quot;&quot;) ) {</b>
+<i>90</i>&nbsp;            // Forward back to a JSP page named leagueSearch.jsp
+<b class="fc"><i>91</i>&nbsp;            logger.info(&quot;return to leagueSearch JSP, incomplete parms...&quot; + leagueSearch.getSearchType() + &quot; &quot; + leagueSearch.getSearchTerm());</b>
+<b class="fc"><i>92</i>&nbsp;            SearchMessage = &quot;Please enter missing Search Term.&quot;;</b>
+<b class="fc"><i>93</i>&nbsp;            session.setAttribute(&quot;leagueSearchMessage&quot;, SearchMessage);</b>
+<b class="fc"><i>94</i>&nbsp;            url = &quot;/leagueSearch.jsp&quot;;</b>
+<i>95</i>&nbsp;        } else {
+<i>96</i>&nbsp;            // Forward to a JSP page named leagueSearchResults.jsp
+<b class="fc"><i>97</i>&nbsp;            logger.info(&quot;forward to leagueSearchResults.jsp, with LeagueDao.searchForLeague(leagueSearch)&quot;) ;</b>
+<b class="fc"><i>98</i>&nbsp;            leagueSearch = leagueDao.searchForLeague(leagueSearch);</b>
+<b class="fc"><i>99</i>&nbsp;            session.setAttribute(&quot;leagueStatusSearch&quot;, leagueSearch);</b>
+<i>100</i>&nbsp;
+<b class="fc"><i>101</i>&nbsp;            if ( !leagueSearch.isFound() ) {</b>
+<b class="nc"><i>102</i>&nbsp;                SearchMessage = &quot;No League found.&quot;;</b>
+<b class="nc"><i>103</i>&nbsp;                session.setAttribute(&quot;leagueSearchMessage&quot;, SearchMessage);</b>
+<i>104</i>&nbsp;            }
+<b class="fc"><i>105</i>&nbsp;            url = &quot;/leagueSearchResults.jsp&quot;;</b>
+<i>106</i>&nbsp;        }
+<i>107</i>&nbsp;
+<b class="fc"><i>108</i>&nbsp;        RequestDispatcher dispatcher =</b>
+<b class="fc"><i>109</i>&nbsp;                getServletContext().getRequestDispatcher(url);</b>
+<b class="fc"><i>110</i>&nbsp;        dispatcher.forward(request, response);</b>
+<b class="fc"><i>111</i>&nbsp;    }</b>
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2015-11-28 11:40</div>
+</div>
+</body>
+</html>

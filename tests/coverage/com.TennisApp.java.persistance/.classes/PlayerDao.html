@@ -1,0 +1,345 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PlayerDao</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.TennisApp.java.persistance</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PlayerDao (com.TennisApp.java.persistance)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PlayerDao</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (6/ 10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50.9%
+  </span>
+  <span class="absValue">
+    (56/ 110)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.TennisApp.java.persistance;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.TennisApp.java.PlayerSearch;
+<i>4</i>&nbsp;import com.TennisApp.java.entity.Player;
+<i>5</i>&nbsp;import org.apache.log4j.Logger;
+<i>6</i>&nbsp;import org.hibernate.Criteria;
+<i>7</i>&nbsp;import org.hibernate.HibernateException;
+<i>8</i>&nbsp;import org.hibernate.Session;
+<i>9</i>&nbsp;import org.hibernate.Transaction;
+<i>10</i>&nbsp;import org.hibernate.criterion.MatchMode;
+<i>11</i>&nbsp;import org.hibernate.criterion.Restrictions;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import java.util.ArrayList;
+<i>14</i>&nbsp;import java.util.List;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;/**
+<i>17</i>&nbsp; * This is the database access object class for the Player entity. It will perform various CRUD operations,
+<i>18</i>&nbsp; * to Create, Read one or many, Update, and Delete Players in the TennisApp.
+<i>19</i>&nbsp; * Additionally, it will provide methods for the PlayerSearchServlet.java to use a PlayerSearch object
+<i>20</i>&nbsp; * lookup to the database.
+<i>21</i>&nbsp; * // http://www.developer.com/db/using-criteria-in-hibernate-for-advanced-queries.html
+<i>22</i>&nbsp; *
+<i>23</i>&nbsp; * Created by Dave on 11/8/2015.
+<i>24</i>&nbsp; */
+<i>25</i>&nbsp;
+<b class="fc"><i>26</i>&nbsp;public class PlayerDao {</b>
+<i>27</i>&nbsp;
+<b class="fc"><i>28</i>&nbsp;    private final Logger logger = Logger.getLogger(PlayerDao.class);</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    /**
+<i>31</i>&nbsp;     * Create a method that will search for an Player using a PlayerSearch object by either id or Lastname or all.
+<i>32</i>&nbsp;     *
+<i>33</i>&nbsp;     *@param playerSearch  The search Player method returns a PlayerSearch object. Can search by ID or Lastname.
+<i>34</i>&nbsp;     *@return The playerSearch value
+<i>35</i>&nbsp;     */
+<i>36</i>&nbsp;    public PlayerSearch searchForPlayer(PlayerSearch playerSearch){
+<i>37</i>&nbsp;
+<b class="fc"><i>38</i>&nbsp;        logger.info(&quot;method searchForPlayer() in PlayerDao, with type: &quot; + playerSearch.getSearchType());</b>
+<i>39</i>&nbsp;
+<b class="fc"><i>40</i>&nbsp;        if (playerSearch.getSearchType().toLowerCase().equals(&quot;id&quot;)) {</b>
+<b class="fc"><i>41</i>&nbsp;            searchForPlayerID(playerSearch); // return void, but addFoundPlayer to PlayerSearch object</b>
+<i>42</i>&nbsp;        }  else
+<b class="fc"><i>43</i>&nbsp;        if (playerSearch.getSearchType().toLowerCase().equals(&quot;name&quot;)) {</b>
+<b class="fc"><i>44</i>&nbsp;            searchForPlayerName(playerSearch);  // return void, but addFoundPlayer to PlayerSearch object</b>
+<i>45</i>&nbsp;        }
+<b class="fc"><i>46</i>&nbsp;        if (playerSearch.getSearchType().toLowerCase().equals(&quot;all&quot;)) {</b>
+<b class="fc"><i>47</i>&nbsp;            searchForAllPlayers(playerSearch);  // return void, but addFoundPlayer to PlayerSearch object</b>
+<i>48</i>&nbsp;        }
+<i>49</i>&nbsp;
+<b class="fc"><i>50</i>&nbsp;        return playerSearch;</b>
+<i>51</i>&nbsp;    }
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    /**
+<i>54</i>&nbsp;     * Create a method that will search for an Player by Id and return the player to the playerSearch object
+<i>55</i>&nbsp;     *
+<i>56</i>&nbsp;     *@param playerSearch  The new playerSearch object holds search type, term, results.
+<i>57</i>&nbsp;     */
+<i>58</i>&nbsp;    public void searchForPlayerID(PlayerSearch playerSearch) {
+<b class="fc"><i>59</i>&nbsp;        Session session = SessionFactoryProvider.getSessionFactory().openSession();</b>
+<b class="fc"><i>60</i>&nbsp;        Player player = null;</b>
+<b class="fc"><i>61</i>&nbsp;        int playerId =  Integer.parseInt(playerSearch.getSearchTerm());</b>
+<i>62</i>&nbsp;        try {
+<b class="fc"><i>63</i>&nbsp;            player = (Player)session.get(Player.class, playerId);</b>
+<b class="fc"><i>64</i>&nbsp;            if (player != null) {</b>
+<b class="fc"><i>65</i>&nbsp;                playerSearch.addFoundPlayer(player);</b>
+<b class="fc"><i>66</i>&nbsp;                playerSearch.setPlayersFound(true);</b>
+<i>67</i>&nbsp;            } else {
+<b class="nc"><i>68</i>&nbsp;                playerSearch.setPlayersFound(false);</b>
+<i>69</i>&nbsp;            }
+<b class="nc"><i>70</i>&nbsp;        } catch (HibernateException e) {</b>
+<b class="nc"><i>71</i>&nbsp;            logger.error(&quot;Exception: &quot;, e);</b>
+<i>72</i>&nbsp;        } finally {
+<b class="fc"><i>73</i>&nbsp;            session.close();</b>
+<b class="fc"><i>74</i>&nbsp;        }</b>
+<b class="fc"><i>75</i>&nbsp;    }</b>
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    /**
+<i>78</i>&nbsp;     *  method to search by Player LastName and return the player to the playerSearch object
+<i>79</i>&nbsp;     *
+<i>80</i>&nbsp;     *@param playerSearch  The new playerSearch object holds search type, term, results.
+<i>81</i>&nbsp;     */
+<i>82</i>&nbsp;    public void searchForPlayerName(PlayerSearch playerSearch) {
+<b class="fc"><i>83</i>&nbsp;        String lastNameToFind = playerSearch.getSearchTerm();</b>
+<b class="fc"><i>84</i>&nbsp;        Session session = SessionFactoryProvider.getSessionFactory().openSession();</b>
+<b class="fc"><i>85</i>&nbsp;        Criteria criteria = session.createCriteria(Player.class);</b>
+<b class="fc"><i>86</i>&nbsp;        criteria.add(Restrictions.like(&quot;lastName&quot;, lastNameToFind, MatchMode.ANYWHERE));</b>
+<b class="fc"><i>87</i>&nbsp;        List&lt;Player&gt; players = null;</b>
+<i>88</i>&nbsp;        try {
+<b class="fc"><i>89</i>&nbsp;            players = criteria.list();</b>
+<b class="fc"><i>90</i>&nbsp;            if ( !players.isEmpty() ) {</b>
+<b class="fc"><i>91</i>&nbsp;                for (Player player : players) {</b>
+<b class="fc"><i>92</i>&nbsp;                    playerSearch.addFoundPlayer(player);</b>
+<b class="fc"><i>93</i>&nbsp;                }</b>
+<b class="fc"><i>94</i>&nbsp;                playerSearch.setPlayersFound(true);</b>
+<i>95</i>&nbsp;            }
+<b class="nc"><i>96</i>&nbsp;        } catch (HibernateException e) {</b>
+<b class="nc"><i>97</i>&nbsp;            logger.error(&quot;Exception: &quot;, e);</b>
+<i>98</i>&nbsp;        } finally {
+<b class="fc"><i>99</i>&nbsp;            session.close();</b>
+<b class="fc"><i>100</i>&nbsp;        }</b>
+<b class="fc"><i>101</i>&nbsp;    }</b>
+<i>102</i>&nbsp;
+<i>103</i>&nbsp;    /**
+<i>104</i>&nbsp;     *  method to search for all players return the players to the playerSearch object
+<i>105</i>&nbsp;     *
+<i>106</i>&nbsp;     *@param playerSearch  The new playerSearch object holds search type, term, results.
+<i>107</i>&nbsp;     */
+<i>108</i>&nbsp;    public void searchForAllPlayers(PlayerSearch playerSearch) {
+<b class="fc"><i>109</i>&nbsp;        List&lt;Player&gt; players = new ArrayList&lt;Player&gt;();</b>
+<b class="fc"><i>110</i>&nbsp;        Session session = SessionFactoryProvider.getSessionFactory().openSession();</b>
+<b class="fc"><i>111</i>&nbsp;        Criteria criteria = session.createCriteria(Player.class);</b>
+<b class="fc"><i>112</i>&nbsp;        Transaction tx = null;</b>
+<i>113</i>&nbsp;        try {
+<b class="fc"><i>114</i>&nbsp;            players = criteria.list();</b>
+<b class="fc"><i>115</i>&nbsp;            if ( !players.isEmpty() ) {</b>
+<b class="fc"><i>116</i>&nbsp;                for (Player player : players) {</b>
+<b class="fc"><i>117</i>&nbsp;                    playerSearch.addFoundPlayer(player);</b>
+<b class="fc"><i>118</i>&nbsp;                }</b>
+<b class="fc"><i>119</i>&nbsp;                playerSearch.setPlayersFound(true);</b>
+<i>120</i>&nbsp;            }
+<b class="nc"><i>121</i>&nbsp;        } catch (HibernateException e) {</b>
+<b class="nc"><i>122</i>&nbsp;            logger.error(&quot;Exception: &quot;, e);</b>
+<i>123</i>&nbsp;        } finally {
+<b class="fc"><i>124</i>&nbsp;            session.close();</b>
+<b class="fc"><i>125</i>&nbsp;        }</b>
+<b class="fc"><i>126</i>&nbsp;    }</b>
+<i>127</i>&nbsp;
+<i>128</i>&nbsp;
+<i>129</i>&nbsp;    /** Method to CREATE a player in the database
+<i>130</i>&nbsp;    *
+<i>131</i>&nbsp;    * @param  player  The Player to be added.
+<i>132</i>&nbsp;    **/
+<i>133</i>&nbsp;    public Integer addPlayer(Player player) {
+<b class="fc"><i>134</i>&nbsp;        Session session = SessionFactoryProvider.getSessionFactory().openSession();</b>
+<b class="fc"><i>135</i>&nbsp;        Transaction tx = null;</b>
+<b class="fc"><i>136</i>&nbsp;        Integer playerId = null;</b>
+<i>137</i>&nbsp;        try {
+<b class="fc"><i>138</i>&nbsp;            tx = session.beginTransaction();</b>
+<b class="fc"><i>139</i>&nbsp;            playerId = (Integer) session.save(player);</b>
+<b class="fc"><i>140</i>&nbsp;            tx.commit();</b>
+<b class="nc"><i>141</i>&nbsp;        } catch (HibernateException e) {</b>
+<b class="nc"><i>142</i>&nbsp;            if (tx!=null) tx.rollback();</b>
+<b class="nc"><i>143</i>&nbsp;            logger.error(&quot;Exception: &quot;, e);</b>
+<i>144</i>&nbsp;        } finally {
+<b class="fc"><i>145</i>&nbsp;            session.close();</b>
+<b class="fc"><i>146</i>&nbsp;        }</b>
+<b class="fc"><i>147</i>&nbsp;        return playerId;</b>
+<i>148</i>&nbsp;    }
+<i>149</i>&nbsp;
+<i>150</i>&nbsp;    /** Method to CREATE or UPDATE a player in the database
+<i>151</i>&nbsp;     * If an id of 0 is passed in, a new Player entry will be created
+<i>152</i>&nbsp;     * If an id of an existing record is passed in, the Player is updated
+<i>153</i>&nbsp;     *
+<i>154</i>&nbsp;     * @param  player  The Player to be added.
+<i>155</i>&nbsp;     **/
+<i>156</i>&nbsp;    public void addOrUpdatePlayer(Player player) {
+<b class="nc"><i>157</i>&nbsp;        Session session = SessionFactoryProvider.getSessionFactory().openSession();</b>
+<b class="nc"><i>158</i>&nbsp;        Transaction tx = null;</b>
+<b class="nc"><i>159</i>&nbsp;        Integer playerId = null;</b>
+<i>160</i>&nbsp;        try {
+<b class="nc"><i>161</i>&nbsp;            tx = session.beginTransaction();</b>
+<b class="nc"><i>162</i>&nbsp;            session.saveOrUpdate(player);</b>
+<b class="nc"><i>163</i>&nbsp;            tx.commit();</b>
+<b class="nc"><i>164</i>&nbsp;        } catch (HibernateException e) {</b>
+<b class="nc"><i>165</i>&nbsp;            if (tx!=null) tx.rollback();</b>
+<b class="nc"><i>166</i>&nbsp;            logger.error(&quot;Exception: &quot;, e);</b>
+<i>167</i>&nbsp;        } finally {
+<b class="nc"><i>168</i>&nbsp;            session.close();</b>
+<b class="nc"><i>169</i>&nbsp;        }</b>
+<b class="nc"><i>170</i>&nbsp;    }</b>
+<i>171</i>&nbsp;
+<i>172</i>&nbsp;
+<i>173</i>&nbsp;    /** Method to READ a player in the database
+<i>174</i>&nbsp;     *
+<i>175</i>&nbsp;     * @param  playerId  The Player to be added.
+<i>176</i>&nbsp;     **/
+<i>177</i>&nbsp;    public Player getPlayer(int playerId) {
+<b class="nc"><i>178</i>&nbsp;        Session session = SessionFactoryProvider.getSessionFactory().openSession();</b>
+<b class="nc"><i>179</i>&nbsp;        Player player = null;</b>
+<i>180</i>&nbsp;        try {
+<b class="nc"><i>181</i>&nbsp;            player = (Player)session.get(Player.class, playerId);</b>
+<b class="nc"><i>182</i>&nbsp;            if (player != null) {</b>
+<b class="nc"><i>183</i>&nbsp;                return player;</b>
+<i>184</i>&nbsp;            }
+<b class="nc"><i>185</i>&nbsp;        } catch (HibernateException e) {</b>
+<b class="nc"><i>186</i>&nbsp;            logger.error(&quot;Exception: &quot;, e);</b>
+<i>187</i>&nbsp;        } finally {
+<b class="nc"><i>188</i>&nbsp;            session.close();</b>
+<b class="nc"><i>189</i>&nbsp;        }</b>
+<b class="nc"><i>190</i>&nbsp;        return player;</b>
+<i>191</i>&nbsp;    }
+<i>192</i>&nbsp;
+<i>193</i>&nbsp;
+<i>194</i>&nbsp;    /** Method to list all the players in the database
+<i>195</i>&nbsp;     *
+<i>196</i>&nbsp;     * may want to pass in PlayerSearch playerSearch, where ALL is selected, modify PlayerSearchServlet.
+<i>197</i>&nbsp;     **/
+<i>198</i>&nbsp;    public List getAllPlayers() {
+<b class="nc"><i>199</i>&nbsp;        List&lt;Player&gt; players = new ArrayList&lt;Player&gt;();</b>
+<b class="nc"><i>200</i>&nbsp;        Session session = SessionFactoryProvider.getSessionFactory().openSession();</b>
+<b class="nc"><i>201</i>&nbsp;        Criteria criteria = session.createCriteria(Player.class);</b>
+<b class="nc"><i>202</i>&nbsp;        Transaction tx = null;</b>
+<i>203</i>&nbsp;        try {
+<b class="nc"><i>204</i>&nbsp;            players = criteria.list();</b>
+<b class="nc"><i>205</i>&nbsp;        } catch (HibernateException e) {</b>
+<b class="nc"><i>206</i>&nbsp;            logger.error(&quot;Exception: &quot;, e);</b>
+<i>207</i>&nbsp;        } finally {
+<b class="nc"><i>208</i>&nbsp;            session.close();</b>
+<b class="nc"><i>209</i>&nbsp;        }</b>
+<b class="nc"><i>210</i>&nbsp;        return players;</b>
+<i>211</i>&nbsp;    }
+<i>212</i>&nbsp;
+<i>213</i>&nbsp;
+<i>214</i>&nbsp;    /** Method to DELETE an player in the database
+<i>215</i>&nbsp;     *
+<i>216</i>&nbsp;     * @param  playerId  The Player to be deleted.
+<i>217</i>&nbsp;     **/
+<i>218</i>&nbsp;    public void deletePlayer(int playerId){
+<b class="nc"><i>219</i>&nbsp;        Session session = SessionFactoryProvider.getSessionFactory().openSession();</b>
+<b class="nc"><i>220</i>&nbsp;        Transaction tx = null;</b>
+<i>221</i>&nbsp;        try{
+<b class="nc"><i>222</i>&nbsp;            tx = session.beginTransaction();</b>
+<b class="nc"><i>223</i>&nbsp;            Player player =  (Player)session.get(Player.class, playerId);</b>
+<b class="nc"><i>224</i>&nbsp;            if (player != null) {</b>
+<b class="nc"><i>225</i>&nbsp;                session.delete(player);</b>
+<i>226</i>&nbsp;            }
+<b class="nc"><i>227</i>&nbsp;            tx.commit();</b>
+<b class="nc"><i>228</i>&nbsp;        }catch (HibernateException e) {</b>
+<i>229</i>&nbsp;//            e.printStackTrace();
+<b class="nc"><i>230</i>&nbsp;            logger.error(&quot;Exception: &quot;, e);</b>
+<i>231</i>&nbsp;        }finally {
+<b class="nc"><i>232</i>&nbsp;            session.close();</b>
+<b class="nc"><i>233</i>&nbsp;        }</b>
+<b class="nc"><i>234</i>&nbsp;    }</b>
+<i>235</i>&nbsp;
+<i>236</i>&nbsp;// TODO revive this if we need List players rather then void, player returned.
+<i>237</i>&nbsp;//
+<i>238</i>&nbsp;//    public List searchForPlayerID(PlayerSearch playerSearch) {
+<i>239</i>&nbsp;//        List&lt;Player&gt; players = new ArrayList&lt;Player&gt;();
+<i>240</i>&nbsp;//        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+<i>241</i>&nbsp;//        Player player = null;
+<i>242</i>&nbsp;//        int playerId =  Integer.parseInt(playerSearch.getSearchTerm());
+<i>243</i>&nbsp;//        try {
+<i>244</i>&nbsp;//            player = (Player)session.get(Player.class, playerId);
+<i>245</i>&nbsp;//            if (player != null) {
+<i>246</i>&nbsp;//                players.add(player);
+<i>247</i>&nbsp;//                playerSearch.addFoundPlayer(player);
+<i>248</i>&nbsp;//                playerSearch.setPlayersFound(true);
+<i>249</i>&nbsp;//                return players;
+<i>250</i>&nbsp;//            }
+<i>251</i>&nbsp;//        } catch (HibernateException e) {
+<i>252</i>&nbsp;//            e.printStackTrace();
+<i>253</i>&nbsp;//    logger.error(&quot;Exception: &quot;, e);
+<i>254</i>&nbsp;//        } finally {
+<i>255</i>&nbsp;//            session.close();
+<i>256</i>&nbsp;//        }
+<i>257</i>&nbsp;//        playerSearch.addFoundPlayer(player);
+<i>258</i>&nbsp;//        playerSearch.setPlayersFound(true);
+<i>259</i>&nbsp;//        return players;
+<i>260</i>&nbsp;//    }
+<i>261</i>&nbsp;
+<i>262</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2015-11-28 11:40</div>
+</div>
+</body>
+</html>
