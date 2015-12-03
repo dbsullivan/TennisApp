@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="TennisApp:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/TennisApp_war</output-path>
+    <root id="archive" name="TennisApp_war.war">
+      <element id="artifact" artifact-name="TennisApp:war exploded" />
+    </root>
+  </artifact>
+</component>

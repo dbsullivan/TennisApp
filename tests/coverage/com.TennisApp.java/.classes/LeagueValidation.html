@@ -1,0 +1,176 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LeagueValidation</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.TennisApp.java</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LeagueValidation (com.TennisApp.java)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LeagueValidation</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80.4%
+  </span>
+  <span class="absValue">
+    (41/ 51)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.TennisApp.java;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.TennisApp.java.utilities.DateValidator;
+<i>4</i>&nbsp;import com.TennisApp.java.utilities.UserInputTypeCheck;
+<i>5</i>&nbsp;import org.apache.log4j.Logger;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import java.text.ParseException;
+<i>8</i>&nbsp;import java.text.SimpleDateFormat;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;/**
+<i>11</i>&nbsp; * Created by Dave on 11/27/2015.
+<i>12</i>&nbsp; * Performs user entry validation on league form String inputs.
+<i>13</i>&nbsp; */
+<b class="fc"><i>14</i>&nbsp;public class LeagueValidation {</b>
+<i>15</i>&nbsp;
+<b class="fc"><i>16</i>&nbsp;    private final Logger logger = Logger.getLogger(this.getClass());</b>
+<i>17</i>&nbsp;
+<b class="fc"><i>18</i>&nbsp;    String AddMessage = &quot;&quot;;</b>
+<b class="fc"><i>19</i>&nbsp;    String ErrorType = &quot;&quot;;</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    /**
+<i>22</i>&nbsp;     * Performs user entry validation on league form String inputs.
+<i>23</i>&nbsp;     * @param leagueName
+<i>24</i>&nbsp;     * @param leagueTypeSnglDbls
+<i>25</i>&nbsp;     * @param leaguePlayerSlots
+<i>26</i>&nbsp;     * @param leagueCourtsNeeded
+<i>27</i>&nbsp;     * @param leagueEvents
+<i>28</i>&nbsp;     * @param leagueNTRPLevel
+<i>29</i>&nbsp;     * @param leagueStartDate
+<i>30</i>&nbsp;     * @param leagueEndDate
+<i>31</i>&nbsp;     * @param leagueStatus
+<i>32</i>&nbsp;     */
+<i>33</i>&nbsp;    public void performValidations(String leagueName, String leagueTypeSnglDbls, String leaguePlayerSlots, String leagueCourtsNeeded,
+<i>34</i>&nbsp;                                   String leagueEvents, String leagueNTRPLevel, String leagueStartDate, String leagueEndDate, String leagueStatus) {
+<i>35</i>&nbsp;
+<b class="fc"><i>36</i>&nbsp;        UserInputTypeCheck userInputTypeCheck = new UserInputTypeCheck();</b>
+<b class="fc"><i>37</i>&nbsp;        DateValidator dateValidator = new DateValidator();</b>
+<i>38</i>&nbsp;
+<b class="fc"><i>39</i>&nbsp;        if (leagueName == null || leagueName.equals(&quot;&quot;) ) {</b>
+<b class="fc"><i>40</i>&nbsp;            AddMessage = &quot;Please enter missing League Name.&quot;;</b>
+<b class="fc"><i>41</i>&nbsp;            ErrorType=&quot;leagueNameErr&quot;;</b>
+<b class="fc"><i>42</i>&nbsp;        } else if (leagueTypeSnglDbls == null || leagueTypeSnglDbls.equals(&quot;&quot;)) {</b>
+<b class="fc"><i>43</i>&nbsp;            AddMessage = &quot;Please enter missing League Type Singles or Doubles.&quot;;</b>
+<b class="fc"><i>44</i>&nbsp;            ErrorType=&quot;leagueTypeSnglDblsErr&quot;;</b>
+<b class="fc"><i>45</i>&nbsp;        } else if (leaguePlayerSlots == null || leaguePlayerSlots.equals(&quot;&quot;)) {</b>
+<b class="fc"><i>46</i>&nbsp;            AddMessage = &quot;Please enter missing Number of League Player Slots.&quot;;</b>
+<b class="fc"><i>47</i>&nbsp;            ErrorType=&quot;leaguePlayerSlotsErr&quot;;</b>
+<b class="fc"><i>48</i>&nbsp;        } else if ( !userInputTypeCheck.isValidInt(leaguePlayerSlots) ) {</b>
+<b class="nc"><i>49</i>&nbsp;            AddMessage = &quot;Please enter valid number.&quot;;</b>
+<b class="nc"><i>50</i>&nbsp;            ErrorType=&quot;leaguePlayerSlotsErr&quot;;</b>
+<b class="fc"><i>51</i>&nbsp;        } else if (leagueCourtsNeeded == null || leagueCourtsNeeded.equals(&quot;&quot;)) {</b>
+<b class="fc"><i>52</i>&nbsp;            AddMessage = &quot;Please enter missing Number of League Courts Needed.&quot;;</b>
+<b class="fc"><i>53</i>&nbsp;            ErrorType=&quot;leagueCourtsNeededErr&quot;;</b>
+<b class="fc"><i>54</i>&nbsp;        } else if ( !userInputTypeCheck.isValidInt(leagueCourtsNeeded) ) {</b>
+<b class="nc"><i>55</i>&nbsp;            AddMessage = &quot;Please enter valid number.&quot;;</b>
+<b class="nc"><i>56</i>&nbsp;            ErrorType=&quot;leagueCourtsNeededErr&quot;;</b>
+<b class="fc"><i>57</i>&nbsp;        } else if (leagueEvents == null || leagueEvents.equals(&quot;&quot;)) {</b>
+<b class="fc"><i>58</i>&nbsp;            AddMessage = &quot;Please enter missing Number of League Events.&quot;;</b>
+<b class="fc"><i>59</i>&nbsp;            ErrorType=&quot;leagueEventsErr&quot;;</b>
+<b class="fc"><i>60</i>&nbsp;        } else if ( !userInputTypeCheck.isValidInt(leagueEvents) ) {</b>
+<b class="nc"><i>61</i>&nbsp;            AddMessage = &quot;Please enter valid number.&quot;;</b>
+<b class="nc"><i>62</i>&nbsp;            ErrorType=&quot;leagueEventsErr&quot;;</b>
+<b class="fc"><i>63</i>&nbsp;        } else if (leagueNTRPLevel == null || leagueNTRPLevel.equals(&quot;&quot;)) {</b>
+<b class="fc"><i>64</i>&nbsp;            AddMessage = &quot;Please enter missing League NTRP Level.&quot;;</b>
+<b class="fc"><i>65</i>&nbsp;            ErrorType=&quot;leagueNTRPLevelErr&quot;;</b>
+<b class="fc"><i>66</i>&nbsp;        } else if (leagueStartDate == null || leagueStartDate.equals(&quot;&quot;)) {</b>
+<b class="fc"><i>67</i>&nbsp;            AddMessage = &quot;Please enter missing League Start Date.&quot;;</b>
+<b class="fc"><i>68</i>&nbsp;            ErrorType=&quot;leagueStartDateErr&quot;;</b>
+<b class="fc"><i>69</i>&nbsp;        } else if ( !dateValidator.isDateValid(leagueStartDate, &quot;MM/dd/yyyy&quot;) ) {</b>
+<b class="nc"><i>70</i>&nbsp;            AddMessage = &quot;Please enter valid date.&quot;;</b>
+<b class="nc"><i>71</i>&nbsp;            ErrorType=&quot;leagueStartDateErr&quot;;</b>
+<b class="fc"><i>72</i>&nbsp;        } else if (leagueEndDate == null || leagueEndDate.equals(&quot;&quot;)) {</b>
+<b class="fc"><i>73</i>&nbsp;            AddMessage = &quot;Please enter missing League End Date.&quot;;</b>
+<b class="fc"><i>74</i>&nbsp;            ErrorType=&quot;leagueEndDateErr&quot;;</b>
+<b class="fc"><i>75</i>&nbsp;        } else if ( !dateValidator.isDateValid(leagueEndDate, &quot;MM/dd/yyyy&quot;) ) {</b>
+<b class="nc"><i>76</i>&nbsp;            AddMessage = &quot;Please enter valid date.&quot;;</b>
+<b class="nc"><i>77</i>&nbsp;            ErrorType=&quot;leagueEndDateErr&quot;;</b>
+<b class="fc"><i>78</i>&nbsp;        } else if (leagueStatus == null || leagueStatus.equals(&quot;&quot;)) {</b>
+<b class="fc"><i>79</i>&nbsp;            AddMessage = &quot;Please enter missing League Status.&quot;;</b>
+<b class="fc"><i>80</i>&nbsp;            ErrorType = &quot;leagueStatusErr&quot;;</b>
+<i>81</i>&nbsp;        }
+<i>82</i>&nbsp;
+<b class="fc"><i>83</i>&nbsp;    }</b>
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    public String getErrorMessage() {
+<b class="fc"><i>86</i>&nbsp;        return AddMessage;</b>
+<i>87</i>&nbsp;    }
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    public String getErrorType() {
+<b class="fc"><i>90</i>&nbsp;        return ErrorType;</b>
+<i>91</i>&nbsp;    }
+<i>92</i>&nbsp;}
+<i>93</i>&nbsp;
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2015-11-28 11:40</div>
+</div>
+</body>
+</html>

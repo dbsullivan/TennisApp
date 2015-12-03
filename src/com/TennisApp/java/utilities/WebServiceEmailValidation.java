@@ -1,6 +1,9 @@
 package com.TennisApp.java.utilities;
 
-import javax.ws.rs.client.*;
+import org.apache.log4j.Logger;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import java.util.Objects;
 
@@ -9,12 +12,10 @@ import java.util.Objects;
  * Created by Dave on 11/19/2015.
  */
 public class WebServiceEmailValidation {
+    private final Logger logger = Logger.getLogger(this.getClass());
 
     private Client client;
     private String REST_SERVICE_URL = "http://localhost:9998/test";
-//    private static final String SUCCESS_RESULT="<result>success</result>";
-//    private static final String PASS = "true";
-//    private static final String FAIL = "false";
 
     private void init(){
         this.client = ClientBuilder.newClient();
@@ -41,6 +42,7 @@ public class WebServiceEmailValidation {
         } else {
             returnValue = false;
         };
+
 
         return returnValue;
     }

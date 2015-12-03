@@ -1,0 +1,134 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LeagueSearchPageDisplayServlet</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.TennisApp.java.controllers</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LeagueSearchPageDisplayServlet (com.TennisApp.java.controllers)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LeagueSearchPageDisplayServlet</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/ 8)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;
+<i>2</i>&nbsp;package com.TennisApp.java.controllers;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import org.apache.log4j.Logger;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import javax.servlet.RequestDispatcher;
+<i>7</i>&nbsp;import javax.servlet.ServletException;
+<i>8</i>&nbsp;import javax.servlet.annotation.WebServlet;
+<i>9</i>&nbsp;import javax.servlet.http.HttpServlet;
+<i>10</i>&nbsp;import javax.servlet.http.HttpServletRequest;
+<i>11</i>&nbsp;import javax.servlet.http.HttpServletResponse;
+<i>12</i>&nbsp;import java.io.IOException;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;/**
+<i>15</i>&nbsp; *  This class provides a forward to a JSP for League search (inside LeagueSearch.jsp).
+<i>16</i>&nbsp; *
+<i>17</i>&nbsp; *@author    Dave Sullivan
+<i>18</i>&nbsp; */
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;@WebServlet(
+<i>21</i>&nbsp;        name = &quot;LeagueSearch&quot;,
+<i>22</i>&nbsp;        urlPatterns = { &quot;/league-search&quot; }
+<i>23</i>&nbsp;)
+<b class="fc"><i>24</i>&nbsp;public class LeagueSearchPageDisplayServlet extends HttpServlet {</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    /**
+<i>27</i>&nbsp;     *  Handles HTTP GET requests.
+<i>28</i>&nbsp;     *
+<i>29</i>&nbsp;     *@param  request               Description of the Parameter
+<i>30</i>&nbsp;     *@param  response              Description of the Parameter
+<i>31</i>&nbsp;     *@exception ServletException  if there is a Servlet failure
+<i>32</i>&nbsp;     *@exception IOException       if there is an IO failure
+<i>33</i>&nbsp;     */
+<b class="fc"><i>34</i>&nbsp;    private final Logger logger = Logger.getLogger(LeagueSearchPageDisplayServlet.class);</b>
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    public void doGet(HttpServletRequest request,
+<i>37</i>&nbsp;                      HttpServletResponse response)
+<i>38</i>&nbsp;            throws ServletException, IOException {
+<i>39</i>&nbsp;
+<b class="fc"><i>40</i>&nbsp;        logger.info(&quot;In LeagueSearchPageDisplayServlet servlet, will forward to leagueSearch.jsp&quot;);</b>
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;        // Forward to a JSP page named leagueSearch.jsp.
+<b class="fc"><i>43</i>&nbsp;        String url = &quot;/leagueSearch.jsp&quot;;</b>
+<i>44</i>&nbsp;
+<b class="fc"><i>45</i>&nbsp;        RequestDispatcher dispatcher =</b>
+<b class="fc"><i>46</i>&nbsp;                getServletContext().getRequestDispatcher(url);</b>
+<b class="fc"><i>47</i>&nbsp;        dispatcher.forward(request, response);</b>
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;    }</b>
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2015-11-28 11:40</div>
+</div>
+</body>
+</html>
