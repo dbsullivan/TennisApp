@@ -17,3 +17,21 @@ J-Units started.
 
 A well organized project. It is evident you have spent lots of time on this.
 nw 11/16
+
+********************************************************************************
+
+Your classes are well organized which makes it easy to follow the line of your
+program. I also see you've added a bunch to the front end with jsps. Again you
+could avoid the massive validation switch statements by using an enum or a map
+of valid values.
+
+Your code is commented well in some places but is missing javadoc in others. I
+do see comments throughout to clarify your logic which will be helpful when
+debugging and documenting later.
+
+You have been continued to be consistent with naming, encapsulation, etc. I see
+you added a bunch of unit tests. Your code seems to be more modular and you seem
+to be getting the hang of it. Also you have added some error handling.
+
+So lots more progress. Will check again next week.
+nw 12/2
