@@ -24,10 +24,10 @@ public class PlayerValidation {
      * @param ntrpLevel
      * @param phoneNumber
      */
-    public void performValidations(String firstName, String lastName, String email, String gender, String ntrpLevel, String phoneNumber) {
+    public void performValidations (String firstName, String lastName, String email, String gender, String ntrpLevel, String phoneNumber) {
 
-        WebServiceEmailValidation webServiceEmailValidation = new WebServiceEmailValidation(); // this is String version
-//        WebServiceEmailValidationJSON webServiceEmailValidation = new WebServiceEmailValidationJSON(); // this is JSON version
+//        WebServiceEmailValidation webServiceEmailValidation = new WebServiceEmailValidation(); // this is String version
+        WebServiceEmailValidationJSON webServiceEmailValidation = new WebServiceEmailValidationJSON(); // this is JSON version
 
         if (firstName == null || firstName.equals("")) {
             AddMessage = "Please enter missing First Name.";

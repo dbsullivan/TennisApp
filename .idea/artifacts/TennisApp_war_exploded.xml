@@ -19,6 +19,12 @@
           <element id="library" level="project" name="Hibernate 4.2.2-4.2.2" />
           <element id="library" level="project" name="javax.ws.rs-api-2.0.1" />
           <element id="file-copy" path="$USER_HOME$/apache-tomcat-8.0.28/lib/mysql-connector-java-5.1.36-bin.jar" />
+          <element id="file-copy" path="$USER_HOME$/Downloads/JQueryUI/jquery-ui-1.11.4.zip" />
+          <element id="file-copy" path="$USER_HOME$/Downloads/JQueryUI/jquery-ui-themes-1.11.4.zip" />
+          <element id="file-copy" path="$USER_HOME$/Downloads/JSONSimple1.1.1 jars/json-simple-1.1.1.jar" />
+          <element id="file-copy" path="$USER_HOME$/Downloads/Jackson JSON jars/com.fasterxml.jackson.annotations.jar" />
+          <element id="file-copy" path="$USER_HOME$/Downloads/Jackson JSON jars/com.fasterxml.jackson.core.jar" />
+          <element id="file-copy" path="$USER_HOME$/Downloads/Jackson JSON jars/com.fasterxml.jackson.databind.jar" />
         </element>
       </element>
     </root>

@@ -15,7 +15,11 @@ public class WebServiceEmailValidation {
     private final Logger logger = Logger.getLogger(this.getClass());
 
     private Client client;
+// local, run other app in Intellij: EmailValidationRestful, run EmailValidationBetaClient
     private String REST_SERVICE_URL = "http://localhost:9998/test";
+// or
+// run on hosted server, i.e. at OpenShift:
+//    private String REST_SERVICE_URL = "http://tomcat-dsull608.rhcloud.com/EmailValidationRestTest/test";
 
     private void init(){
         this.client = ClientBuilder.newClient();

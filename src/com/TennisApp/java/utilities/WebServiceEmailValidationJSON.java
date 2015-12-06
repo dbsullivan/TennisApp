@@ -2,42 +2,38 @@ package com.TennisApp.java.utilities;
 
 import com.TennisApp.java.entity.Email;
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
-
+import java.io.IOException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 
-import com.TennisApp.java.utilities.JsonMapper.*;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-
-
 /**
- * Created by Dave on 11/30/2015.
+ * Created by Dave on 12/06/2015.
+ * This class uses a webservice developed internally, indicated in the URL, to validate the email passed.
+ * Requires the Email object imported in the class that handle either JSON or XML webservice return types.
+ * An Example JSON result: {"emailAdress":"dbsullivan@madisoncollege.edu","isValid":true}
  */
 public class WebServiceEmailValidationJSON {
     private final Logger logger = Logger.getLogger(this.getClass());
 
     private Client client;
     private String REST_SERVICE_URL = "http://localhost:9012/EmailValidation";
-
-    private void init(){
-        this.client = ClientBuilder.newClient();
-    }
+    Email email = new Email();
 
     /**
+     * This method will return a Boolean result, returnValue after calling the webservice to validate the
+     * email input parameter, emailToTest.
      * @param emailToTest
-     * @return
+     * @return returnValue
      */
-    public Boolean isValidEmail(String emailToTest) {
+    public Boolean isValidEmail (String emailToTest)  {
 
-        init();
         Boolean returnValue=false;
 
+        this.client = ClientBuilder.newClient();
         String callResponse = client
                 .target(REST_SERVICE_URL)
                 .path("/json/{emailAddress}")
@@ -45,27 +41,19 @@ public class WebServiceEmailValidationJSON {
                 .request(MediaType.APPLICATION_JSON)
                 .get(String.class);
 
-        ObjectMapper jsonMapper = new ObjectMapper();
-        Email email = new Email();
 
+        ObjectMapper jsonMapper = new ObjectMapper();
         try {
-            email = jsonMapper.readValue(callResponse, Email.class);
-            returnValue = email.getIsValid();
+            this.email = jsonMapper.readValue(callResponse, Email.class);
         } catch (JsonMappingException e) {
-            e.printStackTrace();
+            logger.error("Exception:", e);
         } catch (JsonParseException e) {
-            e.printStackTrace();
+            logger.error("Exception:", e);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Exception:", e);
         }
-//
-//        try {
-//            Email email = new Email();
-//            email = JsonMapper.decode(callResponse, Email.class);
-//            returnValue = email.getIsValid();
-//        } catch (NullPointerException e) {
-//            e.printStackTrace();
-//        }
+
+        returnValue = email.getIsValid();
 
         return returnValue;
     }
