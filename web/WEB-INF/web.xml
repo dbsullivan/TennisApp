@@ -43,6 +43,7 @@
             <url-pattern>/playerSearch.jsp</url-pattern>
             <url-pattern>/playerSearchResults.jsp</url-pattern>
             <url-pattern>/playerAdd.jsp</url-pattern>
+            <url-pattern>/playerMaintenance.jsp</url-pattern>
             <url-pattern>/leagueSearch.jsp</url-pattern>
             <url-pattern>/leagueSearchResults.jsp</url-pattern>
             <url-pattern>/leagueAdd.jsp</url-pattern>
@@ -67,6 +68,7 @@
             <url-pattern>/playerSearch.jsp</url-pattern>
             <url-pattern>/playerSearchResults.jsp</url-pattern>
             <url-pattern>/playerAdd.jsp</url-pattern>
+            <url-pattern>/playerMaintenance.jsp</url-pattern>
             <url-pattern>/leagueSearch.jsp</url-pattern>
             <url-pattern>/leagueSearchResults.jsp</url-pattern>
             <url-pattern>/leagueAdd.jsp</url-pattern>

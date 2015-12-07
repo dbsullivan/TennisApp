@@ -98,6 +98,7 @@ public class PlayerSearchServlet extends HttpServlet {
                 logger.info("forward to playerSearchResults.jsp, with PlayerDao.searchForPlayer(playerSearch)");
                 playerSearch = playerDao.searchForPlayer(playerSearch);
                 session.setAttribute("playerStatusSearch", playerSearch);
+                // here, leagueAssignDao using player ID to set another session.setAttribute("playerLeagueAssigns", playerLeagues) <-- like playerSearch, Id, found, List if true
 
                 if (!playerSearch.isFound()) {
                     SearchMessage = "No Player found.";
