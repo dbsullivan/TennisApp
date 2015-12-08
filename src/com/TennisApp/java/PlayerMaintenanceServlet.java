@@ -54,8 +54,8 @@ public class PlayerMaintenanceServlet extends HttpServlet {
 
         if (request.getParameter("updatePlayerBtn") != null) {
             url = "/player-update-action";
-//        } else if (request.getParameter("deletePlayerBtn") != null) {
-//            url = "/player-delete-action";
+        } else if (request.getParameter("deletePlayerBtn") != null) {
+            url = "/player-delete-action";
 //        } else if (request.getParameter("assignLeagueBtn") != null) {
 //            url = "/player-assignLeague-action";
         }
