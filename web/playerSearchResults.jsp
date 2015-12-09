@@ -43,12 +43,10 @@
             </tr>
             <c:forEach var="player" items="${playerStatusSearch.playersList}">
                 <tr>
-                    <!-- <td> Player </td> -->
+                    <%-- <td> Player </td> --%>
                     <td><a href="/player-maintenance?playerID=${player.getPlayerId()}" id="${player.getPlayerId()}" > Select Player  ${player.getPlayerId()} </a></td>
                     <%-- just show player ID,  names with row as a link, passing the selected ID, to PlayerMaint.java to populate playerMaint.jsp --%>
                     <td> ${player.toString()}</td>
-                    <%-- <c:forEach nest the list of LeagueAssigns after each player, shorten the toString to player.getNameFirst,last,id BUILD PlayerLeagues.java like PlayerSearch.java --%>
-                    <%-- put this in the individual playerMaintenance.jsp instead - it is Per player! --%>
                 </tr>
             </c:forEach>
         </table>
