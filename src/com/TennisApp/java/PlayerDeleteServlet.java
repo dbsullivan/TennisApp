@@ -22,8 +22,8 @@ import java.io.IOException;
  *@author    Dave Sullivan
  */
 @WebServlet(
-        name = "PlayerUpdateAction",
-        urlPatterns = { "/player-update-action" }
+        name = "PlayerDeleteAction",
+        urlPatterns = { "/player-delete-action" }
 )
 public class PlayerDeleteServlet extends HttpServlet {
 
@@ -58,19 +58,11 @@ public class PlayerDeleteServlet extends HttpServlet {
          *  Edits will need to be performed, such as if the player has any League_Assign records;
          *  then we wouldn't want to break that data integrity, and require that they be removed from the League_Assign before deletion.
          */
-//        PlayerValidation playerValidation = new PlayerValidation();
-//        playerValidation.performValidations(firstName, lastName, email, gender, ntrpLevel, phoneNumber);
-//        playerMaintMessage = playerValidation.getErrorMessage();
-//        ErrorType = playerValidation.getErrorType();
 
-        // Validate that all fields have valid data, prior to update()
-        // call League_Assign dao to see if they are in any league assigns, if not, they can be deleted.
-        // Use playerMaintMessage for this.
 
         // TODO add this Dao and look for exists. Eventually, add the list of league_assignments to the playerMaintenance.jsp as well.
-        // LeagueAssignDao leagueAssignDao = new LeagueAssignDao();
-
         // create a method that checks for existance in any league_assign for this player
+        // LeagueAssignDao leagueAssignDao = new LeagueAssignDao();
 
             // You've passed the audition to delete a Player if you return without an ErrorType here
 //            if (ErrorType == "") {
@@ -80,10 +72,16 @@ public class PlayerDeleteServlet extends HttpServlet {
             playerMaintMessage = "Player deleted. Id: " + playerID;
 //        }
 
-        session.setAttribute("playerMaintenanceMessage", playerMaintMessage);
-
         // Forward to a JSP page named playerMaintenance.jsp.
-        // todo return to playersearch results, after delete preloaded to show ALL ????
+
+        session.setAttribute("playerMaintenanceMessage", playerMaintMessage);
+//        session.setAttribute("playerID", playerID);
+        session.setAttribute("firstName", "");
+        session.setAttribute("lastName", "");
+        session.setAttribute("email", "");
+        session.setAttribute("gender", "");
+        session.setAttribute("ntrpLevel","");
+        session.setAttribute("phoneNumber", "");
         url = "/playerMaintenance.jsp";
 
         RequestDispatcher dispatcher =

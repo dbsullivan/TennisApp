@@ -170,6 +170,8 @@ public class PlayerDao {
     }
 
 
+    // todo a pure update might return  row count, test for non-zero in the returned value
+
     /** Method to READ a player in the database
      *
      * @param  playerId  The Player to be added.

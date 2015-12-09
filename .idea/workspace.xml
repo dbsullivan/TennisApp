@@ -8,9 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f1284ea-9cd3-4ee8-acdf-c473c5a5d6b6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/TennisApp/java/PlayerDeleteServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/TennisApp/java/persistance/PlayerDao.java" afterPath="$PROJECT_DIR$/src/com/TennisApp/java/persistance/PlayerDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/TennisApp/java/PlayerDeleteServlet.java" afterPath="$PROJECT_DIR$/src/com/TennisApp/java/PlayerDeleteServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/TennisApp/java/PlayerMaintenanceServlet.java" afterPath="$PROJECT_DIR$/src/com/TennisApp/java/PlayerMaintenanceServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/playerSearchResults.jsp" afterPath="$PROJECT_DIR$/web/playerSearchResults.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TennisApp.iws" />
@@ -70,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerUpdateServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="70" selection-end-column="37" />
+              <caret line="68" column="39" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerDeleteServlet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerMaintenanceServlet.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerMaintenanceServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerMaintenanceServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5548961">
-              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,10 +102,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="playerMaintenance.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="playerMaintenance.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/playerMaintenance.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="47.076923">
+            <state vertical-scroll-proportion="-2.554731">
               <caret line="39" column="56" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="56" />
               <folding />
             </state>
@@ -148,7 +148,6 @@
         <option value="$PROJECT_DIR$/web/leagueSearch.jsp" />
         <option value="$PROJECT_DIR$/web/leagueSearchResults.jsp" />
         <option value="$PROJECT_DIR$/src/com/TennisApp/java/LeagueSearchServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/TennisApp/java/persistance/PlayerDao.java" />
         <option value="$PROJECT_DIR$/src/com/TennisApp/java/persistance/LeagueDao.java" />
         <option value="$PROJECT_DIR$/web/leagueAdd.jsp" />
         <option value="$PROJECT_DIR$/web/welcome.jsp" />
@@ -175,10 +174,11 @@
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/web/playerMaintenance.jsp" />
         <option value="$PROJECT_DIR$/src/com/TennisApp/java/controllers/PlayerMaintenancePageDisplayServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/TennisApp/java/PlayerUpdateServlet.java" />
         <option value="$PROJECT_DIR$/web/playerSearchResults.jsp" />
-        <option value="$PROJECT_DIR$/src/com/TennisApp/java/PlayerMaintenanceServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/TennisApp/java/persistance/PlayerDao.java" />
+        <option value="$PROJECT_DIR$/src/com/TennisApp/java/PlayerUpdateServlet.java" />
         <option value="$PROJECT_DIR$/src/com/TennisApp/java/PlayerDeleteServlet.java" />
+        <option value="$PROJECT_DIR$/src/com/TennisApp/java/PlayerMaintenanceServlet.java" />
       </list>
     </option>
   </component>
@@ -236,6 +236,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -286,11 +287,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TennisApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TennisApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="persistance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -818,7 +840,8 @@
       <workItem from="1449430249226" duration="5752000" />
       <workItem from="1449446405506" duration="11176000" />
       <workItem from="1449501261239" duration="18830000" />
-      <workItem from="1449546681881" duration="2506000" />
+      <workItem from="1449546681881" duration="2530000" />
+      <workItem from="1449600226694" duration="5902000" />
     </task>
     <task id="LOCAL-00001" summary="20151117">
       <created>1447809851696</created>
@@ -910,11 +933,17 @@
       <option name="project" value="LOCAL" />
       <updated>1449526549145</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="20151207">
+      <created>1449549221913</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1449549221913</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233374000" />
+    <option name="totallyTimeSpent" value="239300000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="2043" y="19" width="1612" height="980" extended-state="0" />
@@ -925,14 +954,14 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32760596" sideWeight="0.4644243" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1459854" sideWeight="0.3685567" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2785888" sideWeight="0.5715206" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32850778" sideWeight="0.49573562" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2785888" sideWeight="0.4310567" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1459854" sideWeight="0.6314433" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2785888" sideWeight="0.42847937" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2591241" sideWeight="0.625" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32893157" sideWeight="0.49767172" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20489691" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20747423" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25902063" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1197,48 +1226,48 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/d6086552/fa5f2b99-2bd0-4645-8f65-af80064fcf51/tennis..league_assignment">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Tennis_database/insertplayer.sql">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
     </entry>
     <entry file="dbDummy://dbtable:/d6086552/fa5f2b99-2bd0-4645-8f65-af80064fcf51/tennis..league">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/d6086552/fa5f2b99-2bd0-4645-8f65-af80064fcf51/tennis..player">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1293,14 +1322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerAddServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.20238096">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerSearch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1316,13 +1337,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/persistance/PlayerDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="155" column="33" selection-start-line="155" selection-start-column="16" selection-end-line="155" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerSearchServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.1816578">
@@ -1335,7 +1349,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37037036">
           <caret line="47" column="20" selection-start-line="47" selection-start-column="20" selection-end-line="47" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1349,10 +1362,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/playerMaintenance.jsp">
+    <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerAddServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="47.076923">
-          <caret line="39" column="56" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="56" />
+        <state vertical-scroll-proportion="-0.8310502">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/persistance/PlayerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="196" column="6" selection-start-line="196" selection-start-column="6" selection-end-line="196" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1360,7 +1383,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerUpdateServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="70" selection-end-column="37" />
+          <caret line="68" column="39" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1370,7 +1393,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerDeleteServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1379,11 +1402,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/TennisApp/java/PlayerMaintenanceServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5548961">
-          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="6" selection-start-line="58" selection-start-column="6" selection-end-line="58" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/playerMaintenance.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.554731">
+          <caret line="39" column="56" selection-start-line="39" selection-start-column="32" selection-end-line="39" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
