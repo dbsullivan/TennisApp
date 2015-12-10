@@ -24,8 +24,8 @@
         <mapping resource="League.hbm.xml" />
         <mapping class="com.TennisApp.java.entity.League" />
 
-        <!-- <mapping resource="League_Assignment.hbm.xml" /> -->
-        <!-- <mapping class="com.TennisApp.java.entity.League_Assignment" /> -->
+        <mapping resource="League_Assignment.hbm.xml" />
+        <mapping class="com.TennisApp.java.entity.League_Assignment" />
 
         <!-- <mapping resource="Player_Matches.hbm.xml" /> -->
         <!-- <mapping class="com.TennisApp.java.entity.Player_Matches" /> -->

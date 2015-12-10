@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.TennisApp.java.entity.League_Assignment" table="league_assignment">
+        <meta attribute="class-description">
+            This class contains the league_assignment detail.
+        </meta>
+        <id name="leagueAssignId" type="int" column="league_assign_id">
+            <generator class="native"/>
+        </id>
+        <property name="leagueId" column="league_id" type="int"/>
+        <property name="playerId" column="player_id" type="int"/>
+        <property name="playerSlotNum" column="player_slot_num" type="int"/>
+    </class>
+</hibernate-mapping>
