@@ -56,15 +56,6 @@ public class PlayerUpdateServlet extends HttpServlet {
         String ntrpLevel = request.getParameter("ntrpLevel");
         String phoneNumber = request.getParameter("phoneNumber");
 
-        Player playerToUpdate = new Player();
-        playerToUpdate.setPlayerId(playerIDInteger);
-        playerToUpdate.setFirstName(firstName);
-        playerToUpdate.setLastName(lastName);
-        playerToUpdate.setEmail(email);
-        playerToUpdate.setGender(gender);
-        playerToUpdate.setNTRPlevel(ntrpLevel);
-        playerToUpdate.setPhone(phoneNumber);
-
         // associate the Message with the session, and clear it before forwarding to JSP page
         String playerMaintMessage = "";
         String ErrorType = "";
@@ -99,19 +90,30 @@ public class PlayerUpdateServlet extends HttpServlet {
             phoneNumberErr = true;
             // You've passed the audition to update a Player if you return without an ErrorType here
         } else if (ErrorType == "") {
+
+            Player playerToUpdate = new Player();
+            playerToUpdate.setPlayerId(playerIDInteger);
+            playerToUpdate.setFirstName(firstName);
+            playerToUpdate.setLastName(lastName);
+            playerToUpdate.setEmail(email);
+            playerToUpdate.setGender(gender);
+            playerToUpdate.setNTRPlevel(ntrpLevel);
+            playerToUpdate.setPhone(phoneNumber);
+
             PlayerDao playerDao = new PlayerDao();
             playerDao.addOrUpdatePlayer(playerToUpdate);
             session.setAttribute("playerIdUpdated", playerID);
             playerMaintMessage = "Player updated. Id: " + playerID;
         }
 
+
         session.setAttribute("playerID", playerID);
-        session.setAttribute("firstName", playerToUpdate.getFirstName());
-        session.setAttribute("lastName", playerToUpdate.getLastName());
-        session.setAttribute("email", playerToUpdate.getEmail());
-        session.setAttribute("gender", playerToUpdate.getGender());
-        session.setAttribute("ntrpLevel", playerToUpdate.getNTRPlevel());
-        session.setAttribute("phoneNumber", playerToUpdate.getPhone());
+        session.setAttribute("firstName", firstName);
+        session.setAttribute("lastName", lastName);
+        session.setAttribute("email", email);
+        session.setAttribute("gender", gender);
+        session.setAttribute("ntrpLevel", ntrpLevel);
+        session.setAttribute("phoneNumber", phoneNumber);
 
         session.setAttribute("playerMaintenanceMessage", playerMaintMessage);
         session.setAttribute("playerfirstNameErr", firstNameErr);

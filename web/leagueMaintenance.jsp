@@ -125,7 +125,7 @@
           </td>
         </tr>
         <tr>
-          <td align="left">League Start Date (mm/dd/yyyy): </td>
+          <td align="left">League Start Date (yyyy--mm-dd): </td>
           <td align="left"><%-- <input type="text" name="leagueStartDate" maxlength="10" size="10" value="${leagueStartDate}" /></td> --%>
             <c:choose>
               <c:when test="${leagueStartDateErr == true}" >
@@ -138,7 +138,7 @@
           </td>
         </tr>
         <tr>
-          <td align="left">League End Date (mm/dd/yyyy):</td>
+          <td align="left">League End Date (yyyy--mm-dd):</td>
           <td align="left"><%-- <input type="text" name="leagueEndDate" maxlength="10" size="10" value="${leagueEndDate}" /></td> --%>
             <c:choose>
               <c:when test="${leagueEndDateErr == true}" >

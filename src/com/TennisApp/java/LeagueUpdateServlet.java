@@ -68,18 +68,6 @@ public class LeagueUpdateServlet extends HttpServlet {
         Date leagueStartDateDATE = null;
         Date leagueEndDateDATE = null;
 
-        League leagueToUpdate = new League();
-        leagueToUpdate.setLeagueId(leagueIDInteger);
-        leagueToUpdate.setLeagueName(leagueName);
-        leagueToUpdate.setNumPlayerSlots(leaguePlayerSlotsInteger);
-        leagueToUpdate.setNumCourtsNeeded(leagueCourtsNeededInteger);
-        leagueToUpdate.setNumEvents(leagueEventsInteger);
-        leagueToUpdate.setTypeSinglesDoubles(leagueTypeSnglDbls);
-        leagueToUpdate.setLevel(leagueNTRPLevel);
-        leagueToUpdate.setStartDate(leagueStartDateDATE);
-        leagueToUpdate.setEndDate(leagueEndDateDATE);
-        leagueToUpdate.setStatus(leagueStatus);
-
         // associate the Message with the session, and clear it before forwarding to JSP page
         String leagueMaintMessage = "";
         String ErrorType = "";
@@ -133,13 +121,25 @@ public class LeagueUpdateServlet extends HttpServlet {
             }
 
             try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd");
                 dateFormat.setLenient(false);
                 leagueStartDateDATE = dateFormat.parse(leagueStartDate.trim());
                 leagueEndDateDATE = dateFormat.parse(leagueEndDate.trim());
             } catch (ParseException pe) {
                 logger.error("This date could not be parsed, not fatal error", pe);
             }
+
+            League leagueToUpdate = new League();
+            leagueToUpdate.setLeagueId(leagueIDInteger);
+            leagueToUpdate.setLeagueName(leagueName);
+            leagueToUpdate.setNumPlayerSlots(leaguePlayerSlotsInteger);
+            leagueToUpdate.setNumCourtsNeeded(leagueCourtsNeededInteger);
+            leagueToUpdate.setNumEvents(leagueEventsInteger);
+            leagueToUpdate.setTypeSinglesDoubles(leagueTypeSnglDbls);
+            leagueToUpdate.setLevel(leagueNTRPLevel);
+            leagueToUpdate.setStartDate(leagueStartDateDATE);
+            leagueToUpdate.setEndDate(leagueEndDateDATE);
+            leagueToUpdate.setStatus(leagueStatus);
 
             LeagueDao leagueDao = new LeagueDao();
             leagueDao.addOrUpdateLeague(leagueToUpdate);

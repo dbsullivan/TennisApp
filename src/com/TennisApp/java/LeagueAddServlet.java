@@ -2,8 +2,6 @@ package com.TennisApp.java;
 
 import com.TennisApp.java.entity.League;
 import com.TennisApp.java.persistance.LeagueDao;
-import com.TennisApp.java.utilities.DateValidator;
-import com.TennisApp.java.utilities.UserInputTypeCheck;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
