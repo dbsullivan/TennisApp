@@ -135,7 +135,7 @@ public class LeagueAddServlet extends HttpServlet {
             }
 
             try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd");
                 dateFormat.setLenient(false);
                 leagueStartDateDATE = dateFormat.parse(leagueStartDate.trim());
                 leagueEndDateDATE = dateFormat.parse(leagueEndDate.trim());

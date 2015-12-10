@@ -5,6 +5,8 @@ import com.TennisApp.java.entity.League;
 import com.TennisApp.java.persistance.LeagueDao;
 import org.apache.log4j.Logger;
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -49,6 +51,26 @@ public class LeagueMaintenancePageDisplayServlet extends HttpServlet {
         league = leagueDao.getLeague(leagueIDInteger);
 
         // get values from DaoLeague lookup to populate LeagueMaintenance.jsp form and setting the attributes
+
+        //TODO  set the date upon retrieval using simpledate format, to display mm-dd-yy
+
+        // do league getters, alter dates and integers, then do session sets from these  ?
+        // database equivalent data types validated as String, need conversion to db type here.
+//        int leaguePlayerSlotsInteger = 0;
+//        int leagueCourtsNeededInteger = 0;
+//        int leagueEventsInteger = 0;
+//        Date leagueStartDateDATE = null;
+//        Date leagueEndDateDATE = null;
+//
+//        try {
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+//            dateFormat.setLenient(false);
+//            leagueStartDateDATE = dateFormat.parse(league.getStartDate());
+//            leagueEndDateDATE = dateFormat.parse( league.getEndDate());
+//        } catch (ParseException pe) {
+//            logger.error("This date could not be parsed, not fatal error", pe);
+//        }
+
 
         // These session properties will persist between validations, in the JSP, input tag, text value="${EL item}".
         session.setAttribute("leagueID", leagueID);

@@ -20,7 +20,7 @@ $(document).ready(function() {
 // 2. change the  textbox to a datepicker
 // 3. within the  datepicker, allow the user to select the month and the year via a drop down list
 
-    $("#leagueStartDate").datepicker({changeMonth:true, changeYear:true});
-    $("#leagueEndDate").datepicker({changeMonth:true, changeYear:true});
+    $("#leagueStartDate").datepicker({changeMonth:true, changeYear:true, dateFormat: 'yy-mm-dd'});
+    $("#leagueEndDate").datepicker({changeMonth:true, changeYear:true, dateFormat: 'yy-mm-dd'});
 
 })

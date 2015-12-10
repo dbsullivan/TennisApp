@@ -66,13 +66,13 @@ public class LeagueValidation {
         } else if (leagueStartDate == null || leagueStartDate.equals("")) {
             AddMessage = "Please enter missing League Start Date.";
             ErrorType="leagueStartDateErr";
-        } else if ( !dateValidator.isDateValid(leagueStartDate, "MM/dd/yyyy") ) {
+        } else if ( !dateValidator.isDateValid(leagueStartDate, "yy-mm-dd") ) {
             AddMessage = "Please enter valid date.";
             ErrorType="leagueStartDateErr";
         } else if (leagueEndDate == null || leagueEndDate.equals("")) {
             AddMessage = "Please enter missing League End Date.";
             ErrorType="leagueEndDateErr";
-        } else if ( !dateValidator.isDateValid(leagueEndDate, "MM/dd/yyyy") ) {
+        } else if ( !dateValidator.isDateValid(leagueEndDate, "yy-mm-dd") ) {
             AddMessage = "Please enter valid date.";
             ErrorType="leagueEndDateErr";
         } else if (leagueStatus == null || leagueStatus.equals("")) {

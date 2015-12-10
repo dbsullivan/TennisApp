@@ -34,7 +34,7 @@
   </div>
 
   <div id="text"  >
-    <h2>League Add Form</h2>
+    <h2>League Maintenance Form</h2>
     <h4>Add Messages: ${leagueMaintenanceMessage}</h4>
     <form action="/league-maintenance-action" method="POST">
       <table>
