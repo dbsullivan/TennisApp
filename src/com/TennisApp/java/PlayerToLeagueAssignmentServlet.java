@@ -1,6 +1,7 @@
 package com.TennisApp.java;
 
 import com.TennisApp.java.entity.Player;
+import com.TennisApp.java.persistance.League_AssignmentDao;
 import com.TennisApp.java.persistance.PlayerDao;
 import org.apache.log4j.Logger;
 
@@ -62,20 +63,24 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
         String leagueAssignmentMessage = "";
         String ErrorType = "";
 //        boolean firstNameErr = false;
-        // todo - validate logic separte module start here, see PlayerUpdateServlet and
+
+        // todo - validate logic separate module start here, see PlayerUpdateServlet and
 
         /** Validation logic for JUNIT testing is contained in PlayerValidate.java object
          * send in the Strings, test or any UpdateMessage <> "", then we can't update a Player object of validated data and types.
          */
-        PlayerAssignToLeagueValidation playerAssignToLeagueValidation = new PlayerAssignToLeagueValidation();
-        playerAssignToLeagueValidation.performValidations(firstName, lastName, email, gender, ntrpLevel, phoneNumber); // have playerId in session object? nothing to pass
-        leagueAssignmentMessage = playerAssignToLeagueValidation.getErrorMessage();
-        ErrorType = playerAssignToLeagueValidation.getErrorType();
+//        PlayerAssignToLeagueValidation playerAssignToLeagueValidation = new PlayerAssignToLeagueValidation();
+//        playerAssignToLeagueValidation.performValidations(firstName, lastName, email, gender, ntrpLevel, phoneNumber); // have playerId in session object? nothing to pass
+//        leagueAssignmentMessage = playerAssignToLeagueValidation.getErrorMessage();
+//        ErrorType = playerAssignToLeagueValidation.getErrorType();
+
+        League_AssignmentDao league_assignmentDao= new League_AssignmentDao();
+        league_assignmentDao.getCurrentLeagueAssignmentsForPlayerId(playerIDInteger);
+        session.setAttribute("playerIdUpdated", playerID);
+        leagueAssignmentMessage = "Player updated. Id: " + playerID;
 
 
-
-
-        url = "/leagueAssignment.jsp";  // do a redirect using url back to leagueAssignment.jsp page.
+        url = "/playerToLeagueAssignment.jsp";  // do a redirect using url back to leagueAssignment.jsp page.
         response.sendRedirect(url);
 
 //        url = "/player-assignLeague-action";

@@ -1,6 +1,13 @@
 package com.TennisApp.java.persistance;
 
+import com.TennisApp.java.LeagueSearch;
+import com.TennisApp.java.entity.League;
+import com.TennisApp.java.entity.League_Assignment;
 import org.apache.log4j.Logger;
+import org.hibernate.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -27,5 +34,40 @@ public class League_AssignmentDao {
 
     private final Logger logger = Logger.getLogger(this.getClass());
 
+    /**
+     *  method to search for all league_assignments
+     *
+     *@param playerIDInteger  The new leagueSearch object holds search type, term, results.
+     *
+     */
+    public List getCurrentLeagueAssignmentsForPlayerId(int playerIDInteger) {
+
+        List<League_Assignment> league_assignments = new ArrayList<~>();
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+
+        // use HQL to join league_assignment to league for league_name, and playerIdInteger parameter
+
+        Criteria criteria = session.createCriteria(League_Assignment.class);
+        Transaction tx = null;
+        try {
+            league_assignments = criteria.list();
+            if ( !league_assignments.isEmpty() ) {
+                for (League_Assignment league_assignment : league_assignments) {
+                    leagueAssign.addFoundLeague(league);  // what if none found, need a leagueAssign object to test?
+                }
+                leagueSearch.setLeaguesFound(true);
+            }
+//            String queryString =
+//                "";
+//            List league_assignments = session.createQuery( queryString );
+
+
+        } catch (HibernateException e) {
+            logger.error("Exception: ", e);
+        } finally {
+            session.close();
+        }
+        return league_assignments;
+    }
 
 }
