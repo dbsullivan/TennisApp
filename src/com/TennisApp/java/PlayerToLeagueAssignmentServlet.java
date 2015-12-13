@@ -45,7 +45,7 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
 
-        logger.info("In PlayerToLeagueAssignmentServlet... to maintain AssignLeague.");
+        logger.info("In PlayerToLeagueAssignmentServlet... to maintain League Assignments.");
         String url = null;
 
         // Arrive here, from PlayerMaintenanceServlet, where
@@ -53,40 +53,45 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
         // Here we will determine if the user has selected Update, Delete, or AssignLeague for a player, and forward to the correct Servlet.
         // Forward to an action Servlet selected in  playerMaintenance.jsp.
 
+
         String playerID = (String) session.getAttribute("playerID");
         Integer playerIDInteger = Integer.parseInt(playerID);
 
-        // get values from form parameters
-//        String firstName = request.getParameter("firstName");  // drop down of available leagues to assign to player
-
-        // associate the Message with the session, and clear it before forwarding to JSP page
+        // associate the Message with the request, and clear it before forwarding to JSP page
         String leagueAssignmentMessage = "";
-        String ErrorType = "";
-//        boolean firstNameErr = false;
-
-        // todo - validate logic separate module start here, see PlayerUpdateServlet and
-
-        /** Validation logic for JUNIT testing is contained in PlayerValidate.java object
-         * send in the Strings, test or any UpdateMessage <> "", then we can't update a Player object of validated data and types.
-         */
-//        PlayerAssignToLeagueValidation playerAssignToLeagueValidation = new PlayerAssignToLeagueValidation();
-//        playerAssignToLeagueValidation.performValidations(firstName, lastName, email, gender, ntrpLevel, phoneNumber); // have playerId in session object? nothing to pass
-//        leagueAssignmentMessage = playerAssignToLeagueValidation.getErrorMessage();
-//        ErrorType = playerAssignToLeagueValidation.getErrorType();
+        leagueAssignmentMessage = "You can Remove or Add League Assignments for Id: " + playerID;
+        session.setAttribute("leagueAssignmentMessage", leagueAssignmentMessage);
 
         League_AssignmentDao league_assignmentDao= new League_AssignmentDao();
-        league_assignmentDao.getCurrentLeagueAssignmentsForPlayerId(playerIDInteger);
-        session.setAttribute("playerIdUpdated", playerID);
-        leagueAssignmentMessage = "Player updated. Id: " + playerID;
+
+        // option 1.to create a search object LeagueAssignSearch leagueAssignList, setting leagueAssignSearch.getSearchType() = "assign player to league"
+        LeagueAssignSearch leagueAssignSearch = new LeagueAssignSearch();
+        leagueAssignSearch.setSearchType("assign player to league");
+
+        leagueAssignSearch = league_assignmentDao.searchForLeagueAssign(leagueAssignSearch);
+        session.setAttribute("leagueAssignStatusSearch", leagueAssignSearch);
+
+        if ( !leagueAssignSearch.isFound() ) {
+            leagueAssignmentMessage = "No League Assignments found.";
+            session.setAttribute("leagueSearchMessage", leagueAssignmentMessage);
+        }
 
 
-        url = "/playerToLeagueAssignment.jsp";  // do a redirect using url back to leagueAssignment.jsp page.
-        response.sendRedirect(url);
+        //option 2. directly using method in Dao, without LeagueAssignSearch object:
+//        league_assignmentDao.getCurrentLeagueAssignmentsForPlayerId(playerIDInteger);
+//        session.setAttribute("playerIdUpdated", playerID);
 
-//        url = "/player-assignLeague-action";
-//        RequestDispatcher dispatcher =
-//                getServletContext().getRequestDispatcher(url);
-//        dispatcher.forward(request, response);
+
+
+        logger.info("forward to playerToLeagueAssignment.jsp for assign player to league ") ;
+
+//        url = "/playerToLeagueAssignment.jsp";  // do a redirect using url back to leagueAssignment.jsp page.
+//        response.sendRedirect(url);
+
+        url = "/playerToLeagueAssignment.jsp";
+        RequestDispatcher dispatcher =
+                getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 }
 

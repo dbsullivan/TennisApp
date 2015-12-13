@@ -1,5 +1,6 @@
 package com.TennisApp.java.persistance;
 
+import com.TennisApp.java.LeagueAssignSearch;
 import com.TennisApp.java.LeagueSearch;
 import com.TennisApp.java.entity.League;
 import com.TennisApp.java.entity.League_Assignment;
@@ -22,45 +23,100 @@ import java.util.List;
  */
 public class League_AssignmentDao {
 
-    // simply read one or all for now.  Want to list all L_A's next to Player Maint, League Maint .jsps
-    // Also, this read will need to get League name join, and/or Player name join
     // pull LA for a given player id, pull LA (leagues list)
     // pull LA for a given league id, pull LA (players list)
-
-    // when time for assignment, just read a list of Leagues where no L_A exists for the current player_id, link/hrefs to chose one.
-    // or read a list of Players where no L_A exists for the current league_id, link/hrefs to chose one.
-    // Then the logic must validate to find the number of slots from League, and only assign the next
-    // available slot indexing through an ordered Set, if L_A has some or none.
+    // The league assignment "slot" for any assignment will attempt to use the min(slot) available for that league
+    // unless the min(slot) = slot_nums for that league, which indicates the league is filled with player slots.
 
     private final Logger logger = Logger.getLogger(this.getClass());
 
     /**
-     *  method to search for all league_assignments
+     * Create a method that will search for an League using a LeagueSearch object by either id or name or all.
      *
-     *@param playerIDInteger  The new leagueSearch object holds search type, term, results.
-     *
+     *@param leagueAssignSearch  The search LeagueAssignSearch method returns a LeagueAssignSearch object. Can search by player_id or league_id.
+     *@return LeagueAssignSearch
      */
-    public List getCurrentLeagueAssignmentsForPlayerId(int playerIDInteger) {
+    public LeagueAssignSearch searchForLeagueAssign(LeagueAssignSearch leagueAssignSearch){
 
-        List<League_Assignment> league_assignments = new ArrayList<~>();
+        logger.info("method searchForLeagueAssign() in League_AssignmentDao, with type: " + leagueAssignSearch.getSearchType());
+
+        if (leagueAssignSearch.getSearchType().toLowerCase().equals("assign player to league")) {
+            getCurrentLeagueAssignmentsForPlayerId(leagueAssignSearch); // return void, but leagueAssignList.add(leagueAssign) LeagueAssignSearch object
+//        }  else
+//        if (leagueAssignSearch.getSearchType().toLowerCase().equals("assign league to player")) {
+//            searchForLeagueID(leagueAssignSearch);  // return void, but leagueAssignList.add(leagueAssign) LeagueAssignSearch object
+//        }  else
+//        if (leagueAssignSearch.getSearchType().toLowerCase().equals("all")) {
+//            searchForAllLeagues(leagueAssignSearch);  // return void, but leagueAssignList.add(leagueAssign) LeagueAssignSearch object
+        }
+
+        return leagueAssignSearch;
+    }
+
+
+    /**
+     * This method uses the LeagueAssignSearch object to handle the League_Assign results returned by setting here.
+     * @param leagueAssignSearch
+     */
+    public void getCurrentLeagueAssignmentsForPlayerId(LeagueAssignSearch leagueAssignSearch) {
+
+        logger.info("method getCurrentLeagueAssignmentsForPlayerId() in League_AssignmentDao for: " + leagueAssignSearch.getSearchTerm());
         Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        List<League_Assignment> league_assignments = null;
+        int player_id =  Integer.parseInt(leagueAssignSearch.getSearchTerm());
 
-        // use HQL to join league_assignment to league for league_name, and playerIdInteger parameter
-
-        Criteria criteria = session.createCriteria(League_Assignment.class);
-        Transaction tx = null;
         try {
-            league_assignments = criteria.list();
+            String hqlString =
+                    "SELECT LA.leagueAssignId, LA.leagueId, LA.playerId, LA.playerSlotNum  " +
+                            " FROM League_Assignment LA " +
+                            " WHERE LA.playerId = ?";
+//                            " WHERE LA.playerId = :player_id";
+
+            Query hqlQuery = session.createQuery(hqlString);
+//            hqlQuery.setParameter("player_id", playerIDInteger);
+            hqlQuery.setInteger(0,player_id);
+            league_assignments = hqlQuery.list();
+
             if ( !league_assignments.isEmpty() ) {
                 for (League_Assignment league_assignment : league_assignments) {
-                    leagueAssign.addFoundLeague(league);  // what if none found, need a leagueAssign object to test?
+                    leagueAssignSearch.addFoundLeague_Assignment(league_assignment);
                 }
-                leagueSearch.setLeaguesFound(true);
+                leagueAssignSearch.setAssignmentsFound(true);
             }
-//            String queryString =
-//                "";
-//            List league_assignments = session.createQuery( queryString );
 
+
+        } catch (HibernateException e) {
+            logger.error("Exception: ", e);
+        } finally {
+            session.close();
+        }
+
+    }
+
+
+    /**
+     * This method directly returns a List of League_Assign results for a player int passed .
+     * @param playerIDInteger
+     */
+    public List<League_Assignment> getCurrentLeagueAssignmentsForPlayerId(int playerIDInteger) {
+
+        logger.info("method getCurrentLeagueAssignmentsForPlayerId() in League_AssignmentDao for: " + playerIDInteger);
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        List<League_Assignment> league_assignments = null;
+
+        try {
+            String hqlString =
+                    "SELECT LA.leagueAssignId, LA.leagueId, LA.playerId, LA.playerSlotNum  " +
+                            " FROM League_Assignment LA " +
+                            " WHERE LA.playerId = ?";
+//                            " WHERE LA.playerId = :player_id";
+
+            Query hqlQuery = session.createQuery(hqlString);
+//            hqlQuery.setParameter("player_id", playerIDInteger);
+            hqlQuery.setInteger(0,playerIDInteger);
+            league_assignments = hqlQuery.list();
+
+            return league_assignments;
 
         } catch (HibernateException e) {
             logger.error("Exception: ", e);
@@ -69,5 +125,34 @@ public class League_AssignmentDao {
         }
         return league_assignments;
     }
+
+
+
+// alternates *************************************
+    //
+//    /**
+//     * Create a method that will search for an Player_id in the League_Assignment.
+//     *
+//     *@param leagueAssignSearch  The new leagueAssignSearch object holds search type, term, results.
+//     */
+//    public void searchForPlayerID(LeagueAssignSearch leagueAssignSearch) {
+//        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+//        League_Assignment league_assignment = null;
+//        int playerId =  Integer.parseInt(leagueAssignSearch.getSearchTerm());
+//        try {
+//            league_assignment = (League_Assignment)session.get(League_Assignment.class, playerId);
+//            if (league_assignment != null) {
+//                leagueAssignSearch.addFoundLeague_Assignment(league_assignment);
+//                leagueAssignSearch.setAssignmentsFound(true);
+//            } else {
+//                leagueAssignSearch.setAssignmentsFound(false);
+//            }
+//        } catch (HibernateException e) {
+//            logger.error("Exception: ", e);
+//        } finally {
+//            session.close();
+//        }
+//    }
+
 
 }
