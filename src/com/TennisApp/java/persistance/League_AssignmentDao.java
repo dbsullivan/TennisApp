@@ -62,26 +62,50 @@ public class League_AssignmentDao {
 
         logger.info("method getCurrentLeagueAssignmentsForPlayerId() in League_AssignmentDao for: " + leagueAssignSearch.getSearchTerm());
         Session session = SessionFactoryProvider.getSessionFactory().openSession();
-        List<League_Assignment> league_assignments = null;
+//        List<League_Assignment> league_assignments = new ArrayList<League_Assignment>();
+        List league_assign_results = new ArrayList<>(); //  List of Java String objects is desired, NOT the league_assignment entity bean.
         int player_id =  Integer.parseInt(leagueAssignSearch.getSearchTerm());
 
         try {
-            String hqlString =
-                    "SELECT LA.leagueAssignId, LA.leagueId, LA.playerId, LA.playerSlotNum  " +
-                            " FROM League_Assignment LA " +
-                            " WHERE LA.playerId = ?";
+//            String hqlString =
+//                    "SELECT LA.leagueAssignId, LA.leagueId, LA.playerId, LA.playerSlotNum  " +
+//                            " FROM League_Assignment LA " +
 //                            " WHERE LA.playerId = :player_id";
+//
+////                            " WHERE LA.playerId = ?";
+////            hqlQuery.setInteger(0,player_id);
+
+            String hqlString =
+                    "SELECT LA.leagueAssignId, L.leagueName, L.level, L.typeSinglesDoubles, L.numPlayerSlots  " +
+                            " FROM League_Assignment LA, League L " +
+                            " WHERE LA.leagueId = L.leagueId " +
+                            " AND LA.playerId = :player_id " ;
 
             Query hqlQuery = session.createQuery(hqlString);
-//            hqlQuery.setParameter("player_id", playerIDInteger);
-            hqlQuery.setInteger(0,player_id);
-            league_assignments = hqlQuery.list();
+            hqlQuery.setParameter("player_id", player_id);
 
-            if ( !league_assignments.isEmpty() ) {
-                for (League_Assignment league_assignment : league_assignments) {
-                    leagueAssignSearch.addFoundLeague_Assignment(league_assignment);
+////            // if we wanted League_Assignment objects as a list:
+//            league_assignments = (List<League_Assignment>) hqlQuery.list();  // cast attempt to put into an ArrayList of League_Assignments
+//            if ( !league_assignments.isEmpty() ) {
+//                for (League_Assignment league_assignment : league_assignments) {
+//                    leagueAssignSearch.addFoundLeague_Assignment(league_assignment);
+//                }
+////                leagueAssignSearch.setLeague_AssignmentList(league_assignments);
+//                leagueAssignSearch.setAssignmentsFound(true);
+//            } else {
+//                leagueAssignSearch.setAssignmentsFound(false);
+//            }
+
+
+            league_assign_results = hqlQuery.list();
+            if ( !league_assign_results.isEmpty() ) {
+                for (Object league_assignment_result : league_assign_results) {
+                    leagueAssignSearch.addLeagueAssignResult(league_assignment_result);
                 }
+                leagueAssignSearch.setLeagueAssignResult(league_assign_results);
                 leagueAssignSearch.setAssignmentsFound(true);
+            } else {
+                leagueAssignSearch.setAssignmentsFound(false);
             }
 
 
@@ -94,37 +118,37 @@ public class League_AssignmentDao {
     }
 
 
-    /**
-     * This method directly returns a List of League_Assign results for a player int passed .
-     * @param playerIDInteger
-     */
-    public List<League_Assignment> getCurrentLeagueAssignmentsForPlayerId(int playerIDInteger) {
-
-        logger.info("method getCurrentLeagueAssignmentsForPlayerId() in League_AssignmentDao for: " + playerIDInteger);
-        Session session = SessionFactoryProvider.getSessionFactory().openSession();
-        List<League_Assignment> league_assignments = null;
-
-        try {
-            String hqlString =
-                    "SELECT LA.leagueAssignId, LA.leagueId, LA.playerId, LA.playerSlotNum  " +
-                            " FROM League_Assignment LA " +
-                            " WHERE LA.playerId = ?";
-//                            " WHERE LA.playerId = :player_id";
-
-            Query hqlQuery = session.createQuery(hqlString);
-//            hqlQuery.setParameter("player_id", playerIDInteger);
-            hqlQuery.setInteger(0,playerIDInteger);
-            league_assignments = hqlQuery.list();
-
-            return league_assignments;
-
-        } catch (HibernateException e) {
-            logger.error("Exception: ", e);
-        } finally {
-            session.close();
-        }
-        return league_assignments;
-    }
+//    /**
+//     * This method directly returns a List of League_Assign results for a player int passed .
+//     * @param playerIDInteger
+//     */
+//    public List<League_Assignment> getCurrentLeagueAssignmentsForPlayerId(int playerIDInteger) {
+//
+//        logger.info("method getCurrentLeagueAssignmentsForPlayerId() in League_AssignmentDao for: " + playerIDInteger);
+//        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+//        List<League_Assignment> league_assignments = null;
+//
+//        try {
+//            String hqlString =
+//                    "SELECT LA.leagueAssignId, LA.leagueId, LA.playerId, LA.playerSlotNum  " +
+//                            " FROM League_Assignment LA " +
+//                            " WHERE LA.playerId = ?";
+////                            " WHERE LA.playerId = :player_id";
+//
+//            Query hqlQuery = session.createQuery(hqlString);
+////            hqlQuery.setParameter("player_id", playerIDInteger);
+//            hqlQuery.setInteger(0,playerIDInteger);
+//            league_assignments = hqlQuery.list();
+//
+//            return league_assignments;
+//
+//        } catch (HibernateException e) {
+//            logger.error("Exception: ", e);
+//        } finally {
+//            session.close();
+//        }
+//        return league_assignments;
+//    }
 
 
 

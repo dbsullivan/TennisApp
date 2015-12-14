@@ -4,6 +4,7 @@ package com.TennisApp.java;
 import com.TennisApp.java.entity.League_Assignment;
 import org.apache.log4j.Logger;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * LeagueAssign is a JavaBean holding LeagueAssignSearch type and League_Assignment data to be used by TennisApp when maintaining League_Assignment records.
@@ -20,7 +21,9 @@ public class LeagueAssignSearch extends java.lang.Object {
     private String searchTerm;
     private boolean assignmentsFound;
 
-    private ArrayList<League_Assignment> leagueAssignList = new ArrayList<League_Assignment>();
+//    private ArrayList<League_Assignment> leagueAssignList = new ArrayList<League_Assignment>();
+    private List<League_Assignment> leagueAssignList = new ArrayList<League_Assignment>();
+    private List leagueAssignListResults = new ArrayList<>();
 
     /**
      *  Constructor for the LeagueAssignSearch object
@@ -59,9 +62,17 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@return The leagueAssignList value
      */
-    public ArrayList<League_Assignment> getLeague_AssignmentList() {
+//    public ArrayList<League_Assignment> getLeague_AssignmentList() {
+    public List<League_Assignment> getLeague_AssignmentList() {
         return leagueAssignList;
     }
+
+    /**
+     *  Gets the leagueAssignListResults of the LeagueAssignSearch object
+     *
+     *@return The leagueAssignListResults value
+     */
+    public List getLeagueAssignResult() { return leagueAssignListResults; }
 
 /******************************************************************************/
 
@@ -97,7 +108,8 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@param leagueAssignList  The new leagueAssignList value
      */
-    public void setLeague_AssignmentList(ArrayList<League_Assignment> leagueAssignList) {
+//    public void setLeague_AssignmentList(ArrayList<League_Assignment> leagueAssignList) {
+    public void setLeague_AssignmentList( List<League_Assignment> leagueAssignList) {
         this.leagueAssignList = leagueAssignList;
     }
 
@@ -110,6 +122,26 @@ public class LeagueAssignSearch extends java.lang.Object {
 
         logger.info("method LeagueAssign.addFoundLeague_Assignment(): " + leagueAssign);
         leagueAssignList.add(leagueAssign);
+    }
+
+    /**
+     *  Sets the leagueAssignList attribute of the LeagueAssignSearch object
+     *
+     *@param leagueAssignListResults  The new leagueAssignList value
+     */
+    public void setLeagueAssignResult( List leagueAssignListResults) {
+        this.leagueAssignListResults = leagueAssignListResults;
+    }
+
+    /**
+     *  Adds to the leagueAssignListResults of the LeagueAssign object
+     *
+     *@param league_assignment_result  The new leagueAssign value to add to the list
+     */
+    public void addLeagueAssignResult(Object league_assignment_result) {
+
+        logger.info("method LeagueAssignSearch.addLeagueAssignResult(): " + league_assignment_result);
+        leagueAssignListResults.add(league_assignment_result);
     }
 
 }

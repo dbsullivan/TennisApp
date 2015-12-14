@@ -55,7 +55,7 @@
           <td> ${leagueAssignStatusSearch.searchTerm} </td>
         </tr> --%>
         <%-- need to choose here, and dropdown, to show leagues or players? --%>
-        <c:forEach var="league_assign" items="${leagueAssignStatusSearch.leagueAssignList}">
+        <c:forEach var="league_assign" items="${leagueAssignStatusSearch.leagueAssignListResults}">
           <tr>
               <%-- <td> Need to set leagueAssignID session attribute using EL here ? </td> --%>
             <td><a href="/league-assign-delete-action?leagueAssignID=${league_assign.getLeagueAssignId()}" id="${league_assign.getLeagueAssignId()}" > Remove Assignment  ${league_assign.getLeagueAssignId()} </a></td>

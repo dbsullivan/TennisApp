@@ -48,6 +48,7 @@
             <url-pattern>/leagueSearchResults.jsp</url-pattern>
             <url-pattern>/leagueAdd.jsp</url-pattern>
             <url-pattern>/leagueMaintenance.jsp</url-pattern>
+            <url-pattern>/playerToLeagueAssignment.jsp</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>
@@ -74,6 +75,7 @@
             <url-pattern>/leagueSearchResults.jsp</url-pattern>
             <url-pattern>/leagueAdd.jsp</url-pattern>
             <url-pattern>/leagueMaintenance.jsp</url-pattern>
+            <url-pattern>/playerToLeagueAssignment.jsp</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>admin</role-name>

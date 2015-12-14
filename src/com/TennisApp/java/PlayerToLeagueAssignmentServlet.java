@@ -67,9 +67,12 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
         // option 1.to create a search object LeagueAssignSearch leagueAssignList, setting leagueAssignSearch.getSearchType() = "assign player to league"
         LeagueAssignSearch leagueAssignSearch = new LeagueAssignSearch();
         leagueAssignSearch.setSearchType("assign player to league");
+        leagueAssignSearch.setSearchTerm(playerID);
 
         leagueAssignSearch = league_assignmentDao.searchForLeagueAssign(leagueAssignSearch);
         session.setAttribute("leagueAssignStatusSearch", leagueAssignSearch);
+
+        logger.info("leagueAssignStatusSearch: " + session.getAttribute("leagueAssignStatusSearch")) ;
 
         if ( !leagueAssignSearch.isFound() ) {
             leagueAssignmentMessage = "No League Assignments found.";
