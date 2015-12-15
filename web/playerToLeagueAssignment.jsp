@@ -50,17 +50,16 @@
           <td> Assignment Type </td>
           <td> ${leagueAssignStatusSearch.searchType} </td>
         </tr>
-        <%-- <tr>
+        <tr>
           <td> Search Term </td>
           <td> ${leagueAssignStatusSearch.searchTerm} </td>
-        </tr> --%>
+        </tr>
         <%-- need to choose here, and dropdown, to show leagues or players? --%>
-        <c:forEach var="league_assign" items="${leagueAssignStatusSearch.leagueAssignListResults}">
+        <c:forEach var="leagueassign" items="${leagueAssignStatusSearch.leagueAssignListResults}">
           <tr>
-              <%-- <td> Need to set leagueAssignID session attribute using EL here ? </td> --%>
-            <td><a href="/league-assign-delete-action?leagueAssignID=${league_assign.getLeagueAssignId()}" id="${league_assign.getLeagueAssignId()}" > Remove Assignment  ${league_assign.getLeagueAssignId()} </a></td>
+            <td><a href="/league-assign-delete-action?leagueAssignID=${leagueassign.getLeagueAssignId()}" id="${leagueassign.getLeagueAssignId()}" > Remove Assignment  ${leagueassign.getLeagueAssignId()} </a></td>
               <%-- just show player ID,  names with row as a link, passing the selected ID, to PlayerMaint.java to populate playerMaint.jsp --%>
-            <td> ${league_assign.toString()}</td>
+            <td> ${leagueassign.toString()}</td>
           </tr>
         </c:forEach>
       </table>

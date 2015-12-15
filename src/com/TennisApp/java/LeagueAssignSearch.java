@@ -1,6 +1,7 @@
 
 package com.TennisApp.java;
 
+import com.TennisApp.java.entity.LeagueAssignmentResult;
 import com.TennisApp.java.entity.League_Assignment;
 import org.apache.log4j.Logger;
 import java.util.ArrayList;
@@ -72,7 +73,7 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@return The leagueAssignListResults value
      */
-    public List getLeagueAssignResult() { return leagueAssignListResults; }
+    public List<LeagueAssignmentResult> getLeagueAssignResult() { return leagueAssignListResults; }
 
 /******************************************************************************/
 
@@ -138,7 +139,7 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@param league_assignment_result  The new leagueAssign value to add to the list
      */
-    public void addLeagueAssignResult(Object league_assignment_result) {
+    public void addLeagueAssignResult(LeagueAssignmentResult league_assignment_result) {
 
         logger.info("method LeagueAssignSearch.addLeagueAssignResult(): " + league_assignment_result);
         leagueAssignListResults.add(league_assignment_result);

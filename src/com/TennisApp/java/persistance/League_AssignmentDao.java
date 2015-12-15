@@ -3,6 +3,7 @@ package com.TennisApp.java.persistance;
 import com.TennisApp.java.LeagueAssignSearch;
 import com.TennisApp.java.LeagueSearch;
 import com.TennisApp.java.entity.League;
+import com.TennisApp.java.entity.LeagueAssignmentResult;
 import com.TennisApp.java.entity.League_Assignment;
 import org.apache.log4j.Logger;
 import org.hibernate.*;
@@ -63,7 +64,10 @@ public class League_AssignmentDao {
         logger.info("method getCurrentLeagueAssignmentsForPlayerId() in League_AssignmentDao for: " + leagueAssignSearch.getSearchTerm());
         Session session = SessionFactoryProvider.getSessionFactory().openSession();
 //        List<League_Assignment> league_assignments = new ArrayList<League_Assignment>();
-        List league_assign_results = new ArrayList<>(); //  List of Java String objects is desired, NOT the league_assignment entity bean.
+
+    //  List of Java String objects is desired, NOT the league_assignment entity bean.
+//        List<Object[]> league_assign_results;
+        List<LeagueAssignmentResult> league_assign_results = null;
         int player_id =  Integer.parseInt(leagueAssignSearch.getSearchTerm());
 
         try {
@@ -76,7 +80,7 @@ public class League_AssignmentDao {
 ////            hqlQuery.setInteger(0,player_id);
 
             String hqlString =
-                    "SELECT LA.leagueAssignId, L.leagueName, L.level, L.typeSinglesDoubles, L.numPlayerSlots  " +
+                    "SELECT new LeagueAssignmentResult(LA.leagueAssignId, L.leagueName, L.level, L.typeSinglesDoubles, L.numPlayerSlots)  " +
                             " FROM League_Assignment LA, League L " +
                             " WHERE LA.leagueId = L.leagueId " +
                             " AND LA.playerId = :player_id " ;
@@ -97,12 +101,18 @@ public class League_AssignmentDao {
 //            }
 
 
+            // start here, return a List<LeagueAssignmentResult> compatible with EL getters/setters
+
             league_assign_results = hqlQuery.list();
             if ( !league_assign_results.isEmpty() ) {
-                for (Object league_assignment_result : league_assign_results) {
+                for ( ArrayList <LeagueAssignmentResult> league_assignment_result : league_assign_results) {
+                    //TODO this might be added to a different object, etc...
                     leagueAssignSearch.addLeagueAssignResult(league_assignment_result);
+//                    leagueAssignSearch.addLeagueAssignResult(league_assignment_result);
+                    // when returning an array of Object[]
+//                    League_Assignment leagueAssignment = (League_Assignment) league_assignment_result[0];
                 }
-                leagueAssignSearch.setLeagueAssignResult(league_assign_results);
+//                leagueAssignSearch.setLeagueAssignResult(league_assign_results);
                 leagueAssignSearch.setAssignmentsFound(true);
             } else {
                 leagueAssignSearch.setAssignmentsFound(false);

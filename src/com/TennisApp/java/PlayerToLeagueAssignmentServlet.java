@@ -16,9 +16,9 @@ import java.io.IOException;
 
 /**
  * Created by Dave on 12/6/2015.
- *  This class gets the entry form parameters and upon submit will either update a Player record, delete a Player record, or make a league assignment to a Player
- *  Input data getParameters from the playerMaintenance.jsp HTML Form, action to the annotation (player-maintenance-action) to this Servlet.
- *
+ *  This class gets the League_Assignment records to populate the LeagueAssignSearch attributes for a player selected earlier,
+ *  from PlayerMaintenanceServlet, where, action to the annotation (/player-to-league-assign-action) to this Servlet.
+ *  That Servlet was called from playerSearch results list, selected a player link.
  *
  *@author    Dave Sullivan
  */
@@ -48,12 +48,6 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
         logger.info("In PlayerToLeagueAssignmentServlet... to maintain League Assignments.");
         String url = null;
 
-        // Arrive here, from PlayerMaintenanceServlet, where
-        // that Servlet was called from playerSearch results list, selected a player link.
-        // Here we will determine if the user has selected Update, Delete, or AssignLeague for a player, and forward to the correct Servlet.
-        // Forward to an action Servlet selected in  playerMaintenance.jsp.
-
-
         String playerID = (String) session.getAttribute("playerID");
         Integer playerIDInteger = Integer.parseInt(playerID);
 
@@ -62,13 +56,12 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
         leagueAssignmentMessage = "You can Remove or Add League Assignments for Id: " + playerID;
         session.setAttribute("leagueAssignmentMessage", leagueAssignmentMessage);
 
-        League_AssignmentDao league_assignmentDao= new League_AssignmentDao();
-
         // option 1.to create a search object LeagueAssignSearch leagueAssignList, setting leagueAssignSearch.getSearchType() = "assign player to league"
         LeagueAssignSearch leagueAssignSearch = new LeagueAssignSearch();
         leagueAssignSearch.setSearchType("assign player to league");
         leagueAssignSearch.setSearchTerm(playerID);
 
+        League_AssignmentDao league_assignmentDao= new League_AssignmentDao();
         leagueAssignSearch = league_assignmentDao.searchForLeagueAssign(leagueAssignSearch);
         session.setAttribute("leagueAssignStatusSearch", leagueAssignSearch);
 
