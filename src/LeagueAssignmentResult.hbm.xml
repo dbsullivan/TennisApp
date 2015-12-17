@@ -6,7 +6,7 @@
 <!-- this file may not be needed, it's not a real table to be mapped, just an entity for a selection HQL -->
 
 <hibernate-mapping>
-    <class name="com.TennisApp.java.entity.LeagueAssignmentResult" >
+    <class name="com.TennisApp.java.entity.LeagueAssignmentResult" table="" >
         <meta attribute="class-description">
             This class contains the LeagueAssignmentResult detail.
         </meta>
@@ -17,6 +17,6 @@
         <property name="leagueName" column="leagueName" type="string"/>
         <property name="level" column="level" type="string"/>
         <property name="typeSinglesDoubles" column="typeSinglesDoubles" type="string"/>
-        <property name="playerSlotNum" column="player_slot_num" type="int"/>
+        <property name="numPlayerSlots" column="player_slot_num" type="int"/>
     </class>
 </hibernate-mapping>

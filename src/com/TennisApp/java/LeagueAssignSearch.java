@@ -24,7 +24,8 @@ public class LeagueAssignSearch extends java.lang.Object {
 
 //    private ArrayList<League_Assignment> leagueAssignList = new ArrayList<League_Assignment>();
     private List<League_Assignment> leagueAssignList = new ArrayList<League_Assignment>();
-    private List leagueAssignListResults = new ArrayList<>();
+//    private List leagueAssignListResults = new ArrayList<LeagueAssignmentResult>();
+    private ArrayList<LeagueAssignmentResult> leagueAssignListResults = new ArrayList<LeagueAssignmentResult>();
 
     /**
      *  Constructor for the LeagueAssignSearch object
@@ -110,7 +111,7 @@ public class LeagueAssignSearch extends java.lang.Object {
      *@param leagueAssignList  The new leagueAssignList value
      */
 //    public void setLeague_AssignmentList(ArrayList<League_Assignment> leagueAssignList) {
-    public void setLeague_AssignmentList( List<League_Assignment> leagueAssignList) {
+    public void setLeague_AssignmentList( ArrayList<League_Assignment> leagueAssignList) {
         this.leagueAssignList = leagueAssignList;
     }
 
@@ -130,7 +131,7 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@param leagueAssignListResults  The new leagueAssignList value
      */
-    public void setLeagueAssignResult( List leagueAssignListResults) {
+    public void setLeagueAssignResult( ArrayList<LeagueAssignmentResult> leagueAssignListResults) {
         this.leagueAssignListResults = leagueAssignListResults;
     }
 

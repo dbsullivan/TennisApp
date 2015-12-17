@@ -63,11 +63,14 @@ public class League_AssignmentDao {
 
         logger.info("method getCurrentLeagueAssignmentsForPlayerId() in League_AssignmentDao for: " + leagueAssignSearch.getSearchTerm());
         Session session = SessionFactoryProvider.getSessionFactory().openSession();
-//        List<League_Assignment> league_assignments = new ArrayList<League_Assignment>();
 
+        List<LeagueAssignmentResult> league_assign_results = new ArrayList<LeagueAssignmentResult>();
+
+//        List<League_Assignment> league_assignments = new ArrayList<League_Assignment>();
     //  List of Java String objects is desired, NOT the league_assignment entity bean.
 //        List<Object[]> league_assign_results;
-        List<LeagueAssignmentResult> league_assign_results = null;
+//        ArrayList<LeagueAssignmentResult> league_assign_results = null;
+
         int player_id =  Integer.parseInt(leagueAssignSearch.getSearchTerm());
 
         try {
@@ -80,7 +83,8 @@ public class League_AssignmentDao {
 ////            hqlQuery.setInteger(0,player_id);
 
             String hqlString =
-                    "SELECT new LeagueAssignmentResult(LA.leagueAssignId, L.leagueName, L.level, L.typeSinglesDoubles, L.numPlayerSlots)  " +
+//                    "SELECT new LeagueAssignmentResult(LA.leagueAssignId, L.leagueName, L.level, L.typeSinglesDoubles, L.numPlayerSlots)  " +
+                    "SELECT  LA.leagueAssignId, L.leagueName, L.level, L.typeSinglesDoubles, L.numPlayerSlots  " +
                             " FROM League_Assignment LA, League L " +
                             " WHERE LA.leagueId = L.leagueId " +
                             " AND LA.playerId = :player_id " ;
@@ -103,12 +107,12 @@ public class League_AssignmentDao {
 
             // start here, return a List<LeagueAssignmentResult> compatible with EL getters/setters
 
-            league_assign_results = hqlQuery.list();
+            league_assign_results = (ArrayList) hqlQuery.list();
             if ( !league_assign_results.isEmpty() ) {
-                for ( ArrayList <LeagueAssignmentResult> league_assignment_result : league_assign_results) {
+                for ( LeagueAssignmentResult  league_assignment_result : league_assign_results) {
                     //TODO this might be added to a different object, etc...
                     leagueAssignSearch.addLeagueAssignResult(league_assignment_result);
-//                    leagueAssignSearch.addLeagueAssignResult(league_assignment_result);
+//                    leagueAssignSearch.addLeagueAssignResult(leagueAssignSearch);
                     // when returning an array of Object[]
 //                    League_Assignment leagueAssignment = (League_Assignment) league_assignment_result[0];
                 }
