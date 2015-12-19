@@ -25,7 +25,8 @@ public class LeagueAssignSearch extends java.lang.Object {
 //    private ArrayList<League_Assignment> leagueAssignList = new ArrayList<League_Assignment>();
     private List<League_Assignment> leagueAssignList = new ArrayList<League_Assignment>();
 //    private List leagueAssignListResults = new ArrayList<LeagueAssignmentResult>();
-    private ArrayList<LeagueAssignmentResult> leagueAssignListResults = new ArrayList<LeagueAssignmentResult>();
+//    private ArrayList<LeagueAssignmentResult> leagueAssignListResults = new ArrayList<LeagueAssignmentResult>();
+    private ArrayList leagueAssignListResults = new ArrayList();
 
     /**
      *  Constructor for the LeagueAssignSearch object
@@ -74,7 +75,8 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@return The leagueAssignListResults value
      */
-    public List<LeagueAssignmentResult> getLeagueAssignResult() { return leagueAssignListResults; }
+//    public List<LeagueAssignmentResult> getLeagueAssignResult() { return leagueAssignListResults; }
+    public ArrayList<Object> getLeagueAssignResult() { return leagueAssignListResults; }
 
 /******************************************************************************/
 
@@ -131,7 +133,8 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@param leagueAssignListResults  The new leagueAssignList value
      */
-    public void setLeagueAssignResult( ArrayList<LeagueAssignmentResult> leagueAssignListResults) {
+//    public void setLeagueAssignResult( ArrayList<LeagueAssignmentResult> leagueAssignListResults) {
+    public void setLeagueAssignResult( ArrayList leagueAssignListResults) {
         this.leagueAssignListResults = leagueAssignListResults;
     }
 
@@ -140,8 +143,8 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@param league_assignment_result  The new leagueAssign value to add to the list
      */
-    public void addLeagueAssignResult(LeagueAssignmentResult league_assignment_result) {
-
+//    public void addLeagueAssignResult(LeagueAssignmentResult league_assignment_result) {
+    public void addLeagueAssignResult(Object league_assignment_result) {
         logger.info("method LeagueAssignSearch.addLeagueAssignResult(): " + league_assignment_result);
         leagueAssignListResults.add(league_assignment_result);
     }

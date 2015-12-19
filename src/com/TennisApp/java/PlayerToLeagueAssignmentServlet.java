@@ -72,13 +72,6 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
             session.setAttribute("leagueSearchMessage", leagueAssignmentMessage);
         }
 
-
-        //option 2. directly using method in Dao, without LeagueAssignSearch object:
-//        league_assignmentDao.getCurrentLeagueAssignmentsForPlayerId(playerIDInteger);
-//        session.setAttribute("playerIdUpdated", playerID);
-
-
-
         logger.info("forward to playerToLeagueAssignment.jsp for assign player to league ") ;
 
 //        url = "/playerToLeagueAssignment.jsp";  // do a redirect using url back to leagueAssignment.jsp page.
