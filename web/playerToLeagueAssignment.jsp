@@ -54,20 +54,17 @@
           <td> Search Term </td>
           <td> ${leagueAssignStatusSearch.searchTerm} </td>
         </tr>
-        <%-- need to choose here, and dropdown, to show leagues or players? --%>
-        <c:forEach var="leagueassign" items="${leagueAssignStatusSearch.leagueAssignListResults}">
+        <c:forEach var="leagueassign" items="${leagueAssignStatusSearch.getLeagueAssignDisplay()}">
           <tr>
-            <td><a href="/league-assign-delete-action?leagueAssignID=${leagueassign.getLeagueAssignId()}" id="${leagueassign.getLeagueAssignId()}" > Remove Assignment  ${leagueassign.getLeagueAssignId()} </a></td>
-              <%-- just show player ID,  names with row as a link, passing the selected ID, to PlayerMaint.java to populate playerMaint.jsp --%>
+            <td><a href="/league-assign-delete-action?leagueAssignID=${leagueassign.leagueAssignId}" id="${leagueassign.leagueAssignId}" > Remove Assignment  ${leagueassign.leagueAssignId} </a></td>
             <td> ${leagueassign.toString()}</td>
           </tr>
         </c:forEach>
       </table>
       <br />
-      <%-- Drop down list of Available (players / leagues) depending on direction/type, with Add button adjacent to list box
-      <input type="submit" name="deleteAssignmentBtn" value="Remove Assignment" />
+      <%-- Drop down list of Available (players / leagues) depending on direction/type, with Add button adjacent to list box       --%>
       <input type="submit" name="addAssignmentBtn" value="Add Assignment" />
-      --%>
+<%-- start here, add dropdown list of leagues avail using for each, add button will apply it --%>
     </form>
 
     </br>

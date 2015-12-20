@@ -1,6 +1,7 @@
 
 package com.TennisApp.java;
 
+import com.TennisApp.java.entity.League;
 import com.TennisApp.java.entity.LeagueAssignmentResult;
 import com.TennisApp.java.entity.League_Assignment;
 import org.apache.log4j.Logger;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * LeagueAssign is a JavaBean holding LeagueAssignSearch type and League_Assignment data to be used by TennisApp when maintaining League_Assignment records.
+ * LeagueAssignSearch is a JavaBean holding LeagueAssignSearch type and League_Assignment data to be used by TennisApp when maintaining League_Assignment records.
  * This is the javabean object that determines if PlayerToLeagueAssignmentServlet.java controller servlet should be returned a
  * League_Assignment result, results, or a message if not found.
  *
@@ -21,18 +22,17 @@ public class LeagueAssignSearch extends java.lang.Object {
     private String searchType;
     private String searchTerm;
     private boolean assignmentsFound;
+    private boolean leaguesAvailFound;
 
-//    private ArrayList<League_Assignment> leagueAssignList = new ArrayList<League_Assignment>();
+    //    private ArrayList leagueAssignListResults = new ArrayList();
     private List<League_Assignment> leagueAssignList = new ArrayList<League_Assignment>();
-//    private List leagueAssignListResults = new ArrayList<LeagueAssignmentResult>();
-//    private ArrayList<LeagueAssignmentResult> leagueAssignListResults = new ArrayList<LeagueAssignmentResult>();
-    private ArrayList leagueAssignListResults = new ArrayList();
+    private ArrayList<LeagueAssignmentResult> leagueAssignDisplayList = new ArrayList();
+    private ArrayList<League> leagueDisplayList = new ArrayList();
 
     /**
      *  Constructor for the LeagueAssignSearch object
      */
     public LeagueAssignSearch() {
-
     }
 
     /**
@@ -65,18 +65,25 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@return The leagueAssignList value
      */
-//    public ArrayList<League_Assignment> getLeague_AssignmentList() {
     public List<League_Assignment> getLeague_AssignmentList() {
         return leagueAssignList;
     }
 
     /**
-     *  Gets the leagueAssignListResults of the LeagueAssignSearch object
+     *  Gets the leagueAssignDisplayList of the LeagueAssignSearch object
      *
-     *@return The leagueAssignListResults value
+     *@return The leagueAssignDisplayList value
      */
-//    public List<LeagueAssignmentResult> getLeagueAssignResult() { return leagueAssignListResults; }
-    public ArrayList<Object> getLeagueAssignResult() { return leagueAssignListResults; }
+    public ArrayList<LeagueAssignmentResult> getLeagueAssignDisplay() { return leagueAssignDisplayList; }
+
+    /**
+     *  Gets the leaguesAvailFound attribute of the LeagueAssignSearch object
+     *
+     *@return The leaguesAvailFound value
+     */
+    public boolean isAvailFound() {
+        return leaguesAvailFound;
+    }
 
 /******************************************************************************/
 
@@ -99,7 +106,7 @@ public class LeagueAssignSearch extends java.lang.Object {
     }
 
     /**
-     *  Sets the assignmentsFound attribute of the LeagueAssign object
+     *  Sets the assignmentsFound attribute of the LeagueAssignSearch object
      *
      *@param assignmentsFound  The new assignmentsFound value
      */
@@ -112,42 +119,48 @@ public class LeagueAssignSearch extends java.lang.Object {
      *
      *@param leagueAssignList  The new leagueAssignList value
      */
-//    public void setLeague_AssignmentList(ArrayList<League_Assignment> leagueAssignList) {
     public void setLeague_AssignmentList( ArrayList<League_Assignment> leagueAssignList) {
         this.leagueAssignList = leagueAssignList;
     }
 
     /**
-     *  Adds to the leagueAssignList attribute of the LeagueAssign object
+     *  Adds to the leagueAssignList attribute of the LeagueAssignSearch object
      *
      *@param leagueAssign  The new leagueAssign value to add to the list
      */
     public void addFoundLeague_Assignment(League_Assignment leagueAssign) {
-
-        logger.info("method LeagueAssign.addFoundLeague_Assignment(): " + leagueAssign);
         leagueAssignList.add(leagueAssign);
     }
 
     /**
-     *  Sets the leagueAssignList attribute of the LeagueAssignSearch object
+     *  Sets the leagueAssignDisplayList of the LeagueAssignSearch object
      *
-     *@param leagueAssignListResults  The new leagueAssignList value
+     *@param leagueAssignDisplayList  The new leagueAssignDisplayList value
      */
-//    public void setLeagueAssignResult( ArrayList<LeagueAssignmentResult> leagueAssignListResults) {
-    public void setLeagueAssignResult( ArrayList leagueAssignListResults) {
-        this.leagueAssignListResults = leagueAssignListResults;
+    public void setLeagueAssignDisplayList( ArrayList<LeagueAssignmentResult> leagueAssignDisplayList) {
+        this.leagueAssignDisplayList = leagueAssignDisplayList;
     }
 
     /**
-     *  Adds to the leagueAssignListResults of the LeagueAssign object
+     *  Adds to the leagueAssignDisplayList of the LeagueAssignSearch object
      *
-     *@param league_assignment_result  The new leagueAssign value to add to the list
+     *@param league_assignment_result  The new LeagueAssignSearch value to add to the list
      */
-//    public void addLeagueAssignResult(LeagueAssignmentResult league_assignment_result) {
-    public void addLeagueAssignResult(Object league_assignment_result) {
-        logger.info("method LeagueAssignSearch.addLeagueAssignResult(): " + league_assignment_result);
-        leagueAssignListResults.add(league_assignment_result);
+    public void addLeagueAssignDisplay(LeagueAssignmentResult league_assignment_result ) {
+        leagueAssignDisplayList.add(league_assignment_result);
     }
 
+    public void setLeagueAvailDisplayList(ArrayList<League> leagueDisplayList) {
+        this.leagueDisplayList = leagueDisplayList;
+    }
+
+    /**
+     *  Sets the leaguesAvailFound attribute of the LeagueAssignSearch object
+     *
+     *@param leaguesAvailFound  The new leaguesAvailFound value
+     */
+    public void setLeaguesAvailFound(boolean leaguesAvailFound) {
+        this.leaguesAvailFound = leaguesAvailFound;
+    }
 }
 

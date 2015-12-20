@@ -22,7 +22,6 @@ public class LeagueAssignmentResult {
     private int numPlayerSlots;
 
     private final Logger logger = Logger.getLogger(this.getClass());
-//    private List leagueAssignListResults = new ArrayList<>();
 
     public LeagueAssignmentResult() {
     }
@@ -33,7 +32,6 @@ public class LeagueAssignmentResult {
         this.numPlayerSlots = numPlayerSlots;
         this.typeSinglesDoubles = typeSinglesDoubles;
         this.level = level;
-
     }
 
     public int getLeagueAssignId() {return leagueAssignId; }
@@ -56,30 +54,12 @@ public class LeagueAssignmentResult {
 
     public void setNumPlayerSlots(int numPlayerSlots) { this.numPlayerSlots = numPlayerSlots; }
 
-//    /**
-//     *  Gets the leagueAssignListResults
-//     *
-//     *@return The leagueAssignListResults value
-//     */
-//   public List getLeagueAssignResult() { return leagueAssignListResults; }
-//
-//    /**
-//     *  Adds to the leagueAssignListResults
-//     *
-//     *@param leagueAssignListResults  The new leagueAssign value to add to the list
-//     */
-//    public void addLeagueAssignResult(List leagueAssignListResults) {
-//
-//        logger.info("method LeagueAssignmentResult.addLeagueAssignResult(): " + leagueAssignListResults);
-//        leagueAssignListResults.add(leagueAssignListResults);
-//    }
 
     public String toString() {
         return  System.lineSeparator() +
-                "Id: " + " "
-                + leagueAssignId + " "
-                + leagueName + " "
-                + "slots="  + numPlayerSlots + " "
-                + typeSinglesDoubles ;
+                "Assign Id: " + leagueAssignId +
+                " League: " + leagueName +
+                " Slots: " + numPlayerSlots +
+                " Type: " + typeSinglesDoubles ;
     }
 }

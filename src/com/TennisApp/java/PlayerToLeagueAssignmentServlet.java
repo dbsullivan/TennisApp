@@ -53,10 +53,10 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
 
         // associate the Message with the request, and clear it before forwarding to JSP page
         String leagueAssignmentMessage = "";
-        leagueAssignmentMessage = "You can Remove or Add League Assignments for Id: " + playerID;
+        leagueAssignmentMessage = "You can Remove or Add League Assignments for player Id: " + playerID;
         session.setAttribute("leagueAssignmentMessage", leagueAssignmentMessage);
 
-        // option 1.to create a search object LeagueAssignSearch leagueAssignList, setting leagueAssignSearch.getSearchType() = "assign player to league"
+        // create a search object LeagueAssignSearch , setting leagueAssignSearch.getSearchType() = "assign player to league"
         LeagueAssignSearch leagueAssignSearch = new LeagueAssignSearch();
         leagueAssignSearch.setSearchType("assign player to league");
         leagueAssignSearch.setSearchTerm(playerID);
@@ -73,9 +73,6 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
         }
 
         logger.info("forward to playerToLeagueAssignment.jsp for assign player to league ") ;
-
-//        url = "/playerToLeagueAssignment.jsp";  // do a redirect using url back to leagueAssignment.jsp page.
-//        response.sendRedirect(url);
 
         url = "/playerToLeagueAssignment.jsp";
         RequestDispatcher dispatcher =
