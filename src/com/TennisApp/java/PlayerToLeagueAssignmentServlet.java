@@ -69,8 +69,16 @@ public class PlayerToLeagueAssignmentServlet extends HttpServlet {
 
         if ( !leagueAssignSearch.isFound() ) {
             leagueAssignmentMessage = "No League Assignments found.";
-            session.setAttribute("leagueSearchMessage", leagueAssignmentMessage);
+            session.setAttribute("leagueAssignmentMessage", leagueAssignmentMessage);
         }
+
+
+        // if user has selected Add Assignment
+        //TODO fill dropdown, determine selectedLeague attribute, then validate in the ADD_LEAGUE_ASSIGN SERVLET, link to DELETE_LEAGUE_ASSIGN SERVLET.
+        if (request.getParameter("addAssignmentBtn") != null) {
+            url = "/league-assign-add-action";
+        }
+
 
         logger.info("forward to playerToLeagueAssignment.jsp for assign player to league ") ;
 

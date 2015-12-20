@@ -85,6 +85,12 @@ public class LeagueAssignSearch extends java.lang.Object {
         return leaguesAvailFound;
     }
 
+    /**
+     *  Gets the LeagueAvailDisplayList of the LeagueAssignSearch object
+     *
+     *@return The leagueAssignDisplayList value
+     */
+    public ArrayList<League>  getLeagueAvailDisplayList() { return leagueDisplayList; }
 /******************************************************************************/
 
     /**

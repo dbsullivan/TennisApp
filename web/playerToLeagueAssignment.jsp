@@ -56,7 +56,7 @@
         </tr>
         <c:forEach var="leagueassign" items="${leagueAssignStatusSearch.getLeagueAssignDisplay()}">
           <tr>
-            <td><a href="/league-assign-delete-action?leagueAssignID=${leagueassign.leagueAssignId}" id="${leagueassign.leagueAssignId}" > Remove Assignment  ${leagueassign.leagueAssignId} </a></td>
+            <td><a href="/league-assign-delete-action?leagueAssignId=${leagueassign.getLeagueAssignId()}" id="${leagueassign.getLeagueAssignId()}" > Remove Assignment  ${leagueassign.getLeagueAssignId()} </a></td>
             <td> ${leagueassign.toString()}</td>
           </tr>
         </c:forEach>
@@ -64,7 +64,14 @@
       <br />
       <%-- Drop down list of Available (players / leagues) depending on direction/type, with Add button adjacent to list box       --%>
       <input type="submit" name="addAssignmentBtn" value="Add Assignment" />
-<%-- start here, add dropdown list of leagues avail using for each, add button will apply it --%>
+<%-- TODO start here, add dropdown list of leagues avail using for each, add button will apply it, SERVLETS TO ADD, and REMOVE League_Assignment --%>
+      <td>
+          <select name="newSelectedLeague" >
+              <c:forEach var="leagueAvailable" items="${leagueAssignStatusSearch.getLeagueAvailDisplayList()}" >
+                  <option value="${leagueAvailable.leagueId}" ${leagueAvailable.leagueId == selectedLeague ? 'selected="selected"' : ''}>${leagueAvailable.leagueName}</option>
+              </c:forEach>
+          </select>
+      </td>
     </form>
 
     </br>

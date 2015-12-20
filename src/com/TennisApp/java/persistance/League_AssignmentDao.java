@@ -3,6 +3,7 @@ package com.TennisApp.java.persistance;
 import com.TennisApp.java.LeagueAssignSearch;
 import com.TennisApp.java.entity.League;
 import com.TennisApp.java.entity.LeagueAssignmentResult;
+import com.TennisApp.java.entity.League_Assignment;
 import org.apache.log4j.Logger;
 import org.hibernate.*;
 
@@ -41,7 +42,7 @@ public class League_AssignmentDao {
         logger.info("method searchForLeagueAssign() in League_AssignmentDao, with type: " + leagueAssignSearch.getSearchType());
 
         if (leagueAssignSearch.getSearchType().toLowerCase().equals("assign player to league")) {
-            getCurrentLeagueAssignmentsForPlayerId(leagueAssignSearch); // return void, but leagueAssignList.add(leagueAssign) LeagueAssignSearch object
+            getCurrentLeagueAssignmentsForPlayerId(leagueAssignSearch); // return void, but setLeagueAssignDisplayList(leagueAssignDisplayList) LeagueAssignSearch object
             getAvailableLeaguesForPlayerId(leagueAssignSearch);
 //        }  else
 //        if (leagueAssignSearch.getSearchType().toLowerCase().equals("assign league to player")) {
@@ -128,9 +129,10 @@ public class League_AssignmentDao {
             String hqlString =
                     "SELECT  L.leagueId, L.leagueName, L.level, L.typeSinglesDoubles, L.numPlayerSlots " +
                             " FROM League L " +
-                            " WHERE not exists " +
-                            "(select LA.playerId from League_Assignment LA " +
-                            " where LA.playerId = :player_id )" ;
+                            " WHERE L.leagueId not in " +
+                            "(select LA.leagueId from League_Assignment LA " +
+                            " where LA.playerId = :player_id )" +
+                            " ORDER BY L.leagueName" ;
 
             Query hqlQuery = session.createQuery(hqlString);
             hqlQuery.setParameter("player_id", player_id);
@@ -170,7 +172,37 @@ public class League_AssignmentDao {
             session.close();
         }
 
-
     }
+
+
+
+    /** Method to DELETE an League_Assignment in the database
+     *
+     * @param  leagueAssignIDInteger  The League to be deleted.
+     **/
+    public void deleteLeagueAssign(int leagueAssignIDInteger){
+        Session session = SessionFactoryProvider.getSessionFactory().openSession();
+        Transaction tx = null;
+        try{
+            tx = session.beginTransaction();
+            League_Assignment league_assignment =  (League_Assignment)session.get(League_Assignment.class, leagueAssignIDInteger);
+            if (league_assignment != null) {
+                session.delete(league_assignment);
+            }
+            tx.commit();
+        }catch (HibernateException e) {
+            logger.error("Exception: ", e);
+        }finally {
+            session.close();
+        }
+    }
+
+//TODO  Add for playerID, selected new leagueID, new Slot (if <= League NumPlayerSlots)
+// Method to Add requires 2 steps
+// 1. getting the next available slot  HQL:
+// select max(playerSlotNum)+1 from League_Assigment where leagueID = :leagueID selected,
+// if max()+1 < league.getNumPlayerSlots, it's full message returned else continue
+// 2. Add to leagueAssignment for selected leagueID, playerID, and generate a next value
+
 
 }

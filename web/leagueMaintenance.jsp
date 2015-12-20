@@ -167,7 +167,7 @@
       <br />
       <input type="submit" name="updateLeagueBtn" value="Update League" />
       <input type="submit" name="deleteLeagueBtn" value="Delete League" />
-      <input type="submit" name="assignPlayerBtn" value="Assign Player" />
+      <%-- <input type="submit" name="assignPlayerBtn" value="Assign Player" /> --%>
     </form>
 
     </br>

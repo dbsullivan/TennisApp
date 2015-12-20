@@ -2,6 +2,7 @@ package com.TennisApp.java;
 
 
 import com.TennisApp.java.persistance.LeagueDao;
+import com.TennisApp.java.persistance.League_AssignmentDao;
 import org.apache.log4j.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ import java.io.IOException;
 public class LeagueAssignDeleteServlet extends HttpServlet {
 
     /**
-     * Handles HTTP POST requests.
+     * Handles HTTP GET requests.
      *
      * @param request               Description of the Parameter
      * @param response              Description of the Parameter
@@ -36,7 +37,7 @@ public class LeagueAssignDeleteServlet extends HttpServlet {
      */
     private final Logger logger = Logger.getLogger(this.getClass());
 
-    public void doPost(HttpServletRequest request,
+    public void doGet(HttpServletRequest request,
                        HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -46,50 +47,25 @@ public class LeagueAssignDeleteServlet extends HttpServlet {
         logger.info("In LeagueAssignDeleteServlet...Delete validations applied here.");
         String url = null;
 
-//TODO all of the delete here, return to same playerToLeagueAssignment.jsp
-
-        // need to set this attribute in the jsp? to get it here ????
-
-        String leagueAssignID = (String) session.getAttribute("leagueAssignID");
-        Integer leagueAssignIDInteger = Integer.parseInt(leagueAssignID);
+//        String leagueAssignId = (String) session.getAttribute("leagueAssignId");
+        String leagueAssignId = (String) request.getParameter("leagueAssignId");
+        Integer leagueAssignIDInteger = Integer.parseInt(leagueAssignId);
 
         String leagueAssignmentMessage = "";
         String ErrorType = "";
         boolean leagueHasLeagueAssignment = false;
-//
-//        /**
-//         *  Edits will need to be performed, such as if the league has any League_Assign records of players in this league;
-//         *  then we wouldn't want to break that data integrity, and require that they be removed from the League_Assign before deletion.
-//         */
-//
-//
-//        // TODO add this Dao and look for exists. Eventually, add the list of league_assignments to the leagueMaintenance.jsp as well.
-//        // create a method that checks for existance in any league_assign for this league
-//        // LeagueAssignDao leagueAssignDao = new LeagueAssignDao();
-//
-//        // You've passed the audition to delete a League if you return without an ErrorType here
-////            if (ErrorType == "") {
-//        LeagueDao leagueDao = new LeagueDao();
-//        leagueDao.deleteLeague(leagueIDInteger);
-//        session.setAttribute("leagueIdDeleted", leagueID);
-//        leagueAssignmentMessage = "League deleted. Id: " + leagueID;
-////        }
-//
-//        // Forward to a JSP page named leagueMaintenance.jsp.
-//
-//        session.setAttribute("leagueMaintenanceMessage", leagueMaintMessage);
-////        session.setAttribute("leagueID", leagueID);
-//        session.setAttribute("leagueName", "");
-//        session.setAttribute("leaguePlayerSlots", "");
-//        session.setAttribute("leagueCourtsNeeded", "");
-//        session.setAttribute("leagueEvents", "");
-//        session.setAttribute("leagueTypeSnglDbls", "");
-//        session.setAttribute("leagueNTRPLevel", "");
-//        session.setAttribute("leagueStartDate", "");
-//        session.setAttribute("leagueEndDate", "");
-//        session.setAttribute("leagueStatus", "");
 
-//        url = "/playerToLeagueAssignment.jsp";
+
+        League_AssignmentDao league_assignmentDao = new League_AssignmentDao();
+        league_assignmentDao.deleteLeagueAssign(leagueAssignIDInteger);
+        session.setAttribute("leagueAssignIdDeleted", leagueAssignId);
+        leagueAssignmentMessage = "League Assignment deleted. Id: " + leagueAssignId;
+
+       // Forward to a JSP page named playerToLeagueAssignment.jsp.
+
+        session.setAttribute("leagueAssignmentMessage", leagueAssignmentMessage);
+
+        url = "/playerToLeagueAssignment.jsp";
 
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);
