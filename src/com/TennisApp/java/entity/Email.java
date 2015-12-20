@@ -7,17 +7,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Defines an Email bean for validation of user email by WebService
  *
  */
+
 @XmlRootElement
 public class Email {
-    private String emailAdress;
+    private String emailAddress;
     private boolean isValid;
 
-    public String getEmailAdress() {
-        return emailAdress;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmailAdress(String email) {
-        this.emailAdress = email;
+    public void setEmailAddress(String email) {
+        this.emailAddress = email;
     }
 
     public boolean getIsValid() {
